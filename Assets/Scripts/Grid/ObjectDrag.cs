@@ -1,19 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class ObjectDrag : MonoBehaviour
 {
     private Vector3 offset;
-    private void OnMouseDown()
+
+
+    private void Update()
     {
-        offset = transform.position - BuildingSystem.GetMouseWorldPosition();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerController aux = FindAnyObjectByType<PlayerController>();
+
+            Vector3 rot = aux.transform.forward;
+            Vector3 sum = (vectorRounded(aux.transform.forward) * BuildingSystem.current.gridLayout.cellSize.x)
+                + this.transform.position;
+            this.transform.position = BuildingSystem.current.SnapCoordinateToGrid(sum);
+        }
     }
 
-    private void OnMouseDrag()
+    private Vector3 vectorRounded(Vector3 vector)
     {
-        Vector3 pos = BuildingSystem.GetMouseWorldPosition() + offset;
-        transform.position = BuildingSystem.current.SnapCoordinateToGrid(pos);
+        Vector3 roundedVector = new Vector3(Mathf.Round(vector.x), Mathf.Round(vector.y), Mathf.Round(vector.z));
+        if (roundedVector.x == roundedVector.z) {
+            return Vector3.zero;
+        }
+        else {
+            return new Vector3(Mathf.Round(vector.x), Mathf.Round(vector.y), Mathf.Round(vector.z));
+        }
     }
-   
+
+
+
 }

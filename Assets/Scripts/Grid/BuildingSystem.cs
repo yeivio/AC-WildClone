@@ -101,7 +101,7 @@ public class BuildingSystem : MonoBehaviour
     /// <param name="prefab"></param>
     public void InitializeWithObject(GameObject prefab)
     {
-        Vector3 position = SnapCoordinateToGrid(GetMouseWorldPosition());
+        Vector3 position = SnapCoordinateToGrid(FindAnyObjectByType<PlayerController>().transform.position);
 
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlace = obj.GetComponent<PlaceableObject>();
