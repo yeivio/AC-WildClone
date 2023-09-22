@@ -10,7 +10,7 @@ public class BuildingSystem : MonoBehaviour
     public GridLayout gridLayout; // reference to the grid where we will build
     private Grid grid; // Reference to the grid component of the grid GameObject
     [SerializeField] private Tilemap MainTilemap; // Reference to the tilemap inside the grid
-    [SerializeField] private TileBase objectTile; // Reference to the Grid where the 
+    [SerializeField] private TileBase objectTile; // Reference to the sprite that will be drawn and looked for
 
     public GameObject prefab1;
 
@@ -58,12 +58,15 @@ public class BuildingSystem : MonoBehaviour
     /// <returns></returns>
     public Vector3 SnapCoordinateToGrid(Vector3 position)
     {
+        // converts the input position to a Vector3Int cell position
         Vector3Int cellpos = gridLayout.WorldToCell(position);
+        // get the center position of the grid cell at the cellpos position
         position = grid.GetCellCenterWorld(cellpos);
         return position;
     }
 
     public static TileBase[] GetTilesBlock(BoundsInt area, Tilemap tilemap)
+    // Get the tiles in a given area of a given tilemap
     {
         TileBase[]array = new TileBase[area.size.x * area.size.y * area.size.z];
         int counter = 0;
@@ -92,7 +95,7 @@ public class BuildingSystem : MonoBehaviour
     }
 
     private bool CanBeplaced(PlaceableObject placeableObject)
-    // Look if there are 
+    // Look if there are sprites of objectTile, if there are return false
     {
         BoundsInt area = new BoundsInt(); // area where the object has been placed
         area.position = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
