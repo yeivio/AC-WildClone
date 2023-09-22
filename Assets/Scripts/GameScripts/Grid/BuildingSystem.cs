@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class BuildingSystem : MonoBehaviour
 {
     public static BuildingSystem current;
-    public GridLayout gridLayout;
-    private Grid grid;
-    [SerializeField] private Tilemap MainTilemap;
-    [SerializeField] private TileBase whiteTile;
+    public GridLayout gridLayout; // reference to the grid where we will build
+    private Grid grid; // Reference to the grid component of the grid GameObject
+    [SerializeField] private Tilemap MainTilemap; // Reference to the tilemap inside the grid
+    [SerializeField] private TileBase objectTile; // Reference to the Grid where the 
 
     public GameObject prefab1;
 
-    private PlaceableObject objectToPlace;
+    private PlaceableObject objectToPlace; // Component of the object to be placed on the grid
+
 
 
     private void Awake()
@@ -21,55 +23,36 @@ public class BuildingSystem : MonoBehaviour
         current = this; // Patron Singleton
         grid = gridLayout.gameObject.GetComponent<Grid>();
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
             InitializeWithObject(prefab1);
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && objectToPlace)
+            Destroy(objectToPlace.gameObject);
+        
+    }
 
+    private void LateUpdate()
+    {
         if (!objectToPlace)
-        {
             return;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (CanBeplaced(objectToPlace))
         {
-            if (CanBeplaced(objectToPlace))
-            {
-                objectToPlace.Place();
-                Vector3Int start = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
-                TakeArea(start, objectToPlace.Size);
-            }
-            else
-            {
-                Destroy(objectToPlace.gameObject);
-            }
+            objectToPlace.Place();
+            Vector3Int start = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
+            TakeArea(start, objectToPlace.Size);
+            objectToPlace = null;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else
         {
             Destroy(objectToPlace.gameObject);
         }
     }
+    
     /// <summary>
-    /// Función para obtener la relación del cursor con respecto al mundo 3D
-    /// </summary>
-    /// <returns>Devuelve un vector inicializado con 0 si no se ha clickeado en nada, o el punto relativo en el mundo</returns>
-    public static Vector3 GetMouseWorldPosition()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if(Physics.Raycast(ray, out RaycastHit raycastHit))
-        {
-            return raycastHit.point;
-        }
-        else
-        {
-            return Vector3.zero;
-        }
-    }
-    /// <summary>
-    /// Dada una posición, devuelve el vector de la casilla más cercana
+    /// Dada una posiciï¿½n, devuelve el vector de la casilla mï¿½s cercana
     /// </summary>
     /// <param name="position"></param>
     /// <returns></returns>
@@ -96,7 +79,7 @@ public class BuildingSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Instanciador de objetos al que se le añade el componente ObjectDrag
+    /// Instanciador de objetos al que se le aÃ±ade el componente ObjectDrag
     /// </summary>
     /// <param name="prefab"></param>
     public void InitializeWithObject(GameObject prefab)
@@ -109,16 +92,18 @@ public class BuildingSystem : MonoBehaviour
     }
 
     private bool CanBeplaced(PlaceableObject placeableObject)
+    // Look if there are 
     {
-        BoundsInt area = new BoundsInt();
+        BoundsInt area = new BoundsInt(); // area where the object has been placed
         area.position = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
         area.size = placeableObject.Size;
-        area.size = new Vector3Int(area.size.x + 1, area.size.y + 1, area.size.z);
+        area.size = new Vector3Int(area.size.x, 1, area.size.z);
 
-        TileBase[] baseArray = GetTilesBlock(area, MainTilemap);
+        TileBase[] baseArray = GetTilesBlock(area, MainTilemap); // array in the tile where it test if it is empty
         foreach(var b in baseArray)
+        // Searching for a tile that represents that the area has been taken
         {
-            if(b == whiteTile)
+            if(b == objectTile)
             {
                 return false;
             }
@@ -127,8 +112,9 @@ public class BuildingSystem : MonoBehaviour
     }
 
     public void TakeArea(Vector3Int start, Vector3Int size)
+    // Take the area specified: in this case it will be taken by painting the grid
     {
-        MainTilemap.BoxFill(start, whiteTile, start.x, start.y,
-                            start.x + size.x, start.y + size.y);
+        MainTilemap.BoxFill(start, objectTile, start.x, start.y,
+                            start.x + size.x - 1, start.y + size.y - 1);
     }
 }

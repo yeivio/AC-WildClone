@@ -10,7 +10,7 @@ public class PlaceableObject : MonoBehaviour
 
     /// <summary>
     /// Calcular los vertices de cada objeto, para eso se utiliza el punto central del objeto y se dividepor la mitad
-    /// y dependiendo de qué vertice se busque se suma o se resta la mitad de la arista
+    /// y dependiendo de quï¿½ vertice se busque se suma o se resta la mitad de la arista
     /// </summary>
     private void GetColliderVertexPositionsLocal() { 
     
@@ -23,23 +23,41 @@ public class PlaceableObject : MonoBehaviour
     }
 
     /// <summary>
-    /// Calcula el tamaño absoluto del objeto usando los vertices
+    /// Calcula el tamaï¿½o absoluto del objeto usando los vertices
     /// </summary>
+
     private void CalculateSizeInCells()
     {
         Vector3Int[] vertices = new Vector3Int[objectVertices.Length];
-        for(int i = 0; i < vertices.Length; i++)
+        Vector3Int[] cellVertices = new Vector3Int[vertices.Length];
+        for (int i = 0; i < vertices.Length; i++)
         {
             Vector3 worldPos = transform.TransformPoint(objectVertices[i]);
-            vertices[i] = BuildingSystem.current.gridLayout.WorldToCell(worldPos);
+            cellVertices[i] = BuildingSystem.current.gridLayout.WorldToCell(worldPos);
         }
-        Size = new Vector3Int(Mathf.Abs((vertices[0] - vertices[1]).x),
-                            Mathf.Abs((vertices[0] - vertices[3]).y),
-                            1);
+
+        int minX = int.MaxValue;
+        int minY = int.MaxValue;
+        int minZ = int.MaxValue;
+        int maxX = int.MinValue;
+        int maxY = int.MinValue;
+        int maxZ = int.MinValue;
+
+        foreach (Vector3Int vertex in cellVertices)
+        {
+            minX = Mathf.Min(minX, vertex.x);
+            minY = Mathf.Min(minY, vertex.y);
+            minZ = Mathf.Min(minZ, vertex.z);
+            maxX = Mathf.Max(maxX, vertex.x);
+            maxY = Mathf.Max(maxY, vertex.y);
+            maxZ = Mathf.Max(maxZ, vertex.z);
+        }
+
+        Size = new Vector3Int(maxX - minX + 1, maxY - minY + 1, maxZ - minZ + 1);
     }
 
     /// <summary>
-    /// Obtiene el primer vertice del objeto y lo convierte a la posición en el mapa
+    /// Obtiene el primer vertice del objeto y lo convierte a la posiciï¿½n en el mapa
     /// </summary>
     /// <returns></returns>
     public Vector3 GetStartPosition()
@@ -54,7 +72,7 @@ public class PlaceableObject : MonoBehaviour
     }
 
     /// <summary>
-    /// Acción de colocarse en el mapa
+    /// Acciï¿½n de colocarse en el mapa
     /// </summary>
     public virtual void Place()
     {

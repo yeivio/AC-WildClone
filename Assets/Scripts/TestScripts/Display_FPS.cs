@@ -6,7 +6,7 @@ using TMPro;
 public class Display_FPS : MonoBehaviour
 {
     public TextMeshProUGUI display;
-    public float deltaTime;
+    public float deltaTime; // weighted average of the previous deltaTime value and the current Time.deltaTime value
 
     // Update is called once per frame
     void Update()
