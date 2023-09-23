@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 127.15
+  m_fontSize: 54
   m_fontSizeBase: 37
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1825,6 +1825,7 @@ GameObject:
   - component: {fileID: 797678094}
   - component: {fileID: 797678096}
   - component: {fileID: 797678095}
+  - component: {fileID: 797678097}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -1934,6 +1935,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &797678097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797678093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f070d0db9cfd5847860a3ee4fd81256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridLayout: {fileID: 818907015}
+  MainTilemap: {fileID: 797678096}
+  objectTile: {fileID: 11400000, guid: 781ecc4da679b294e8c484d5a85a5eb7, type: 2}
+  prefab1: {fileID: 8644013149300115109, guid: 28595bcf7186afd488cd7577116c9f7d, type: 3}
 --- !u!1 &818907014
 GameObject:
   m_ObjectHideFlags: 0
