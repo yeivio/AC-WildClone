@@ -54,6 +54,7 @@ public class PlaceableObject : MonoBehaviour
         }
 
         Size = new Vector3Int(maxX - minX + 1, maxY - minY + 1, maxZ - minZ + 1);
+        // As long as grid is 2d Z will be always 1
     }
 
     /// <summary>
@@ -69,6 +70,13 @@ public class PlaceableObject : MonoBehaviour
     {
         GetColliderVertexPositionsLocal();
         CalculateSizeInCells();
+        PlayerController aux = FindAnyObjectByType<PlayerController>();
+
+        Vector3 rot = aux.transform.forward;
+        Vector3 sum = (ObjectDrag.vectorRounded(rot) * BuildingSystem.current.gridLayout.cellSize.x)*2
+            + this.transform.position;
+        this.transform.position = BuildingSystem.current.SnapCoordinateToGrid(sum);
+
     }
 
     /// <summary>
@@ -77,7 +85,7 @@ public class PlaceableObject : MonoBehaviour
     public virtual void Place()
     {
         ObjectDrag drag = gameObject.GetComponent<ObjectDrag>();
-        Destroy(drag);
+        //Destroy(drag);
 
         Placed = true;
 

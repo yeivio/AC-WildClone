@@ -100,7 +100,7 @@ public class BuildingSystem : MonoBehaviour
         BoundsInt area = new BoundsInt(); // area where the object has been placed
         area.position = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
         area.size = placeableObject.Size;
-        area.size = new Vector3Int(area.size.x, 1, area.size.z);
+        area.size = new Vector3Int(area.size.x, area.size.y, area.size.z);
 
         TileBase[] baseArray = GetTilesBlock(area, MainTilemap); // array in the tile where it test if it is empty
         foreach(var b in baseArray)
