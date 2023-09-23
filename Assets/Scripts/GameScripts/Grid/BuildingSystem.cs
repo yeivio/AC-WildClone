@@ -82,7 +82,7 @@ public class BuildingSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Instanciador de objetos al que se le añade el componente ObjectDrag
+    /// Instanciador de objetos 
     /// </summary>
     /// <param name="prefab"></param>
     public void InitializeWithObject(GameObject prefab)
@@ -91,7 +91,6 @@ public class BuildingSystem : MonoBehaviour
 
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlace = obj.GetComponent<PlaceableObject>();
-        obj.AddComponent<ObjectDrag>();
     }
 
     private bool CanBeplaced(PlaceableObject placeableObject)

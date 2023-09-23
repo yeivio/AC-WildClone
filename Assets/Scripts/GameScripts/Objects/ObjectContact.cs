@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ObjectDrag : MonoBehaviour
+public class ObjectContact : MonoBehaviour
 {
-    private bool canMove;
+    private bool active;
+    [SerializeField] private bool canBeMove;
+    [SerializeField] private bool canBeTaken;
 
     private void moveObject()
     {
@@ -14,6 +16,13 @@ public class ObjectDrag : MonoBehaviour
         Vector3 sum = (vectorRounded(rot) * BuildingSystem.current.gridLayout.cellSize.x)
             + this.transform.position;
         this.transform.position = BuildingSystem.current.SnapCoordinateToGrid(sum);
+    }
+
+    private void takeObject()
+    // Take the object to the inventary
+    // TODO: Add to the inventary
+    {
+        Destroy(gameObject);
     }
 
     public static Vector3 vectorRounded(Vector3 vector)
@@ -31,23 +40,29 @@ public class ObjectDrag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && canMove)
+        if (Input.GetKeyDown(KeyCode.P) && canBeMove && active)
         {
             moveObject();
         }
+        else if (Input.GetKeyDown(KeyCode.T) && canBeTaken && active)
+            takeObject();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        canMove = true;
+        active = true;
     }
     private void OnTriggerEnter(Collider other)
     {
-        canMove = true;
+        active = true;
     }
     private void OnTriggerExit(Collider other)
     {
-        canMove = false;
+        active = false;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        active = false;
     }
 
 
