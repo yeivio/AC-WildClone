@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2396b83158d9f844eb6979e6bba17521
+guid: e04907fa6ed5ff54c8ff0b0ac1321429
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: c1c41ac2faeb5154fb9c15fc2eaf4d3e, type: 2}
+    second: {fileID: 2100000, guid: 2897e3c913ebff34ab76394028abfc2a, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: DS DSi - Animal Crossing Wild World - Ground
-    second: {fileID: 2800000, guid: b210f87454c84cd429c91f0a7a0568c8, type: 3}
+    second: {fileID: 2800000, guid: ce37815cec683fc4fa2bc8b5db0e44be, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
