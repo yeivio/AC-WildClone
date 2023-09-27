@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -31,9 +32,6 @@ public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerEx
         this.btn.GetComponent<RectTransform>().localScale = originalSize;
 
     }
-
-
-    
 
     public void addItem(Sprite item)
     {

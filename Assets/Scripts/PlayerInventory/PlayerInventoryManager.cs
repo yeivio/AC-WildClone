@@ -1,12 +1,20 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerInventoryManager : MonoBehaviour
 {
     [SerializeField] private PlayerSlotManager[] inventorySlots = new PlayerSlotManager[30];
+    [SerializeField] private MenuManager menuManager;
+
 
     public Sprite appleSprite;
+    public Button btn;
 
-    public bool addItem(Sprite sprite)
+
+
+
+    public bool AddItem(Sprite sprite)
     {
         foreach (PlayerSlotManager slot in inventorySlots)
         {
@@ -17,21 +25,6 @@ public class PlayerInventoryManager : MonoBehaviour
             }
         }
 
-        return false;
-    }
-
-    public bool addItem()
-    {
-        foreach (PlayerSlotManager slot in inventorySlots)
-        {
-            if (!slot.hasItem())
-            {
-                slot.addItem(appleSprite);
-                Debug.Log("true");
-                return true;
-            }
-        }
-        Debug.Log("false");
         return false;
     }
 

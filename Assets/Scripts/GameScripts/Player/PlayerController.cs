@@ -14,12 +14,13 @@ public class PlayerController : MonoBehaviour
     public float turnSmoothTime= 0.1f;
     public float turnSmoothVelocity= 0f;
 
+    [SerializeField] private MenuManager menuManager;
     
     private PlayerInput playerInput;
 
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = this.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
         //Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
 
-        Vector2 movementInput = playerInput.actions["Move"].ReadValue<Vector2>();
+        Vector2 movementInput = playerInput.actions[Utils.MOVE_INPUT].ReadValue<Vector2>();
         Vector3 direction = new Vector3(movementInput[0], 0, movementInput[1]);
 
         if (direction.magnitude >= 0.1f)
@@ -52,8 +53,24 @@ public class PlayerController : MonoBehaviour
             this.currentSpeed = sprintSpeed;
         else
             this.currentSpeed = walkSpeed;
-
-
     }
-    
+
+    public void OpenInventory(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            menuManager.OpenPlayerInventory();
+            playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
+        }
+    }
+
+    public void CloseMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if(menuManager.CloseMenu())
+                playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
+        }
+    }
+
 }
