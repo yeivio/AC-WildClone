@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject playerInventory; //Main player inventory
     [SerializeField] private GameObject playerInventory_optionDialog; //Dialog for action confirmation
+    [SerializeField] private Button firstSelectedBtn; // Boton que empezará como seleccionado
 
     private GameObject currentMenu; //Current open menu
-    private GameObject lastMenu; //Last opened menu
-
-    
+    private GameObject lastMenu; //Last opened menu    
 
     
     public void OpenPlayerInventory()
@@ -49,9 +49,6 @@ public class MenuManager : MonoBehaviour
             currentMenu.SetActive(false);
             return false;
         }
-            
-        
-            
-    }
 
+    }
 }

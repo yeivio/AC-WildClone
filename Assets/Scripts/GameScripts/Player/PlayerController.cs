@@ -14,8 +14,11 @@ public class PlayerController : MonoBehaviour
     public float turnSmoothTime= 0.1f;
     public float turnSmoothVelocity= 0f;
 
+    private Coroutine refCoroutines; // Different coroutines references
+
+    private ObjectContact interactingObject; //Object which they player is interacting
+
     [SerializeField] private MenuManager menuManager;
-    
     private PlayerInput playerInput;
 
     private void Start()
@@ -64,6 +67,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TakeObject(InputAction.CallbackContext context)
+    {
+        if (!context.performed || !interactingObject)
+            return;
+        interactingObject.takeObject();
+    }
+
+
     public void CloseMenu(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -71,6 +82,57 @@ public class PlayerController : MonoBehaviour
             if(menuManager.CloseMenu())
                 playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
         }
+    }
+
+    public void MoveObject(InputAction.CallbackContext context)
+    {
+        if (!context.performed || !interactingObject)
+            return;
+        this.refCoroutines = StartCoroutine(RotateToInteraction(interactingObject));
+        
+    }
+
+    IEnumerator RotateToInteraction(ObjectContact interactingObject)
+    {
+        float timeElapsed = 0;
+        float duration = 0.1f;
+        float start = this.gameObject.transform.eulerAngles.y;
+        float end = Mathf.Round(start / 90) * 90;
+
+        Debug.Log("s:" + start + "end" + end);
+
+        float lerpedValue;
+        while(timeElapsed < duration)
+        {
+            float t = timeElapsed / duration;
+            lerpedValue = Mathf.Lerp(start, end, t);
+            this.gameObject.transform.eulerAngles = new Vector3(this.gameObject.transform.eulerAngles.x, lerpedValue, this.gameObject.transform.eulerAngles.z);
+            timeElapsed += Time.deltaTime;
+            yield return null; // Stops until next frame
+        }
+        lerpedValue = end;
+        this.gameObject.transform.eulerAngles = new Vector3(this.gameObject.transform.eulerAngles.x, lerpedValue, this.gameObject.transform.eulerAngles.z);
+        interactingObject.moveObject();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        interactingObject = other.gameObject.GetComponent<ObjectContact>();
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        interactingObject = null;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        interactingObject = collision.gameObject.GetComponent<ObjectContact>();
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        interactingObject = null;
     }
 
 }

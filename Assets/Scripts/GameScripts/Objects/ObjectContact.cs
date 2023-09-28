@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class ObjectContact : MonoBehaviour
 {
-    private bool active;
     [SerializeField] private bool canBeMove;
     [SerializeField] private bool canBeTaken;
 
-    private void moveObject()
+    public void moveObject()
     {
+
+        if (!canBeMove)
+            return;
         PlayerController aux = FindAnyObjectByType<PlayerController>();
         Vector3 rot = aux.transform.forward;
         Vector3 sum = (vectorRounded(rot) * BuildingSystem.current.gridLayout.cellSize.x)
@@ -18,10 +20,10 @@ public class ObjectContact : MonoBehaviour
         this.transform.position = BuildingSystem.current.SnapCoordinateToGrid(sum);
     }
 
-    private void takeObject()
-    // Take the object to the inventary
-    // TODO: Add to the inventary
+    public void takeObject()
     {
+        if (!canBeTaken)
+            return;
         Destroy(gameObject);
     }
 
@@ -35,35 +37,4 @@ public class ObjectContact : MonoBehaviour
             return new Vector3(Mathf.Round(vector.x), Mathf.Round(vector.y), Mathf.Round(vector.z));
         }
     }
-
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P) && canBeMove && active)
-        {
-            moveObject();
-        }
-        else if (Input.GetKeyDown(KeyCode.T) && canBeTaken && active)
-            takeObject();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        active = true;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        active = true;
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        active = false;
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        active = false;
-    }
-
-
 }
