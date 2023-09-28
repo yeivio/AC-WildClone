@@ -143,7 +143,7 @@
                 {
                     "name": "",
                     "id": "0c03629e-9063-4c38-8089-fb0dc7d7bffb",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -216,6 +216,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CloseMenu",
+                    "type": "Button",
+                    "id": "4402d1dd-9759-4426-ace0-2aa103c5e197",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -244,7 +253,7 @@
                 {
                     "name": "",
                     "id": "d0dc1c09-039d-4a54-a95c-0c3ea29cdb33",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -337,6 +346,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79123b2c-e468-4aad-8ab5-f8878a78c1e9",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "CloseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

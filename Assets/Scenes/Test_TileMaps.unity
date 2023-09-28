@@ -1702,7 +1702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04314825, y: 0.84680724}
   m_AnchorMax: {x: 0.32327378, y: 0.97835547}
-  m_AnchoredPosition: {x: 8.384949, y: 5}
+  m_AnchoredPosition: {x: 8.38501, y: 5}
   m_SizeDelta: {x: -16.770159, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &312932467
@@ -2554,19 +2554,7 @@ MonoBehaviour:
     m_ActionId: d1a8e578-e516-4ac4-a02c-b7e0adc366d3
     m_ActionName: 'UI/Confirm[/Keyboard/enter]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 432432249}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: closeMenu
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 3b96f3cc-b2b7-4aff-b429-d7487f0eea1c
     m_ActionName: 'UI/Cancel[/Keyboard/escape]'
   - m_PersistentCalls:
@@ -2601,6 +2589,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f550c3bb-cb30-4233-ae3a-ac1d70294e96
     m_ActionName: 'FreeMove/MoveObject[/Keyboard/p]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1771266169}
+        m_TargetAssemblyTypeName: PlayerInventoryManager, Assembly-CSharp
+        m_MethodName: CloseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4402d1dd-9759-4426-ace0-2aa103c5e197
+    m_ActionName: 'UI/Close[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: FreeMove
@@ -9484,7 +9488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04314825, y: 0.84680724}
   m_AnchorMax: {x: 0.32327378, y: 0.97835547}
-  m_AnchoredPosition: {x: 8.384949, y: -128.6}
+  m_AnchoredPosition: {x: 8.38501, y: -128.59998}
   m_SizeDelta: {x: -16.770159, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1426732610
@@ -30119,7 +30123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04314825, y: 0.84680724}
   m_AnchorMax: {x: 0.32327378, y: 0.97835547}
-  m_AnchoredPosition: {x: 8.384949, y: -279}
+  m_AnchoredPosition: {x: 8.38501, y: -279}
   m_SizeDelta: {x: -16.770159, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1624898792
@@ -31203,8 +31207,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   menuManager: {fileID: 286212513}
+  playerInput: {fileID: 432432255}
   appleSprite: {fileID: 0}
-  btn: {fileID: 0}
+  initialSelectedbtn: {fileID: 6379136491003441819}
 --- !u!1001 &1791779862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33503,7 +33508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3881780720973209413, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Transition
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3881780720973209413, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
