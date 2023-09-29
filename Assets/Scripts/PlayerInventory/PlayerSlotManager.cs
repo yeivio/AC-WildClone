@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
 {
     private Button btn; // Referencia al botón del objeto
     private Vector3 originalSize; // Tamaño original del botón al comenzar el juego
@@ -20,16 +21,26 @@ public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerEx
         this.originalSize = this.btn.GetComponent<RectTransform>().localScale;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void resizeItem()
     {
         this.btn.GetComponent<Image>().sprite = selectedSprite;
-        if(this.hasItem())
+        if (this.hasItem())
             this.btn.GetComponent<RectTransform>().localScale = new Vector3(originalSize.x + BUTTON_RESIZE, originalSize.y + BUTTON_RESIZE, originalSize.z);
     }
-    public void OnPointerExit(PointerEventData eventData)
+
+    public void revertSizeItem()
     {
         this.btn.GetComponent<Image>().sprite = normalSprite;
         this.btn.GetComponent<RectTransform>().localScale = originalSize;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        resizeItem();
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        revertSizeItem();
 
     }
 
@@ -39,14 +50,34 @@ public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerEx
         this.itemObject.GetComponent<Image>().sprite = item;
     }
 
-    public void removeItem()
+    public Sprite removeItem()
     {
         this.itemObject.SetActive(false);
+        return this.itemObject.GetComponent<Image>().sprite;
     }
 
     public bool hasItem()
     {
         return this.itemObject.activeSelf;
     }
+    public Sprite getItem()
+    {
+        return this.itemObject.GetComponent<Image>().sprite;
+    }
 
+    public void OnSelect(BaseEventData eventData)
+    {
+        resizeItem();
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        revertSizeItem();
+    }
+
+    public void OnSubmit(BaseEventData eventData)
+    {
+        Debug.Log("A");
+
+    }
 }

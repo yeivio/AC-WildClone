@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 882427242233637025}
   - component: {fileID: 1280712749302863899}
   - component: {fileID: 3881780720973209413}
+  - component: {fileID: 6132790649500717267}
   m_Layer: 5
   m_Name: PlayerInv_Slot
   m_TagString: Untagged
@@ -196,3 +197,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6132790649500717267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956683717673684855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154a7738ccc611a4e8aa36f15f4fd77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemObject: {fileID: 7565241070098345391}
+  buttonObject: {fileID: 8956683717673684855}
+  selectedSprite: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+  normalSprite: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+  BUTTON_RESIZE: 1

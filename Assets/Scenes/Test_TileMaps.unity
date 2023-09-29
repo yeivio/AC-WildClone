@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5938,6 +5938,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 3232140919883717538, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1039029690, guid: 9e33fde6f36d1ff4d9f8445da26c19c5, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -31210,6 +31214,7 @@ MonoBehaviour:
   playerInput: {fileID: 432432255}
   appleSprite: {fileID: 0}
   initialSelectedbtn: {fileID: 6379136491003441819}
+  allMenuBtn: []
 --- !u!1001 &1791779862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33426,6 +33431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 3232140919883717538, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 577a17c02df0a6f4cb97de1847580972, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -33573,6 +33582,10 @@ PrefabInstance:
     - target: {fileID: 3881780720973209413, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565241070098345391, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
