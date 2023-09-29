@@ -73,7 +73,7 @@ public class PlaceableObject : MonoBehaviour
         PlayerController aux = FindAnyObjectByType<PlayerController>();
 
         Vector3 rot = aux.transform.forward;
-        Vector3 sum = (ObjectContact.vectorRounded(rot) * BuildingSystem.current.gridLayout.cellSize.x)*2
+        Vector3 sum = (MovableObject.vectorRounded(rot) * BuildingSystem.current.gridLayout.cellSize.x)*2
             + this.transform.position;
         this.transform.position = BuildingSystem.current.SnapCoordinateToGrid(sum);
 

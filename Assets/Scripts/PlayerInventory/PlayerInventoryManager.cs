@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -30,10 +31,6 @@ public class PlayerInventoryManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(selectedItem);
-    }
     private void itemSelected()
     {
         PlayerSlotManager selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
@@ -61,6 +58,7 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         foreach (PlayerSlotManager slot in inventorySlots)
         {
+            Debug.Log(slot);
             if (!slot.hasItem())
             {
                 slot.addItem(sprite);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,9 +17,9 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine refCoroutines; // Different coroutines references
 
-    private ObjectContact interactingObject; //Object which they player is interacting
+    private GameObject interactingObject; //Object which they player is interacting
 
-    [SerializeField] private MenuManager menuManager;
+    [SerializeField] private PlayerInventoryManager playerInventory;
     private PlayerInput playerInput;
 
     private void Start()
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            menuManager.OpenPlayerInventory();
+            playerInventory.gameObject.SetActive(true);
             playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
         }
     }
@@ -71,36 +72,33 @@ public class PlayerController : MonoBehaviour
     {
         if (!context.performed || !interactingObject)
             return;
-        interactingObject.takeObject();
-    }
-
-
-    public void CloseMenu(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if(menuManager.CloseMenu())
-                playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
+        this.refCoroutines = StartCoroutine(RotateToInteraction(interactingObject)); //Girar
+        if (interactingObject.TryGetComponent<PickableObject>(out PickableObject obj))
+        {            
+            obj.takeObject();
+            playerInventory.AddItem(obj.getIcon());
+            
         }
     }
-
     public void MoveObject(InputAction.CallbackContext context)
     {
         if (!context.performed || !interactingObject)
             return;
-        this.refCoroutines = StartCoroutine(RotateToInteraction(interactingObject));
-        
+
+        this.refCoroutines = StartCoroutine(RotateToInteraction(interactingObject)); //Girar
+        if (interactingObject.TryGetComponent<MovableObject>(out MovableObject obj))
+        {
+            obj.moveObject();
+        }
+
     }
 
-    IEnumerator RotateToInteraction(ObjectContact interactingObject)
+    IEnumerator RotateToInteraction(GameObject interactingObject)
     {
         float timeElapsed = 0;
         float duration = 0.1f;
         float start = this.gameObject.transform.eulerAngles.y;
         float end = Mathf.Round(start / 90) * 90;
-
-        Debug.Log("s:" + start + "end" + end);
-
         float lerpedValue;
         while(timeElapsed < duration)
         {
@@ -112,13 +110,13 @@ public class PlayerController : MonoBehaviour
         }
         lerpedValue = end;
         this.gameObject.transform.eulerAngles = new Vector3(this.gameObject.transform.eulerAngles.x, lerpedValue, this.gameObject.transform.eulerAngles.z);
-        interactingObject.moveObject();
+        
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        interactingObject = other.gameObject.GetComponent<ObjectContact>();
+        interactingObject = other.gameObject;
     }
     private void OnTriggerExit(Collider other)
     {
@@ -127,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        interactingObject = collision.gameObject.GetComponent<ObjectContact>();
+        interactingObject = collision.gameObject;
     }
 
     private void OnCollisionExit(Collision collision)
