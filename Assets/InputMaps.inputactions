@@ -38,16 +38,7 @@
                     "id": "a277810b-80f7-46cb-a8db-5e18ab09354c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MoveObject",
-                    "type": "Button",
-                    "id": "f550c3bb-cb30-4233-ae3a-ac1d70294e96",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold,Press",
                     "initialStateCheck": false
                 }
             ],
@@ -175,12 +166,12 @@
                 },
                 {
                     "name": "",
-                    "id": "6d381127-df72-4501-9778-7a14f4425027",
-                    "path": "<Keyboard>/p",
+                    "id": "d6033cc7-40f7-4448-bf3a-9a7fa8cdb83a",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "MoveObject",
+                    "groups": "Controller",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -357,6 +348,54 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "CloseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MovingObjects",
+            "id": "a74c967f-f8df-4ee5-b20e-76a1619a2131",
+            "actions": [
+                {
+                    "name": "ObjectDirection",
+                    "type": "Value",
+                    "id": "39ddb234-b7cf-408a-964d-c2e812315e50",
+                    "expectedControlType": "Vector2",
+                    "processors": "NormalizeVector2",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "e2f9329a-f888-4ad9-afc6-406dad1b4c07",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4c6c1d9c-b079-44ed-8079-949da7cafdf6",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f749ab62-e0ae-4631-964c-ace53daf5b06",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ObjectDirection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

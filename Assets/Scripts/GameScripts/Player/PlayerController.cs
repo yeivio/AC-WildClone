@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +24,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInventoryManager playerInventory;
     private PlayerInput playerInput;
 
+    private MovableObject movingObject; // Object the player is moving
+    private float moveObjectCooldown = 0.5f; //Cooldown of moving an object
+    private float lastMovedTimestamp; // Timestamp of the last moment a player moved an object
+
     private void Start()
     {
         playerInput = this.GetComponent<PlayerInput>();
@@ -36,7 +42,6 @@ public class PlayerController : MonoBehaviour
         //float horizontal = Input.GetAxisRaw("Horizontal");
         //float vertical = Input.GetAxisRaw("Vertical");
         //Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
 
         Vector2 movementInput = playerInput.actions[Utils.MOVE_INPUT].ReadValue<Vector2>();
         Vector3 direction = new Vector3(movementInput[0], 0, movementInput[1]);
@@ -68,29 +73,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TakeObject(InputAction.CallbackContext context)
+    public void Interact(InputAction.CallbackContext context)
     {
-        if (!context.performed || !interactingObject)
+        if (!context.performed || !interactingObject || context.interaction is not PressInteraction)
             return;
+
         this.refCoroutines = StartCoroutine(RotateToInteraction(interactingObject)); //Girar
-        if (interactingObject.TryGetComponent<PickableObject>(out PickableObject obj))
-        {            
-            obj.takeObject();
-            playerInventory.AddItem(obj.getIcon());
-            
+        if (interactingObject.TryGetComponent<PickableObject>(out PickableObject pickObj))
+        {
+            pickObj.takeObject();
+            playerInventory.AddItem(pickObj.getIcon());
+
+        }
+
+        if (interactingObject.TryGetComponent<MovableObject>(out MovableObject movObj))
+        {
+            movingObject = movObj;
+            playerInput.SwitchCurrentActionMap(Utils.MOVING_OBJECTS_INPUTMAP);
         }
     }
+
     public void MoveObject(InputAction.CallbackContext context)
     {
-        if (!context.performed || !interactingObject)
+        if (Time.time - lastMovedTimestamp < moveObjectCooldown)
             return;
+        Vector2 input = context.ReadValue<Vector2>();
+        lastMovedTimestamp = Time.time;
+        movingObject.GetComponent<MovableObject>().moveObject(input);
+    }
 
-        this.refCoroutines = StartCoroutine(RotateToInteraction(interactingObject)); //Girar
-        if (interactingObject.TryGetComponent<MovableObject>(out MovableObject obj))
-        {
-            obj.moveObject();
-        }
-
+    public void ExitMoveObject(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
     }
 
     IEnumerator RotateToInteraction(GameObject interactingObject)

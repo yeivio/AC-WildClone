@@ -10,10 +10,11 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField] private PlayerSlotManager[] inventorySlots = new PlayerSlotManager[30];
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private GameObject dialogWindow;
+
 
     public Sprite appleSprite;
     [SerializeField] private Button initialSelectedbtn;
-    [SerializeField] private Button[] allMenuBtn;
 
     private PlayerSlotManager selectedItem; // Item selected by player
 
@@ -25,9 +26,8 @@ public class PlayerInventoryManager : MonoBehaviour
 
     private void Start()
     {
-        allMenuBtn = this.GetComponentsInChildren<Button>();
-        foreach (Button btn in allMenuBtn) {
-            btn.onClick.AddListener(itemSelected);
+        foreach (PlayerSlotManager btn in inventorySlots) {
+            btn.gameObject.GetComponent<Button>().onClick.AddListener(itemSelected);
         }
     }
 
@@ -72,7 +72,11 @@ public class PlayerInventoryManager : MonoBehaviour
 
     public void CloseMenu(InputAction.CallbackContext context)
     {
-        this.gameObject.SetActive(false);
-        playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
+        if(dialogWindow.activeSelf)
+            dialogWindow.SetActive(false);
+        else { 
+            this.gameObject.SetActive(false);
+            playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
+        }
     }
 }

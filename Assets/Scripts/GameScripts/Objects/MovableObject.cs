@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovableObject : MonoBehaviour
-{
-    [SerializeField] private bool canBeMove;
-
-    public void moveObject()
+{   
+    public void moveObject(Vector2 input)
     {
-        if (!canBeMove)
-            return;
-        PlayerController aux = FindAnyObjectByType<PlayerController>();
-        Vector3 rot = aux.transform.forward;
+        Vector3 rot = new Vector3(input.x, input.y, 0);
         Vector3 sum = (vectorRounded(rot) * BuildingSystem.current.gridLayout.cellSize.x)
             + this.transform.position;
         this.transform.position = BuildingSystem.current.SnapCoordinateToGrid(sum);
