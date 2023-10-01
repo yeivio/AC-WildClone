@@ -16,6 +16,9 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] private Sprite pressedSprite; // Sprite usado cuando un objeto es seleccionado
     [SerializeField] private Sprite normalSprite; // Sprite cuando no está seleccionado
     [SerializeField] private float BUTTON_RESIZE; // Tamaño para redimensaionar (el tamaño se suma al original)
+
+    public GameObject cursorPosition;
+
     private bool isSelected;
 
     private void Start()
@@ -83,7 +86,6 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         this.isSelected = true;
         this.btn.GetComponent<Image>().sprite = pressedSprite;
         this.btn.GetComponent<RectTransform>().localScale = new Vector3(originalSize.x + BUTTON_RESIZE, originalSize.y + BUTTON_RESIZE, originalSize.z);
-
     }
 
     public void UnClick()

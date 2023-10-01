@@ -6,7 +6,7 @@
             "id": "94d4a876-b0ad-455b-8ba7-e15a2eeca000",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "FreeMove_Move",
                     "type": "Value",
                     "id": "72bd034d-2295-479d-bc98-084f62366db7",
                     "expectedControlType": "Vector2",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Sprint",
+                    "name": "FreeMove_Sprint",
                     "type": "Button",
                     "id": "ff2ca3f8-e6b8-4a05-bc33-fddde51ce337",
                     "expectedControlType": "Button",
@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inventory",
+                    "name": "FreeMove_Inventory",
                     "type": "Button",
                     "id": "c7c40525-2858-46ff-9941-1792bb8ed7a5",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "FreeMove_Interact",
                     "type": "Button",
                     "id": "a277810b-80f7-46cb-a8db-5e18ab09354c",
                     "expectedControlType": "Button",
@@ -50,7 +50,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "FreeMove_Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -61,7 +61,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Move",
+                    "action": "FreeMove_Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -72,7 +72,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Move",
+                    "action": "FreeMove_Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -83,7 +83,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Move",
+                    "action": "FreeMove_Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -94,7 +94,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Move",
+                    "action": "FreeMove_Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -105,7 +105,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Move",
+                    "action": "FreeMove_Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -116,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Sprint",
+                    "action": "FreeMove_Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -127,7 +127,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Sprint",
+                    "action": "FreeMove_Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -138,7 +138,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Inventory",
+                    "action": "FreeMove_Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -149,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Inventory",
+                    "action": "FreeMove_Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -160,7 +160,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Interact",
+                    "action": "FreeMove_Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -171,7 +171,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Interact",
+                    "action": "FreeMove_Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -182,7 +182,7 @@
             "id": "644b6ead-2f43-4b9c-8bbb-92b46e4eaea1",
             "actions": [
                 {
-                    "name": "Navigate",
+                    "name": "UI_Navigate",
                     "type": "PassThrough",
                     "id": "8b7c8a6a-214c-4640-96dc-61c6346fa4b0",
                     "expectedControlType": "Vector2",
@@ -191,7 +191,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Confirm",
+                    "name": "UI_Confirm",
                     "type": "Button",
                     "id": "d1a8e578-e516-4ac4-a02c-b7e0adc366d3",
                     "expectedControlType": "Button",
@@ -200,9 +200,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CloseMenu",
+                    "name": "UI_CloseMenu",
                     "type": "Button",
                     "id": "4402d1dd-9759-4426-ace0-2aa103c5e197",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UI_Interact",
+                    "type": "Button",
+                    "id": "2e8b3120-cd91-40e9-b4ad-039054a39d3e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -217,7 +226,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Confirm",
+                    "action": "UI_Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -228,7 +237,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Confirm",
+                    "action": "UI_Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -239,7 +248,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "UI_Navigate",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -250,7 +259,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Navigate",
+                    "action": "UI_Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -261,7 +270,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Navigate",
+                    "action": "UI_Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -272,7 +281,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Navigate",
+                    "action": "UI_Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -283,7 +292,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Navigate",
+                    "action": "UI_Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -294,7 +303,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Navigate",
+                    "action": "UI_Navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -305,7 +314,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Navigate",
+                    "action": "UI_Navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -316,7 +325,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "CloseMenu",
+                    "action": "UI_CloseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -327,7 +336,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "CloseMenu",
+                    "action": "UI_CloseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -338,7 +347,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "CloseMenu",
+                    "action": "UI_CloseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce5de0e3-2e89-485e-a774-dfe10f82ebc1",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "UI_Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -349,7 +369,7 @@
             "id": "a74c967f-f8df-4ee5-b20e-76a1619a2131",
             "actions": [
                 {
-                    "name": "ObjectDirection",
+                    "name": "MovingObjects_ObjectDirection",
                     "type": "Value",
                     "id": "39ddb234-b7cf-408a-964d-c2e812315e50",
                     "expectedControlType": "Vector2",
@@ -358,7 +378,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Exit",
+                    "name": "MovingObjects_Exit",
                     "type": "Button",
                     "id": "e2f9329a-f888-4ad9-afc6-406dad1b4c07",
                     "expectedControlType": "Button",
@@ -375,7 +395,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Exit",
+                    "action": "MovingObjects_Exit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -386,7 +406,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "ObjectDirection",
+                    "action": "MovingObjects_ObjectDirection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
