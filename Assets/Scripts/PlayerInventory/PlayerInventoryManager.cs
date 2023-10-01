@@ -25,12 +25,12 @@ public class PlayerInventoryManager : MonoBehaviour
     private void Start()
     {
         foreach (PlayerSlotManager btn in inventorySlots) {
-            btn.gameObject.GetComponent<Button>().onClick.AddListener(() => itemSelected(btn.GetComponent<Button>()));
+            btn.gameObject.GetComponent<Button>().onClick.AddListener(itemSelected);
         }
 
     }
 
-    private void itemSelected(Button buttonClicked)
+    private void itemSelected()
     {
         PlayerSlotManager selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
 
@@ -38,7 +38,7 @@ public class PlayerInventoryManager : MonoBehaviour
         {
             selectedItem.UnClick();
             Sprite oldSprite = selectedButton.removeItem(); 
-            selectedButton.addItem(selectedItem.getItem());
+            selectedButton.addItem(selectedItem.removeItem());
             selectedItem.addItem(oldSprite);
             selectedItem = null;
         }
@@ -57,6 +57,7 @@ public class PlayerInventoryManager : MonoBehaviour
 
     public bool AddItem(Sprite sprite)
     {
+        int contador = 1;
         foreach (PlayerSlotManager slot in inventorySlots)
         {
             if (!slot.hasItem())
@@ -64,8 +65,8 @@ public class PlayerInventoryManager : MonoBehaviour
                 slot.addItem(sprite);
                 return true;
             }
+            contador++;
         }
-
         return false;
     }
 
@@ -84,9 +85,9 @@ public class PlayerInventoryManager : MonoBehaviour
     }
     public void OpenDialog(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>().hasItem())
             return;
-        initialSelectedbtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        initialSelectedbtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>(); // Saving last selected slot
         this.dialogWindow.SetActive(true);
     }
 }

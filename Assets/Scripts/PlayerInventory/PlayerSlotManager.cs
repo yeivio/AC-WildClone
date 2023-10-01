@@ -21,14 +21,10 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     private bool isSelected;
 
-    private void Start()
+    private void OnEnable()
     {
         this.btn = buttonObject.GetComponent<Button>();
         this.originalSize = this.btn.GetComponent<RectTransform>().localScale;
-    }
-    private void OnDisable()
-    {
-        this.GetComponent<Image>().sprite = normalSprite;
         isSelected = false;
     }
 
@@ -44,12 +40,11 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         this.btn.GetComponent<Image>().sprite = normalSprite;
         this.btn.GetComponent<RectTransform>().localScale = originalSize;
-        UnClick();
     }
     public void addItem(Sprite item)
     {
-        this.itemObject.SetActive(true);
         this.itemObject.GetComponent<Image>().sprite = item;
+        this.itemObject.SetActive(true);
         isSelected = false;
     }
 
@@ -63,14 +58,11 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         return this.itemObject.activeSelf;
     }
-    public Sprite getItem()
-    {
-        return this.itemObject.GetComponent<Image>().sprite;
-    }
 
     public void OnSelect(BaseEventData eventData)
     {
-        resizeItem();
+        if(!this.selectedSprite)
+            resizeItem();
     }
 
     public void OnDeselect(BaseEventData eventData)

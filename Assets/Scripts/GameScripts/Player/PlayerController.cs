@@ -77,13 +77,17 @@ public class PlayerController : MonoBehaviour
         if (!context.performed || !interactingObject)
             return;
 
-        this.refCoroutines = StartCoroutine(RotateFixedToInteraction(interactingObject)); //Girar
+        this.refCoroutines = StartCoroutine(RotateFixedToInteraction(interactingObject)); //Rotate player
 
         if (context.interaction is PressInteraction && 
             interactingObject.TryGetComponent<PickableObject>(out PickableObject pickObj))
         {
+            Vector3 copia = pickObj.transform.position; //In case we need to respawn the object
             pickObj.takeObject();
-            playerInventory.AddItem(pickObj.getIcon());
+            if (!playerInventory.AddItem(pickObj.getIcon()))
+            {
+                Instantiate(pickObj, copia, Quaternion.identity);
+            }
 
         }
 
