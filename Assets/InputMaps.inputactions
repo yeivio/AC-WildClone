@@ -186,7 +186,7 @@
                     "type": "PassThrough",
                     "id": "8b7c8a6a-214c-4640-96dc-61c6346fa4b0",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.5)",
                     "interactions": "",
                     "initialStateCheck": false
                 },
@@ -194,15 +194,6 @@
                     "name": "Confirm",
                     "type": "Button",
                     "id": "d1a8e578-e516-4ac4-a02c-b7e0adc366d3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Cancel",
-                    "type": "Button",
-                    "id": "3b96f3cc-b2b7-4aff-b429-d7487f0eea1c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -238,28 +229,6 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d0dc1c09-039d-4a54-a95c-0c3ea29cdb33",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bb17dce1-b571-4ff6-9024-2e51b6a0f0ed",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -347,6 +316,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "CloseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32f75eb4-46cc-49a5-a22e-174758748157",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "CloseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b31e0e1c-1d63-406d-9201-eb5f3d428f63",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
                     "action": "CloseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false

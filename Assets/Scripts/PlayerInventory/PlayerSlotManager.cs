@@ -1,10 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
+public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private Button btn; // Referencia al botón del objeto
     private Vector3 originalSize; // Tamaño original del botón al comenzar el juego
@@ -12,42 +13,41 @@ public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [SerializeField] private GameObject itemObject; // Item Object
     [SerializeField] private GameObject buttonObject; // Button Object
     [SerializeField] private Sprite selectedSprite; // Sprite usado al poner el ratón encima
+    [SerializeField] private Sprite pressedSprite; // Sprite usado cuando un objeto es seleccionado
     [SerializeField] private Sprite normalSprite; // Sprite cuando no está seleccionado
     [SerializeField] private float BUTTON_RESIZE; // Tamaño para redimensaionar (el tamaño se suma al original)
+    private bool isSelected;
 
     private void Start()
     {
         this.btn = buttonObject.GetComponent<Button>();
         this.originalSize = this.btn.GetComponent<RectTransform>().localScale;
     }
+    private void OnDisable()
+    {
+        this.GetComponent<Image>().sprite = normalSprite;
+        isSelected = false;
+    }
 
     public void resizeItem()
     {
+        if (!this.hasItem())
+            return;
         this.btn.GetComponent<Image>().sprite = selectedSprite;
-        if (this.hasItem())
-            this.btn.GetComponent<RectTransform>().localScale = new Vector3(originalSize.x + BUTTON_RESIZE, originalSize.y + BUTTON_RESIZE, originalSize.z);
+        this.btn.GetComponent<RectTransform>().localScale = new Vector3(originalSize.x + BUTTON_RESIZE, originalSize.y + BUTTON_RESIZE, originalSize.z);
     }
 
     public void revertSizeItem()
     {
         this.btn.GetComponent<Image>().sprite = normalSprite;
         this.btn.GetComponent<RectTransform>().localScale = originalSize;
+        UnClick();
     }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        resizeItem();
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        revertSizeItem();
-
-    }
-
     public void addItem(Sprite item)
     {
         this.itemObject.SetActive(true);
         this.itemObject.GetComponent<Image>().sprite = item;
+        isSelected = false;
     }
 
     public Sprite removeItem()
@@ -72,12 +72,25 @@ public class PlayerSlotManager : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnDeselect(BaseEventData eventData)
     {
-        revertSizeItem();
+        if(!isSelected)
+            revertSizeItem();
     }
 
-    public void OnSubmit(BaseEventData eventData)
+    public void OnClick()
     {
-        Debug.Log("A");
+        if (!this.hasItem())
+            return;
+        this.isSelected = true;
+        this.btn.GetComponent<Image>().sprite = pressedSprite;
+        this.btn.GetComponent<RectTransform>().localScale = new Vector3(originalSize.x + BUTTON_RESIZE, originalSize.y + BUTTON_RESIZE, originalSize.z);
+
+    }
+
+    public void UnClick()
+    {
+        this.isSelected = false;
+        this.btn.GetComponent<Image>().sprite = normalSprite;
+        this.btn.GetComponent<RectTransform>().localScale = originalSize;
 
     }
 }

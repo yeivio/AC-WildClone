@@ -27,16 +27,17 @@ public class PlayerInventoryManager : MonoBehaviour
     private void Start()
     {
         foreach (PlayerSlotManager btn in inventorySlots) {
-            btn.gameObject.GetComponent<Button>().onClick.AddListener(itemSelected);
+            btn.gameObject.GetComponent<Button>().onClick.AddListener(() => itemSelected(btn.GetComponent<Button>()));
         }
     }
 
-    private void itemSelected()
+    private void itemSelected(Button buttonClicked)
     {
         PlayerSlotManager selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
 
         if(selectedItem && selectedButton.hasItem()) //Intercambio de sprites
         {
+            selectedItem.UnClick();
             Sprite oldSprite = selectedButton.removeItem(); 
             selectedButton.addItem(selectedItem.getItem());
             selectedItem.addItem(oldSprite);
@@ -49,8 +50,9 @@ public class PlayerInventoryManager : MonoBehaviour
             selectedItem.revertSizeItem();
             selectedItem = null;
         }
-        else if (selectedButton.hasItem())
+        else if (selectedButton.hasItem()) { 
             selectedItem = selectedButton;
+        }
 
     }
 
@@ -58,7 +60,6 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         foreach (PlayerSlotManager slot in inventorySlots)
         {
-            Debug.Log(slot);
             if (!slot.hasItem())
             {
                 slot.addItem(sprite);

@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             controller.Move(direction * currentSpeed * Time.deltaTime);
         }
-
     }
 
     public void Sprint(InputAction.CallbackContext context)
@@ -75,18 +74,21 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (!context.performed || !interactingObject || context.interaction is not PressInteraction)
+        if (!context.performed || !interactingObject)
             return;
 
-        this.refCoroutines = StartCoroutine(RotateToInteraction(interactingObject)); //Girar
-        if (interactingObject.TryGetComponent<PickableObject>(out PickableObject pickObj))
+        this.refCoroutines = StartCoroutine(RotateFixedToInteraction(interactingObject)); //Girar
+
+        if (context.interaction is PressInteraction && 
+            interactingObject.TryGetComponent<PickableObject>(out PickableObject pickObj))
         {
             pickObj.takeObject();
             playerInventory.AddItem(pickObj.getIcon());
 
         }
 
-        if (interactingObject.TryGetComponent<MovableObject>(out MovableObject movObj))
+        if (context.interaction is HoldInteraction && 
+            interactingObject.TryGetComponent<MovableObject>(out MovableObject movObj))
         {
             movingObject = movObj;
             playerInput.SwitchCurrentActionMap(Utils.MOVING_OBJECTS_INPUTMAP);
@@ -98,6 +100,7 @@ public class PlayerController : MonoBehaviour
         if (Time.time - lastMovedTimestamp < moveObjectCooldown)
             return;
         Vector2 input = context.ReadValue<Vector2>();
+
         lastMovedTimestamp = Time.time;
         movingObject.GetComponent<MovableObject>().moveObject(input);
     }
@@ -109,14 +112,14 @@ public class PlayerController : MonoBehaviour
         playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
     }
 
-    IEnumerator RotateToInteraction(GameObject interactingObject)
+    IEnumerator RotateFixedToInteraction(GameObject interactingObject)
     {
         float timeElapsed = 0;
         float duration = 0.1f;
         float start = this.gameObject.transform.eulerAngles.y;
         float end = Mathf.Round(start / 90) * 90;
         float lerpedValue;
-        while(timeElapsed < duration)
+        while (timeElapsed < duration)
         {
             float t = timeElapsed / duration;
             lerpedValue = Mathf.Lerp(start, end, t);
@@ -126,7 +129,7 @@ public class PlayerController : MonoBehaviour
         }
         lerpedValue = end;
         this.gameObject.transform.eulerAngles = new Vector3(this.gameObject.transform.eulerAngles.x, lerpedValue, this.gameObject.transform.eulerAngles.z);
-        
+
     }
 
 
