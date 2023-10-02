@@ -9,7 +9,7 @@ using UnityEngine.InputSystem.Interactions;
 public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
-    public Transform cam;
+    public GameObject cam;
 
     public float currentSpeed = 7f; //currentSpeed
     public float sprintSpeed = 12f; //Sprint player speed
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             controller.Move(direction * currentSpeed * Time.deltaTime);
@@ -88,6 +88,14 @@ public class PlayerController : MonoBehaviour
             {
                 Instantiate(pickObj, copia, Quaternion.identity);
             }
+
+        }
+
+        if (context.interaction is PressInteraction &&
+            interactingObject.TryGetComponent<TalkableObject>(out TalkableObject talkObj))
+        {
+            this.playerInput.currentActionMap.Disable();
+            this.cam.SetActive(false);
 
         }
 

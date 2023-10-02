@@ -361,6 +361,17 @@
                     "action": "UI_Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "338c374b-543d-4323-b95b-28f442d6b024",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "UI_Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
