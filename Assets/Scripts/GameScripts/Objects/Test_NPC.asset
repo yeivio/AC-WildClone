@@ -16,4 +16,5 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   npc_name: Godofredo
-  dialogue: Hola amigos del yutuf
+  dialogue: "Hola amigos del yutuf esto es un texto largo para poder ponermuchas
+    cosas y que pete en alg\xFAn momento ejejjejejejej"

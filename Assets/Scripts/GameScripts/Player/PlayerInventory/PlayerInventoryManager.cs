@@ -11,62 +11,31 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField] private GameObject dialogWindow;
 
     public Sprite appleSprite;
-    [SerializeField] private Button initialSelectedbtn;
 
     private PlayerSlotManager selectedItem; // Item selected by player
 
     [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory 
 
+
     private void OnEnable()
     {
-        initialSelectedbtn.Select();
+        inventorySlots[0].GetComponent<Button>().Select();
 
         int contador = 0;
         foreach (InventoryItem_ScriptableObject aux in inventoryData.inventoryItems) {
-            inventorySlots[contador].addItem(aux.ItemSprite);
+            inventorySlots[contador].SwitchItem(aux.ItemSprite);
             contador++;
         }
-    }
-
-    private void Start()
-    {
-        foreach (PlayerSlotManager btn in inventorySlots) 
-            btn.gameObject.GetComponent<Button>().onClick.AddListener(itemSelected);
-        
-    }
-
-    private void itemSelected()
-    {
-        PlayerSlotManager selectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
-
-        if(selectedItem && selectedButton.hasItem()) //Intercambio de sprites
-        {
-            selectedItem.UnClick();
-            Sprite oldSprite = selectedButton.removeItem(); 
-            selectedButton.addItem(selectedItem.removeItem());
-            selectedItem.addItem(oldSprite);
-            selectedItem = null;
-        }
-        else if (selectedItem)
-        {
-            selectedButton.addItem(selectedItem.removeItem());
-            selectedButton.resizeItem();
-            selectedItem.revertSizeItem();
-            selectedItem = null;
-        }
-        else if (selectedButton.hasItem()) { 
-            selectedItem = selectedButton;
-        }
-
     }
 
     public void CloseMenu(InputAction.CallbackContext context)
     {
         if (!context.performed)
             return;
-        if (dialogWindow.activeSelf) { 
+
+        if (dialogWindow.activeSelf) { // Dialog confirmation window
             dialogWindow.SetActive(false);
-            initialSelectedbtn.Select();
+            inventorySlots[0].GetComponent<Button>().Select();
         }
         else {
             this.gameObject.SetActive(false);
@@ -75,9 +44,9 @@ public class PlayerInventoryManager : MonoBehaviour
     }
     public void OpenDialog(InputAction.CallbackContext context)
     {
-        if (!context.performed || EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>().hasItem())
-            return;
-        initialSelectedbtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>(); // Saving last selected slot
-        this.dialogWindow.SetActive(true);
+        //if (!context.performed || EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>().hasItem())
+        //    return;
+        //initialSelectedbtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>(); // Saving last selected slot
+        //this.dialogWindow.SetActive(true);
     }
 }

@@ -209,7 +209,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UI_Interact",
+                    "name": "UI_AlternativeConfirm",
                     "type": "Button",
                     "id": "2e8b3120-cd91-40e9-b4ad-039054a39d3e",
                     "expectedControlType": "Button",
@@ -358,7 +358,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "UI_Interact",
+                    "action": "UI_AlternativeConfirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -369,7 +369,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "UI_Interact",
+                    "action": "UI_AlternativeConfirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -412,6 +412,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c8abe2a8-1145-466a-b4fd-b16cff2dca45",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MovingObjects_Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f749ab62-e0ae-4631-964c-ace53daf5b06",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
@@ -420,6 +431,61 @@
                     "action": "MovingObjects_ObjectDirection",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "13c44d19-1da6-4be1-a19b-a8acddd05332",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovingObjects_ObjectDirection",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "bb4081cf-24a6-4cda-96f4-bdd0e3b724b7",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MovingObjects_ObjectDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "477bdc2d-e612-46f9-bc34-06611144eb47",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MovingObjects_ObjectDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "0ea4146b-35d5-48c2-b86e-2bf77e704733",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MovingObjects_ObjectDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "1a17e4d4-718d-4bfc-a02a-b961f889482b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MovingObjects_ObjectDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

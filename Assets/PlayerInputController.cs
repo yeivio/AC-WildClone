@@ -53,8 +53,9 @@ public class PlayerInputController : MonoBehaviour
         if (context.interaction is PressInteraction &&
             interactingObject.TryGetComponent<TalkableObject>(out TalkableObject talkObj))
         {
-            this.playerInput.currentActionMap.Disable();
+            this.playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
             this.cam.SetActive(false);
+            talkObj.talk();
 
         }
 

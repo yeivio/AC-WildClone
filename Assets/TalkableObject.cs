@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TalkableObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private NPCConfig_ScriptableObject config;
 
-    // Update is called once per frame
-    void Update()
+    public UnityEvent<NPCConfig_ScriptableObject> TalkEvent;
+
+    public GameObject cam;  //Dialogue camera
+
+    public void talk()
     {
-        
+        cam.SetActive(true);
+        TalkEvent?.Invoke(config);
     }
+    
 }
