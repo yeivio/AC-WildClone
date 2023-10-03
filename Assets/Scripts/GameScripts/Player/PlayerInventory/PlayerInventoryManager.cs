@@ -1,6 +1,5 @@
-using Unity.VisualScripting;
+using NUnit.Framework.Internal;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -8,7 +7,6 @@ using UnityEngine.UI;
 public class PlayerInventoryManager : MonoBehaviour
 {
     [SerializeField] private PlayerSlotManager[] inventorySlots = new PlayerSlotManager[30];
-    [SerializeField] private MenuManager menuManager;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private GameObject dialogWindow;
 
@@ -17,17 +15,24 @@ public class PlayerInventoryManager : MonoBehaviour
 
     private PlayerSlotManager selectedItem; // Item selected by player
 
+    [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory 
+
     private void OnEnable()
     {
         initialSelectedbtn.Select();
+
+        int contador = 0;
+        foreach (InventoryItem_ScriptableObject aux in inventoryData.inventoryItems) {
+            inventorySlots[contador].addItem(aux.ItemSprite);
+            contador++;
+        }
     }
 
     private void Start()
     {
-        foreach (PlayerSlotManager btn in inventorySlots) {
+        foreach (PlayerSlotManager btn in inventorySlots) 
             btn.gameObject.GetComponent<Button>().onClick.AddListener(itemSelected);
-        }
-
+        
     }
 
     private void itemSelected()
@@ -53,21 +58,6 @@ public class PlayerInventoryManager : MonoBehaviour
             selectedItem = selectedButton;
         }
 
-    }
-
-    public bool AddItem(Sprite sprite)
-    {
-        int contador = 1;
-        foreach (PlayerSlotManager slot in inventorySlots)
-        {
-            if (!slot.hasItem())
-            {
-                slot.addItem(sprite);
-                return true;
-            }
-            contador++;
-        }
-        return false;
     }
 
     public void CloseMenu(InputAction.CallbackContext context)

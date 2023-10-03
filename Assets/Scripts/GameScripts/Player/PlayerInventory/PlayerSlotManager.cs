@@ -26,6 +26,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         this.btn = buttonObject.GetComponent<Button>();
         this.originalSize = this.btn.GetComponent<RectTransform>().localScale;
         isSelected = false;
+
     }
 
     public void resizeItem()
