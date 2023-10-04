@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
-public class PlayerInputController : MonoBehaviour
+public class PlayerInteractionsController : MonoBehaviour
 {
     [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory data
     private PlayerInput playerInput; //Player input
@@ -12,7 +12,6 @@ public class PlayerInputController : MonoBehaviour
 
     private Coroutine refCoroutines; // Different coroutines references
     private GameObject interactingObject; //Object which they player is interacting
-    [SerializeField] private PlayerInventoryManager playerInventory; //Player object Menu
 
     private MovableObject movingObject; // Object the player is moving
     private float moveObjectCooldown = 0.5f; //Cooldown of moving an object
@@ -23,23 +22,15 @@ public class PlayerInputController : MonoBehaviour
         playerInput = this.GetComponent<PlayerInput>();
         inventoryData.Initialize();
     }
-    public void OpenInventory(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            playerInventory.gameObject.SetActive(true);
-            playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
-        }
-    }
 
     public void Interact(InputAction.CallbackContext context)
     {
         if (!context.performed || !interactingObject)
             return;
 
-        this.refCoroutines = StartCoroutine(RotateFixedToInteraction(interactingObject)); //Rotate player
+        //this.refCoroutines = StartCoroutine(RotateFixedToInteraction(interactingObject)); //Rotate player
 
-        if (context.interaction is PressInteraction &&
+        if (context.interaction is PressInteraction && // Pickup Object
             interactingObject.TryGetComponent<PickableObject>(out PickableObject pickObj))
         {
             Vector3 copia = pickObj.transform.position; //In case we need to respawn the object
@@ -50,7 +41,7 @@ public class PlayerInputController : MonoBehaviour
             }
         }
 
-        if (context.interaction is PressInteraction &&
+        if (context.interaction is PressInteraction && // Talking Object
             interactingObject.TryGetComponent<TalkableObject>(out TalkableObject talkObj))
         {
             this.playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
@@ -59,7 +50,7 @@ public class PlayerInputController : MonoBehaviour
 
         }
 
-        if (context.interaction is HoldInteraction &&
+        if (context.interaction is HoldInteraction && // Movable Object
             interactingObject.TryGetComponent<MovableObject>(out MovableObject movObj))
         {
             movingObject = movObj;

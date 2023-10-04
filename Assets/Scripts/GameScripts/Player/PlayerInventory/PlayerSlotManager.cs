@@ -15,11 +15,14 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] private Sprite pressedSprite; // Sprite when an slot is clicked
     [SerializeField] private Sprite normalSprite; // Sprite when idle mode
     [SerializeField] private float BUTTON_RESIZE; // Tamaño para redimensaionar (el tamaño se suma al original)
+    [SerializeField] private DialogManager dialogWindow; // Ventana de opciones del item
     private PlayerInput playerInput;
 
-    public UnityEvent<PlayerSlotManager> OnItemPressed;
+    public UnityEvent<PlayerSlotManager> OnItemPressed; //When an item is totally selected (player clicked on the object)
+
 
     private PlayerSlotManager selectedSlot;
+    public InventoryItem_ScriptableObject itemSO;
 
 
     private void Start()
@@ -28,6 +31,8 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         foreach (PlayerSlotManager slot in FindObjectsByType<PlayerSlotManager>(FindObjectsSortMode.None))
             if (slot.gameObject != this.gameObject)
                 slot.OnItemPressed.AddListener(ItemSelected);
+        this.dialogWindow = FindFirstObjectByType<DialogManager>(FindObjectsInactive.Include);
+        dialogWindow.OnItemDrop.AddListener(this.DropItem);
     }
 
     private void ItemSelected(PlayerSlotManager otherSlot)
@@ -35,15 +40,22 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         selectedSlot = otherSlot;
     }
 
-    public Sprite SwitchItem(Sprite item)
+    public InventoryItem_ScriptableObject SwitchItem(InventoryItem_ScriptableObject item)
     {
-        Sprite oldSprite = this.itemObject.sprite;
-        this.itemObject.sprite = item;
-        if(this.itemObject.sprite == null)
+        InventoryItem_ScriptableObject oldSprite = this.itemSO;
+        this.itemObject.sprite = item.ItemSprite;
+        if(item == null)
             this.itemObject.gameObject.SetActive(false);
         else
             this.itemObject.gameObject.SetActive(true);
         return oldSprite;
+    }
+
+    public void DropItem()
+    {
+        this.SwitchItem(null);
+        OnItemPressed?.Invoke(null); // Reset selection
+        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
     }
 
     private void OnEnable()
@@ -53,8 +65,9 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     }
     private void OnDisable()
     {
-        itemObject.sprite = null;
+
         selectedSlot = null;
+        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -95,7 +108,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
             OnItemPressed?.Invoke(this);
         else  if(selectedSlot)
         {
-            Sprite viejo = selectedSlot.SwitchItem(this.itemObject.sprite);
+            InventoryItem_ScriptableObject viejo = selectedSlot.SwitchItem(this.itemSO);
             this.SwitchItem(viejo);
             this.selectedSlot = null;
             OnItemPressed?.Invoke(selectedSlot);
