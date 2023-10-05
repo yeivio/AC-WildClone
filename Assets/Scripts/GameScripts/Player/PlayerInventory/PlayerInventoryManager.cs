@@ -1,4 +1,5 @@
 using NUnit.Framework.Internal;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -7,46 +8,76 @@ using UnityEngine.UI;
 public class PlayerInventoryManager : MonoBehaviour
 {
     [SerializeField] private PlayerSlotManager[] inventorySlots = new PlayerSlotManager[30];
-    [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private GameObject dialogWindow;
+   
+    [SerializeField] private DialogManager dialogWindow; // Dialog window reference
+    [SerializeField] private GameObject inventoryBackground; // Inventory Frame object
 
-    public Sprite appleSprite;
+    private PlayerInput playerInput; //Player input reference
 
-    private PlayerSlotManager selectedItem; // Item selected by player
-
-    [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory 
+    [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory container
 
 
-    private void OnEnable()
+    private void Start()
     {
-        inventorySlots[0].GetComponent<Button>().Select();
+        inventorySlots[0].GetComponent<Button>().Select(); // Select first button
 
-        int contador = 0;
-        foreach (InventoryItem_ScriptableObject aux in inventoryData.inventoryItems) {
-            inventorySlots[contador].SwitchItem(aux.ItemSprite);
-            contador++;
+        playerInput = FindFirstObjectByType<PlayerInput>();
+        inventoryData.OnAddItem.AddListener(addItem);
+        this.dialogWindow.OnClose.AddListener(dialogClose);
+        this.dialogWindow.OnItemDrop.AddListener(this.RemoveItem);
+        this.dialogWindow.gameObject.SetActive(false);
+        this.inventoryBackground.SetActive(false);
+    }
+
+    private void addItem(InventoryItem_ScriptableObject item, int index)
+    {
+        this.inventorySlots[index].SwitchItem(item);
+    }
+
+    private void RemoveItem(InventoryItem_ScriptableObject item) { inventoryData.DeleteItem(item); }
+
+    private void dialogClose() { inventorySlots[0].GetComponent<Button>().Select(); }
+    public void OpenInventory(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
+            this.inventoryBackground.SetActive(true);
+
+            /*
+            int contador = 0;
+            foreach (InventoryItem_ScriptableObject aux in inventoryData.inventoryItems)
+            { //Update player inventory
+                inventorySlots[contador].SwitchItem(aux.ItemSprite);
+                contador++;
+            }   */
         }
     }
+
+    public void OpenDialogWindow(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        PlayerSlotManager obj = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
+        if (obj.itemSO) { 
+            this.dialogWindow.gameObject.SetActive(true);
+        }
+    }
+
 
     public void CloseMenu(InputAction.CallbackContext context)
     {
         if (!context.performed)
             return;
 
-        if (dialogWindow.activeSelf) { // Dialog confirmation window
-            dialogWindow.SetActive(false);
+        if (dialogWindow.gameObject.activeSelf) { // Dialog confirmation window active
+            dialogWindow.gameObject.SetActive(false);
             inventorySlots[0].GetComponent<Button>().Select();
         }
         else {
-            this.gameObject.SetActive(false);
+            this.dialogWindow.gameObject.SetActive(false);
+            this.inventoryBackground.SetActive(false);
             playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
         }
-    }
-    public void OpenDialog(InputAction.CallbackContext context)
-    {
-        //if (!context.performed || EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>().hasItem())
-        //    return;
-        //initialSelectedbtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>(); // Saving last selected slot
-        //this.dialogWindow.SetActive(true);
     }
 }

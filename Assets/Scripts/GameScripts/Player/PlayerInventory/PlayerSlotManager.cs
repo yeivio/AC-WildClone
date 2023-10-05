@@ -17,10 +17,22 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] private float BUTTON_RESIZE; // Tamaño para redimensaionar (el tamaño se suma al original)
     private PlayerInput playerInput;
 
-    public UnityEvent<PlayerSlotManager> OnItemPressed;
+    public UnityEvent<PlayerSlotManager> OnItemPressed; //When an item is totally selected (player clicked on the object)
+
 
     private PlayerSlotManager selectedSlot;
+    public InventoryItem_ScriptableObject itemSO;
+    private void OnEnable()
+    {
+        buttonObject.GetComponent<Button>();
+        originalSize = this.buttonObject.transform.localScale;
+    }
+    private void OnDisable()
+    {
 
+        selectedSlot = null;
+        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
+    }
 
     private void Start()
     {
@@ -35,31 +47,29 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         selectedSlot = otherSlot;
     }
 
-    public Sprite SwitchItem(Sprite item)
+    public InventoryItem_ScriptableObject SwitchItem(InventoryItem_ScriptableObject item)
     {
-        Sprite oldSprite = this.itemObject.sprite;
-        this.itemObject.sprite = item;
-        if(this.itemObject.sprite == null)
+        InventoryItem_ScriptableObject oldSprite = this.itemSO;
+        this.itemSO = item;
+        if(item == null)
             this.itemObject.gameObject.SetActive(false);
-        else
+        else {
+            this.itemObject.sprite = item.ItemSprite;
             this.itemObject.gameObject.SetActive(true);
+        }
         return oldSprite;
     }
 
-    private void OnEnable()
+    public void DropItem()
     {
-        buttonObject.GetComponent<Button>();
-        originalSize = this.buttonObject.transform.localScale;
-    }
-    private void OnDisable()
-    {
-        itemObject.sprite = null;
-        selectedSlot = null;
+        this.SwitchItem(null); // Remove icon
+        OnItemPressed?.Invoke(null); // Reset selection
+        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize; // Revert sieze
     }
 
     public void OnSelect(BaseEventData eventData)
     {
-        if (itemObject.sprite)
+        if (itemObject.gameObject.activeSelf)
         {
             this.buttonObject.GetComponent<RectTransform>().localScale = 
                 new Vector3(originalSize.x + BUTTON_RESIZE, originalSize.y + BUTTON_RESIZE, originalSize.z);
@@ -70,7 +80,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void OnDeselect(BaseEventData eventData)
     {
         this.buttonObject.GetComponent<Image>().sprite = normalSprite;
-        if (itemObject.sprite)
+        if (itemObject.gameObject.activeSelf)
         {
             this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
         }
@@ -91,11 +101,11 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 
         /*  Item swap */
          
-        if (!selectedSlot && this.itemObject.sprite) // Event clicked item
+        if (!selectedSlot && this.itemObject.gameObject.activeSelf) // Event clicked item
             OnItemPressed?.Invoke(this);
         else  if(selectedSlot)
         {
-            Sprite viejo = selectedSlot.SwitchItem(this.itemObject.sprite);
+            InventoryItem_ScriptableObject viejo = selectedSlot.SwitchItem(this.itemSO);
             this.SwitchItem(viejo);
             this.selectedSlot = null;
             OnItemPressed?.Invoke(selectedSlot);

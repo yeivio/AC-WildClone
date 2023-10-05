@@ -5,11 +5,10 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "PlayerInventory_ScriptableObject", menuName = "Custom Assets/Inventory")]
 public class PlayerInventory_ScriptableObject : ScriptableObject
 {
-    [field: SerializeField] public List<InventoryItem_ScriptableObject> inventoryItems;
-
+    [field: SerializeField] public List<InventoryItem_ScriptableObject> inventoryItems; // Already on inventory
     [field: SerializeField] public int Size { get; private set; } = 30;
 
-    public UnityEvent OnAddItem;
+    public UnityEvent<InventoryItem_ScriptableObject,int> OnAddItem;
 
     public void Initialize()
     {
@@ -20,7 +19,13 @@ public class PlayerInventory_ScriptableObject : ScriptableObject
         if (inventoryItems.Count >= Size)
             return false;
         inventoryItems.Add(newItem);
-        OnAddItem?.Invoke();
+        OnAddItem?.Invoke(newItem, inventoryItems.Count-1);
         return true;
     }
+
+    public bool DeleteItem(InventoryItem_ScriptableObject delItem)
+    {
+        return inventoryItems.Remove(delItem);
+    }
+
 }
