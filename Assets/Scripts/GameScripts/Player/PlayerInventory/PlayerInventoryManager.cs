@@ -34,7 +34,7 @@ public class PlayerInventoryManager : MonoBehaviour
         this.inventorySlots[index].SwitchItem(item);
     }
 
-    private void RemoveItem() { inventoryData.DeleteItem(EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>().itemSO); }
+    private void RemoveItem(InventoryItem_ScriptableObject item) { inventoryData.DeleteItem(item); }
 
     private void dialogClose() { inventorySlots[0].GetComponent<Button>().Select(); }
     public void OpenInventory(InputAction.CallbackContext context)

@@ -15,7 +15,6 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] private Sprite pressedSprite; // Sprite when an slot is clicked
     [SerializeField] private Sprite normalSprite; // Sprite when idle mode
     [SerializeField] private float BUTTON_RESIZE; // Tamaño para redimensaionar (el tamaño se suma al original)
-    [SerializeField] private DialogManager dialogWindow; // Ventana de opciones del item
     private PlayerInput playerInput;
 
     public UnityEvent<PlayerSlotManager> OnItemPressed; //When an item is totally selected (player clicked on the object)
@@ -31,8 +30,6 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         foreach (PlayerSlotManager slot in FindObjectsByType<PlayerSlotManager>(FindObjectsSortMode.None))
             if (slot.gameObject != this.gameObject)
                 slot.OnItemPressed.AddListener(ItemSelected);
-        this.dialogWindow = FindFirstObjectByType<DialogManager>(FindObjectsInactive.Include);
-        dialogWindow.OnItemDrop.AddListener(this.DropItem);
     }
 
     private void ItemSelected(PlayerSlotManager otherSlot)
@@ -43,19 +40,21 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     public InventoryItem_ScriptableObject SwitchItem(InventoryItem_ScriptableObject item)
     {
         InventoryItem_ScriptableObject oldSprite = this.itemSO;
-        this.itemObject.sprite = item.ItemSprite;
+        this.itemSO = item;
         if(item == null)
             this.itemObject.gameObject.SetActive(false);
-        else
+        else {
+            this.itemObject.sprite = item.ItemSprite;
             this.itemObject.gameObject.SetActive(true);
+        }
         return oldSprite;
     }
 
     public void DropItem()
     {
-        this.SwitchItem(null);
+        this.SwitchItem(null); // Remove icon
         OnItemPressed?.Invoke(null); // Reset selection
-        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
+        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize; // Revert sieze
     }
 
     private void OnEnable()
