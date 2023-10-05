@@ -22,7 +22,17 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     private PlayerSlotManager selectedSlot;
     public InventoryItem_ScriptableObject itemSO;
+    private void OnEnable()
+    {
+        buttonObject.GetComponent<Button>();
+        originalSize = this.buttonObject.transform.localScale;
+    }
+    private void OnDisable()
+    {
 
+        selectedSlot = null;
+        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
+    }
 
     private void Start()
     {
@@ -57,21 +67,9 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         this.buttonObject.GetComponent<RectTransform>().localScale = originalSize; // Revert sieze
     }
 
-    private void OnEnable()
-    {
-        buttonObject.GetComponent<Button>();
-        originalSize = this.buttonObject.transform.localScale;
-    }
-    private void OnDisable()
-    {
-
-        selectedSlot = null;
-        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
-    }
-
     public void OnSelect(BaseEventData eventData)
     {
-        if (itemObject.sprite)
+        if (itemObject.gameObject.activeSelf)
         {
             this.buttonObject.GetComponent<RectTransform>().localScale = 
                 new Vector3(originalSize.x + BUTTON_RESIZE, originalSize.y + BUTTON_RESIZE, originalSize.z);
@@ -82,7 +80,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void OnDeselect(BaseEventData eventData)
     {
         this.buttonObject.GetComponent<Image>().sprite = normalSprite;
-        if (itemObject.sprite)
+        if (itemObject.gameObject.activeSelf)
         {
             this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
         }
@@ -103,7 +101,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 
         /*  Item swap */
          
-        if (!selectedSlot && this.itemObject.sprite) // Event clicked item
+        if (!selectedSlot && this.itemObject.gameObject.activeSelf) // Event clicked item
             OnItemPressed?.Invoke(this);
         else  if(selectedSlot)
         {

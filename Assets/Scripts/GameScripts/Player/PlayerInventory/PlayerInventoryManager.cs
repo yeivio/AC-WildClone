@@ -59,7 +59,9 @@ public class PlayerInventoryManager : MonoBehaviour
         if (!context.performed)
             return;
         PlayerSlotManager obj = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
-        this.dialogWindow.gameObject.SetActive(true);
+        if (obj.itemSO) { 
+            this.dialogWindow.gameObject.SetActive(true);
+        }
     }
 
 
