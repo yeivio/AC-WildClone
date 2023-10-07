@@ -19,13 +19,16 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public UnityEvent<PlayerSlotManager> OnItemPressed; //When an item is totally selected (player clicked on the object)
 
+    private PlayerSlotManager selectedSlot; //Current selected PlayerSlotmanager by the player
+    public InventoryItem_ScriptableObject itemSO; //The itemSO contained in this PlayerSlotManager instance
 
-    private PlayerSlotManager selectedSlot;
-    public InventoryItem_ScriptableObject itemSO;
+    private bool IsDialogSelected; // When a option dialog is active on this instance, this is used to block any Deselect events
+
     private void OnEnable()
     {
         buttonObject.GetComponent<Button>();
         originalSize = this.buttonObject.transform.localScale;
+        IsDialogSelected = false;
     }
     private void OnDisable()
     {
@@ -36,10 +39,14 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     private void Start()
     {
+        originalSize = this.buttonObject.transform.localScale;
         playerInput = FindFirstObjectByType<PlayerInput>();
+        FindFirstObjectByType<DialogManager>(FindObjectsInactive.Include).OnCreate.AddListener(this.OnDialogSelect);
+        FindFirstObjectByType<DialogManager>(FindObjectsInactive.Include).OnClose.AddListener(this.OnDialogDeselect);
         foreach (PlayerSlotManager slot in FindObjectsByType<PlayerSlotManager>(FindObjectsSortMode.None))
             if (slot.gameObject != this.gameObject)
                 slot.OnItemPressed.AddListener(ItemSelected);
+
     }
 
     private void ItemSelected(PlayerSlotManager otherSlot)
@@ -57,6 +64,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
             this.itemObject.sprite = item.ItemSprite;
             this.itemObject.gameObject.SetActive(true);
         }
+        this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
         return oldSprite;
     }
 
@@ -66,6 +74,12 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         OnItemPressed?.Invoke(null); // Reset selection
         this.buttonObject.GetComponent<RectTransform>().localScale = originalSize; // Revert sieze
     }
+
+    /// <summary>
+    /// This is for the DialogManager.OnCreate call
+    /// </summary>
+    private void OnDialogSelect(PlayerSlotManager slot){ if (slot == this) { IsDialogSelected = true; this.OnSelect(null); } }
+    private void OnDialogDeselect(PlayerSlotManager slot) { if (slot == this) { IsDialogSelected = false; this.OnDeselect(null); } }
 
     public void OnSelect(BaseEventData eventData)
     {
@@ -79,8 +93,10 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnDeselect(BaseEventData eventData)
     {
+        if (IsDialogSelected)
+            return;
         this.buttonObject.GetComponent<Image>().sprite = normalSprite;
-        if (itemObject.gameObject.activeSelf)
+        if (itemObject.gameObject.activeSelf && this.selectedSlot != this)
         {
             this.buttonObject.GetComponent<RectTransform>().localScale = originalSize;
         }
@@ -102,9 +118,16 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         /*  Item swap */
          
         if (!selectedSlot && this.itemObject.gameObject.activeSelf) // Event clicked item
+        {
             OnItemPressed?.Invoke(this);
+            selectedSlot = this;
+            this.buttonObject.GetComponent<RectTransform>().localScale =
+                new Vector3(originalSize.x + BUTTON_RESIZE, originalSize.y + BUTTON_RESIZE, originalSize.z);
+            this.buttonObject.GetComponent<Image>().sprite = pressedSprite;
+        }
         else  if(selectedSlot)
         {
+
             InventoryItem_ScriptableObject viejo = selectedSlot.SwitchItem(this.itemSO);
             this.SwitchItem(viejo);
             this.selectedSlot = null;
