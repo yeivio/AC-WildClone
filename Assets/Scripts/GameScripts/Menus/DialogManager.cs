@@ -18,7 +18,8 @@ public class DialogManager : MonoBehaviour
 
     private PlayerSlotManager currentSelectedItem;
 
-    public UnityEvent OnClose;
+    public UnityEvent<PlayerSlotManager> OnClose;
+    public UnityEvent<PlayerSlotManager> OnCreate;
     public UnityEvent<InventoryItem_ScriptableObject> OnItemDrop;
 
     private void OnDisable()
@@ -30,7 +31,7 @@ public class DialogManager : MonoBehaviour
     private void OnEnable()
     {
         currentSelectedItem = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
-
+        OnCreate?.Invoke(currentSelectedItem);
         if (currentSelectedItem.itemSO.IsPlantable)
             this.plant_Text.SetActive(true);
         else
@@ -43,6 +44,8 @@ public class DialogManager : MonoBehaviour
 
         this.closeMenu_Text.gameObject.GetComponent<Button>().Select();
         this.buildNavigation();
+
+        
     }
 
     public void DropItem()
@@ -54,7 +57,7 @@ public class DialogManager : MonoBehaviour
 
     public void CloseMenu()
     {
-        this.OnClose?.Invoke();
+        this.OnClose?.Invoke(currentSelectedItem);
         this.gameObject.SetActive(false);
     }
 

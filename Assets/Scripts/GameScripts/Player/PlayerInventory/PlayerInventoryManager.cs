@@ -22,21 +22,21 @@ public class PlayerInventoryManager : MonoBehaviour
         inventorySlots[0].GetComponent<Button>().Select(); // Select first button
 
         playerInput = FindFirstObjectByType<PlayerInput>();
-        inventoryData.OnAddItem.AddListener(addItem);
-        this.dialogWindow.OnClose.AddListener(dialogClose);
+        inventoryData.OnAddItem.AddListener(AddItem);
+        this.dialogWindow.OnClose.AddListener(DialogClose);
         this.dialogWindow.OnItemDrop.AddListener(this.RemoveItem);
         this.dialogWindow.gameObject.SetActive(false);
         this.inventoryBackground.SetActive(false);
     }
 
-    private void addItem(InventoryItem_ScriptableObject item, int index)
+    private void AddItem(InventoryItem_ScriptableObject item, int index)
     {
         this.inventorySlots[index].SwitchItem(item);
     }
 
     private void RemoveItem(InventoryItem_ScriptableObject item) { inventoryData.DeleteItem(item); }
 
-    private void dialogClose() { inventorySlots[0].GetComponent<Button>().Select(); }
+    private void DialogClose(PlayerSlotManager slot) { slot.gameObject.GetComponent<Button>().Select(); }
     public void OpenInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
