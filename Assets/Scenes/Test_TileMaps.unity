@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1456,6 +1456,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1171225044}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (7)
@@ -1844,6 +1848,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 983330320209915662, guid: 04a0f73bbe185f44f89249471381d73e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1631853133138497243, guid: 04a0f73bbe185f44f89249471381d73e, type: 3}
       propertyPath: m_Name
       value: AppleTree_4
@@ -2009,6 +2017,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 636155584}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (12)
@@ -4532,15 +4544,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8620038589802693897, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00000074120726
+      value: 0.0000007412073
       objectReference: {fileID: 0}
     - target: {fileID: 8620038589802693897, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.590376
+      value: 15.590377
       objectReference: {fileID: 0}
     - target: {fileID: 8620038589802693897, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.732689
+      value: -21.73269
       objectReference: {fileID: 0}
     - target: {fileID: 8620038589802693897, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5168,7 +5180,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXT
+  m_text: "Hola amigos, bienvenidos a un nuevo videotutorial de como jugar al ajedrez
+    pero ahora con un plottwist que nadie se espera para rellenar mucho m\xE1s texto"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5195,7 +5208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.5
+  m_fontSize: 35.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5991,6 +6004,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1275888233}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (5)
@@ -6186,6 +6203,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1906419088}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (3)
@@ -6595,7 +6616,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -6859,7 +6880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.952057
+      value: -3.9520264
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6889,6 +6910,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1286948625}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (13)
@@ -7084,6 +7109,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 666345942}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (26)
@@ -7228,6 +7257,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 836933589}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (25)
@@ -7818,6 +7851,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1917106676}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (8)
@@ -8064,6 +8101,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1474255038}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (10)
@@ -8197,6 +8238,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1791779864}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (21)
@@ -8377,7 +8422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &741761692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8399,7 +8444,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1444480013}
   m_Follow: {fileID: 1444480013}
   m_Lens:
-    FieldOfView: 7.59
+    FieldOfView: 1
     OrthographicSize: 5
     NearClipPlane: 0.01
     FarClipPlane: 117.6
@@ -8426,7 +8471,7 @@ Transform:
   m_GameObject: {fileID: 741761691}
   serializedVersion: 2
   m_LocalRotation: {x: 0.219447, y: 0.034033198, z: -0.0076599787, w: 0.97500056}
-  m_LocalPosition: {x: -11.227977, y: 5.660012, z: -11.549999}
+  m_LocalPosition: {x: -11.227976, y: 5.6600127, z: -11.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9625,6 +9670,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 734083388}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (22)
@@ -10288,6 +10337,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1347519926}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (16)
@@ -10715,6 +10768,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 544640133}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (2)
@@ -11885,6 +11942,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 2024513563}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (27)
@@ -12694,6 +12755,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 2081428830}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (1)
@@ -12997,6 +13062,9 @@ MonoBehaviour:
   eatObject_Text: {fileID: 2008300353}
   plant_Text: {fileID: 1198303075}
   OnClose:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCreate:
     m_PersistentCalls:
       m_Calls: []
   OnItemDrop:
@@ -13932,7 +14000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 186.173}
   m_AnchorMin: {x: 0.039129317, y: 0.7774027}
   m_AnchorMax: {x: 0.29160836, y: 1}
-  m_AnchoredPosition: {x: -10.9999695, y: 7}
+  m_AnchoredPosition: {x: -11, y: 7}
   m_SizeDelta: {x: 9.8051, y: -0.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201927415
@@ -14377,6 +14445,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1872554977}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (17)
@@ -15111,6 +15183,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1929088321}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (6)
@@ -15244,6 +15320,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 527167771}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (4)
@@ -15937,6 +16017,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 913512714}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (19)
@@ -16143,6 +16227,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 6379136491003441819}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (15)
@@ -17256,7 +17344,7 @@ Transform:
   m_GameObject: {fileID: 1444480011}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.227977, y: 0.15001173, z: 0}
+  m_LocalPosition: {x: -11.227976, y: 0.15001181, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17730,6 +17818,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 201261140}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (11)
@@ -37168,6 +37260,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 936168137}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (14)
@@ -37518,6 +37614,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 724310654}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (9)
@@ -38285,6 +38385,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 2127159200}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (24)
@@ -38469,6 +38573,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 658316089}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (29)
@@ -39607,7 +39715,9 @@ MonoBehaviour:
   OnNPCInteract: {fileID: 11400000, guid: dc426ad514eaf044ba414841fa2c58d4, type: 2}
   speedText: 0.05
   DEFAULT_TEXT_SPEED: 0.05
-  FAST_TEXT_SPEED: 0.1
+  OnClose:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1662326814
 GameObject:
   m_ObjectHideFlags: 0
@@ -39951,8 +40061,8 @@ MonoBehaviour:
   m_MaxDollyOut: 5000
   m_MinimumDistance: 1
   m_MaximumDistance: 5000
-  m_MinimumFOV: 43
-  m_MaximumFOV: 87
+  m_MinimumFOV: 41
+  m_MaximumFOV: 56
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
 --- !u!114 &1691584228
@@ -40280,7 +40390,7 @@ Transform:
   m_GameObject: {fileID: 1733903203}
   serializedVersion: 2
   m_LocalRotation: {x: 0.29386318, y: -0.000000007150715, z: -0.00000002325911, w: 0.9558475}
-  m_LocalPosition: {x: 0.00000074120726, y: 15.590376, z: -21.732689}
+  m_LocalPosition: {x: 0.0000007412073, y: 15.590377, z: -21.73269}
   m_LocalScale: {x: 0.3886061, y: 0.3886061, z: 0.3886061}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41420,6 +41530,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1223071902}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (18)
@@ -45190,6 +45304,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1903945485}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (28)
@@ -46431,6 +46549,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 2133863293}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (23)
@@ -46650,6 +46772,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1328889390}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button (20)
@@ -46992,6 +47118,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000022888184
+      objectReference: {fileID: 0}
     - target: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Name
       value: Button
@@ -47137,10 +47267,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: dc426ad514eaf044ba414841fa2c58d4, type: 2}
-  TalkEvent:
+  OnTalk:
     m_PersistentCalls:
       m_Calls: []
-  cam: {fileID: 0}
+  cam: {fileID: 741761691}
 --- !u!1 &9211404468364353934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8956683717673684855, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}

@@ -15,17 +15,26 @@ public class Npc_Dialogue : MonoBehaviour
     public float speedText;
     private int visibleChar = 0;
     [SerializeField] private float DEFAULT_TEXT_SPEED = 0.05f;
-    [SerializeField] private float FAST_TEXT_SPEED = 0.1f;
     private PlayerInput input;
 
+    public UnityEvent OnClose;
+
     private bool isActive;
+
+    private bool isCoroutineActive;
 
     private void Start()
     {
         input = FindAnyObjectByType<PlayerInput>();
         foreach(TalkableObject obj in FindObjectsByType<TalkableObject>(FindObjectsSortMode.None))
-            obj.TalkEvent.AddListener(StartDialogueBox);
+            obj.OnTalk.AddListener(StartDialogueBox);
         isActive = false;
+    }
+
+    private void Update()
+    {
+        if(isCoroutineActive && Input.anyKeyDown)
+            this.speedText = this.speedText / 5;
     }
     private void StartDialogueBox(NPCConfig_ScriptableObject config)
     {
@@ -33,6 +42,8 @@ public class Npc_Dialogue : MonoBehaviour
         foreach (Transform child in transform) //Activate text and backgrounds
             child.gameObject.SetActive(true);
 
+        villagerText.text = config.dialogue;
+        villagerName.text = config.name;
         villagerText.maxVisibleCharacters = visibleChar;
         speedText = DEFAULT_TEXT_SPEED;
         isActive = true;
@@ -48,20 +59,23 @@ public class Npc_Dialogue : MonoBehaviour
         input.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
         foreach (Transform child in transform) //Deactivate text and backgrounds
             child.gameObject.SetActive(false);
+        if (isCoroutineActive)
+            StopAllCoroutines();
+        this.OnClose?.Invoke();
     }
     
     IEnumerator slowText()
     {
+        this.isCoroutineActive = true;
         int visibleChar = 0;
         int fullTextSize = OnNPCInteract.dialogue.Length;
         while (visibleChar < fullTextSize)
         {
-            if(Input.anyKeyDown)
-                speedText = FAST_TEXT_SPEED;
             villagerText.maxVisibleCharacters = visibleChar;
             yield return new WaitForSeconds(speedText);
             visibleChar++;
         }
+        this.isCoroutineActive = false;
     }
 
 }

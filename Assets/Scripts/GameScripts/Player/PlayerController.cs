@@ -8,11 +8,11 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public GameObject cam; //Player camera
 
-    public float currentSpeed = 7f; //currentSpeed
-    public float sprintSpeed = 12f; //Sprint player speed
-    public float walkSpeed = 7f; //Walk player speed
-    public float turnSmoothTime= 0.1f;
-    public float turnSmoothVelocity = 0f;
+    private float currentSpeed = 7f; //currentSpeed
+    private float sprintSpeed = 12f; //Sprint player speed
+    private float walkSpeed = 7f; //Walk player speed
+    private float turnSmoothTime= 0.1f;
+    private float turnSmoothVelocity = 0f;
 
     private PlayerInput playerInput;
     private void Start()

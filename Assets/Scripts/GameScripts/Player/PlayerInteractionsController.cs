@@ -22,7 +22,6 @@ public class PlayerInteractionsController : MonoBehaviour
         playerInput = this.GetComponent<PlayerInput>();
         inventoryData.Initialize();
     }
-
     public void Interact(InputAction.CallbackContext context)
     {
         if (!context.performed || !interactingObject)
@@ -45,7 +44,7 @@ public class PlayerInteractionsController : MonoBehaviour
             interactingObject.TryGetComponent<TalkableObject>(out TalkableObject talkObj))
         {
             this.playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
-            this.cam.SetActive(false);
+            //this.cam.SetActive(false);
             talkObj.talk();
 
         }
