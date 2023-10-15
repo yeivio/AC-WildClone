@@ -12,7 +12,7 @@ public class PlaceableObject : MonoBehaviour
     /// Calcular los vertices de cada objeto, para eso se utiliza el punto central del objeto y se dividepor la mitad
     /// y dependiendo de qu� vertice se busque se suma o se resta la mitad de la arista
     /// </summary>
-    private void GetColliderVertexPositionsLocal() { 
+    private void GetColliderVertexPositionsLocal() {
     
         BoxCollider b = gameObject.GetComponent<BoxCollider>();
         objectVertices = new Vector3[4];
@@ -54,7 +54,7 @@ public class PlaceableObject : MonoBehaviour
         }
 
         Size = new Vector3Int(maxX - minX + 1, maxY - minY + 1, maxZ - minZ + 1);
-        // As long as grid is 2d Z will be always 1
+        Debug.Log($"Size of the placeableObject {Size}");
     }
 
     /// <summary>
@@ -65,26 +65,30 @@ public class PlaceableObject : MonoBehaviour
     {
         return transform.TransformPoint(objectVertices[0]);
     }
-
-    private void Start()
+    private void Awake()
     {
         GetColliderVertexPositionsLocal();
         CalculateSizeInCells();
-        PlayerController aux = FindAnyObjectByType<PlayerController>();
-
-        Vector3 rot = aux.transform.forward;
-        Vector3 sum = (MovableObject.vectorRounded(rot) * BuildingSystem.current.gridLayout.cellSize.x)*2
-            + this.transform.position;
-        this.transform.position = BuildingSystem.current.SnapCoordinateToGrid(sum);
-
+    }
+    private void Start()
+    {
+        
+        if (gameObject.tag != "Grid")
+            Place();
+        
     }
 
     /// <summary>
     /// Acci�n de colocarse en el mapa
     /// </summary>
-    public virtual void Place()
+    public void Place()
     {
+        PlayerController aux = FindAnyObjectByType<PlayerController>();
 
+        Vector3 rot = aux.transform.forward.normalized;
+        Vector3 sum = (MovableObject.vectorRounded(rot) * BuildingSystem.current.gridLayout.cellSize.x)
+            + this.transform.position;
+        this.transform.position = BuildingSystem.current.SnapCoordinateToGrid(sum);
         Placed = true;
 
         //Invoke events of placements
