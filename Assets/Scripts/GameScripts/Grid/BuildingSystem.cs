@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class BuildingSystem : MonoBehaviour
@@ -9,8 +8,6 @@ public class BuildingSystem : MonoBehaviour
     public static BuildingSystem current;
     public GridLayout gridLayout; // reference to the grid where we will build
     private Grid grid; // Reference to the grid component of the grid GameObject
-    [SerializeField] private Tilemap MainTilemap; // Reference to the tilemap inside the grid
-    [SerializeField] private TileBase objectTile; // Reference to the sprite that will be drawn and looked for
 
     public GameObject prefab1;
 
@@ -33,34 +30,71 @@ public class BuildingSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            InitializeWithObject(prefab1);
-        }
-        else if (Input.GetKeyUp(KeyCode.J))
-        {
-            Vector3 position = objectToPlace.GetStartPosition();
+            objectToPlace = prefab1.GetComponent<PlaceableObject>();
+            PlayerController aux = FindAnyObjectByType<PlayerController>();
 
-            Vector3Int intPosition = new Vector3Int(
-                    Mathf.FloorToInt(position.x),
-                    Mathf.FloorToInt(position.y),
-                    0);
-
-            bool canBePlace = gridData.CanPlaceObjectAt(intPosition, objectToPlace.Size);
-            Debug.Log($"Object can be placed: { canBePlace}");
-            Debug.Log($"Position where it would be placed: {position}");
-            if (! canBePlace)
-                Destroy(objectToPlace.gameObject);
-            else
-            {
-                gridData.AddObjectAt(
-                    intPosition,
-                    objectToPlace.Size,
-                    objectToPlace.GetInstanceID(),
-                    objectToPlace.GetInstanceID());
-            }
+            Vector3 rot = aux.transform.forward.normalized;
+            Vector3 sum = (
+                MovableObject.vectorRounded(rot) *
+                current.gridLayout.cellSize.x +
+                aux.transform.position
+                ) ;
+            //Debug.Log(sum);
+            CheckDrop(sum);
         }
         
     }
-    
+
+    public bool DropItem(GameObject objectToDrop, Vector3 position)
+    {
+        objectToPlace = objectToDrop.GetComponent<PlaceableObject>();
+        return CheckDrop(position);
+
+    }
+    public bool CheckDrop(Vector3 position)
+    {
+        //Debug.Log($"Object to place: {objectToPlace}");
+        Vector3 cellPosition = SnapCoordinateToGrid(position);
+
+        Vector3Int intPosition = new Vector3Int(
+                Mathf.FloorToInt(cellPosition.x),
+                0,
+                Mathf.FloorToInt(cellPosition.z));
+
+        PlacementData canBePlace = gridData.CanPlaceObjectAt(intPosition, objectToPlace.Size);
+        PlayerInteractionsController player = FindAnyObjectByType<PlayerInteractionsController>();
+        Debug.Log($"Object can be placed: {canBePlace}");
+        //Debug.Log($"Position where it would be placed: {cellPosition}");
+        if (canBePlace == null)
+        {
+            gridData.AddObjectAt(
+                intPosition,
+                objectToPlace.Size,
+                objectToPlace.GetInstanceID(),
+                objectToPlace.GetInstanceID());
+            InitializeWithObject(objectToPlace.gameObject, cellPosition);
+        }
+        else if (
+            objectToPlace.TryGetComponent<PlantableObject>(out PlantableObject toPlant) && // If we are trying to place a plant
+            player.interactingObject != null && // And we are interacting with something
+            player.interactingObject.CompareTag("Hole") // And that something is a hole
+            )
+        {
+            //Debug.Log("Planted");
+            Destroy(player.interactingObject);
+        }
+        else
+        {
+            return false;
+        }
+        return true;
+    }
+    public bool CheckDrop()
+    {
+        Vector3 position = objectToPlace.GetStartPosition();
+        return CheckDrop(position);
+    }
+
     /// <summary>
     /// Dada una posici�n, devuelve el vector de la casilla m�s cercana
     /// </summary>
@@ -85,6 +119,14 @@ public class BuildingSystem : MonoBehaviour
 
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlace = obj.GetComponent<PlaceableObject>();
+    }
+    public void InitializeWithObject(GameObject prefab, Vector3 position)
+    {
+        position = SnapCoordinateToGrid(position);
+        GameObject obj = Instantiate(prefab, position, Quaternion.identity);
+        objectToPlace = obj.GetComponent<PlaceableObject>();
+
+        //Debug.Log($"Termine de inicializar {objectToPlace} objeto");
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -50,9 +51,23 @@ public class DialogManager : MonoBehaviour
 
     public void DropItem()
     {
-        currentSelectedItem.DropItem();
-        this.OnItemDrop?.Invoke(currentSelectedItem.itemSO);
-        this.CloseMenu();
+
+        Vector3 position = FindAnyObjectByType<PlayerController>().transform.position;
+        InventoryItem_ScriptableObject delItem = currentSelectedItem.itemSO;
+        //Debug.Log($"Building system: {BuildingSystem.current}");
+        //Debug.Log($"Item {delItem}");
+        //Debug.Log($"Object3D: {delItem.object3D}");
+
+        bool droped = BuildingSystem.current.DropItem(delItem.object3D, position);
+        if (droped)
+        {
+            this.OnItemDrop?.Invoke(currentSelectedItem.itemSO);
+            // TODO only delete the visual item if the item is being droped
+            // Possible solution drop the item on the position of the player
+            currentSelectedItem.DropItem();
+            this.CloseMenu();
+        }
+        
     }
 
     public void CloseMenu()

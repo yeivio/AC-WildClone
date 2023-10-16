@@ -4229,6 +4229,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.172
       objectReference: {fileID: 0}
+    - target: {fileID: 3392566439473051044, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4677550633852292785, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.503828
@@ -8235,7 +8239,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734137747}
   m_Enabled: 1
-  m_CellSize: {x: 4, y: 4, z: 0}
+  m_CellSize: {x: 3, y: 3, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 1
@@ -8268,8 +8272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridLayout: {fileID: 734137748}
-  MainTilemap: {fileID: 1477309970}
-  objectTile: {fileID: 11400000, guid: 227e50c4d2df1e54ab352230b14d1d1c, type: 2}
   prefab1: {fileID: 8644013149300115109, guid: 28595bcf7186afd488cd7577116c9f7d, type: 3}
 --- !u!1001 &736576500
 PrefabInstance:
@@ -10177,6 +10179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8e455523fd35142bcc031e53ccf180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Size: {x: 0, y: 0, z: 0}
 --- !u!1001 &913512712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13944,7 +13947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 186.173}
   m_AnchorMin: {x: 0.039129317, y: 0.7774027}
   m_AnchorMax: {x: 0.29160836, y: 1}
-  m_AnchoredPosition: {x: -11, y: 7.0000076}
+  m_AnchoredPosition: {x: -11, y: 7}
   m_SizeDelta: {x: 9.8051, y: -0.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201927415
@@ -38225,6 +38228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryData: {fileID: 11400000, guid: 927889b4008211f43bd04a1c2791db77, type: 2}
   cam: {fileID: 1733903203}
+  interactingObject: {fileID: 0}
 --- !u!1001 &1542580875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47114,15 +47118,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3901600209033368612, guid: eeb84ee6c5fb74a3595eb305a297794f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.778324
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 3901600209033368612, guid: eeb84ee6c5fb74a3595eb305a297794f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.93
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3901600209033368612, guid: eeb84ee6c5fb74a3595eb305a297794f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.677895
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3901600209033368612, guid: eeb84ee6c5fb74a3595eb305a297794f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -47155,6 +47159,10 @@ PrefabInstance:
     - target: {fileID: 4426638329210359454, guid: eeb84ee6c5fb74a3595eb305a297794f, type: 3}
       propertyPath: m_Name
       value: AppleTree_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426638329210359454, guid: eeb84ee6c5fb74a3595eb305a297794f, type: 3}
+      propertyPath: m_TagString
+      value: Grid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
