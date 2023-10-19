@@ -29,11 +29,7 @@ public class PlayerInventoryManager : MonoBehaviour
         this.inventoryBackground.SetActive(false);
     }
 
-    private void AddItem(InventoryItem_ScriptableObject item, int index)
-    {
-        this.inventorySlots[index].SwitchItem(item);
-    }
-
+    private void AddItem(InventoryItem_ScriptableObject item, int index){ this.inventorySlots[index].SwitchItem(item); }
     private void RemoveItem(InventoryItem_ScriptableObject item) { inventoryData.DeleteItem(item); }
 
     private void DialogClose(PlayerSlotManager slot) { slot.gameObject.GetComponent<Button>().Select(); }
@@ -43,14 +39,6 @@ public class PlayerInventoryManager : MonoBehaviour
         {
             playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
             this.inventoryBackground.SetActive(true);
-
-            /*
-            int contador = 0;
-            foreach (InventoryItem_ScriptableObject aux in inventoryData.inventoryItems)
-            { //Update player inventory
-                inventorySlots[contador].SwitchItem(aux.ItemSprite);
-                contador++;
-            }   */
         }
     }
 

@@ -20,7 +20,6 @@ public class PlayerInteractionsController : MonoBehaviour
     private void Start()
     {
         playerInput = this.GetComponent<PlayerInput>();
-        inventoryData.Initialize();
     }
     public void Interact(InputAction.CallbackContext context)
     {
@@ -91,7 +90,6 @@ public class PlayerInteractionsController : MonoBehaviour
         }
         lerpedValue = end;
         this.gameObject.transform.eulerAngles = new Vector3(this.gameObject.transform.eulerAngles.x, lerpedValue, this.gameObject.transform.eulerAngles.z);
-
     }
 
 
