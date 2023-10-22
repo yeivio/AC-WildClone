@@ -1,13 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
@@ -21,7 +14,6 @@ public class DialogManager : MonoBehaviour
 
     public UnityEvent<PlayerSlotManager> OnClose;
     public UnityEvent<PlayerSlotManager> OnCreate;
-    public UnityEvent<InventoryItem_ScriptableObject> OnItemDrop;
 
     private void OnDisable()
     {
@@ -61,10 +53,9 @@ public class DialogManager : MonoBehaviour
         bool droped = BuildingSystem.current.DropItem(delItem.object3D, position);
         if (droped)
         {
-            this.OnItemDrop?.Invoke(currentSelectedItem.itemSO);
             // TODO only delete the visual item if the item is being droped
             // Possible solution drop the item on the position of the player
-            currentSelectedItem.DropItem();
+            currentSelectedItem.DropItem(currentSelectedItem.itemSO);
             this.CloseMenu();
         }
         

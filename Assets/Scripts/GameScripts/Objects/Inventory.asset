@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d519d0db4ac4538419949e0472d576fe, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  OnEmptyInventory:
+  <Size>k__BackingField: 30
+  OnAddItem:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveItem:
     m_PersistentCalls:
       m_Calls: []

@@ -1,56 +1,63 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Npc_Dialogue : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI villagerText;
-    [SerializeField] private TextMeshProUGUI villagerName;
-    [SerializeField] private NPCConfig_ScriptableObject OnNPCInteract;
-    public float speedText;
-    private int visibleChar = 0;
-    [SerializeField] private float DEFAULT_TEXT_SPEED = 0.05f;
+    [Header("Mandatory objects references")]
+    [SerializeField] private TextMeshProUGUI villagerText;  // Text box for dialogue text
+    [SerializeField] private TextMeshProUGUI villagerName;  // Text box for villager name text
+    [SerializeField] private NPCConfig_ScriptableObject OnNPCInteract;  // Villager dialogue data
+
+    [Header("Dialogue config")]
+    [SerializeField] private float speedText = 0.05f;   // Speed of the appearing text
+
     private PlayerInput input;
-
-    public UnityEvent OnClose;
-
-    private bool isActive;
-
+    private TalkableObject talkObj;
+    private bool isActive;  // Tracks if the dialog window is active
     private bool isCoroutineActive;
+    private int visibleChar = 0;    // Current visible chars
 
     private void Start()
     {
         input = FindAnyObjectByType<PlayerInput>();
         foreach(TalkableObject obj in FindObjectsByType<TalkableObject>(FindObjectsSortMode.None))
-            obj.OnTalk.AddListener(StartDialogueBox);
+            obj.OnTalk.AddListener(StartDialogueBox);   // Joined all the TalkableObjects event which triggers when a player talks with an npc
         isActive = false;
     }
 
     private void Update()
     {
-        if(isCoroutineActive && Input.anyKeyDown)
+        if (isCoroutineActive && Input.anyKeyDown) // Speedup the dialog appearing text
             this.speedText = this.speedText / 5;
+
     }
-    private void StartDialogueBox(NPCConfig_ScriptableObject config)
+
+    /// <summary>
+    /// Given an SO of an NPC loads the text into the separated dialogBoxes and starts the coroutine for the appearing text animation.
+    /// </summary>
+    /// <param name="config"></param>
+    private void StartDialogueBox(NPCConfig_ScriptableObject config, TalkableObject talkObj)
     {
         this.OnNPCInteract = config;
+        this.talkObj = talkObj;
         foreach (Transform child in transform) //Activate text and backgrounds
             child.gameObject.SetActive(true);
 
         villagerText.text = config.dialogue;
         villagerName.text = config.name;
         villagerText.maxVisibleCharacters = visibleChar;
-        speedText = DEFAULT_TEXT_SPEED;
         isActive = true;
+        
+        this.talkObj.EnableCamera(); // Enable the npc camera
         StartCoroutine(slowText());
 
     }
 
+    /// <summary>
+    /// If the dialogbox is active, disable all the dialog UI, disable the dialogue camera and change the input map to FREEMOVE
+    /// </summary>
     public void CloseDialog()
     {
         if (!isActive)
@@ -59,11 +66,15 @@ public class Npc_Dialogue : MonoBehaviour
         input.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
         foreach (Transform child in transform) //Deactivate text and backgrounds
             child.gameObject.SetActive(false);
-        if (isCoroutineActive)
+        if (isCoroutineActive)  // If the animation is playing, then it's forced to stop
             StopAllCoroutines();
-        this.OnClose?.Invoke();
+        this.talkObj.DisableCamera(); // Disable the npc camera
     }
     
+    /// <summary>
+    /// Animation for the npc dialogue text. The Coroutine spawns the string char by char at a speedtext speed.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator slowText()
     {
         this.isCoroutineActive = true;

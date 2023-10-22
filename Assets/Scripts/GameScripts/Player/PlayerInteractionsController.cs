@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -35,7 +34,6 @@ public class PlayerInteractionsController : MonoBehaviour
             if (!inventoryData.AddItem(pickObj.takeObject()))
             {
                 Instantiate(pickObj, copia, Quaternion.identity);
-
             }
         }
 
