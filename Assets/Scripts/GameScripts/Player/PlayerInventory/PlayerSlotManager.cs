@@ -15,7 +15,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] private Sprite selectedSprite; // Background Sprite when object is hovered by
     [SerializeField] private Sprite pressedSprite; // Sprite when an slot is clicked
     [SerializeField] private Sprite normalSprite; // Sprite when idle mode
-    [SerializeField] private float BUTTON_RESIZE; // Tamaño para redimensaionar (el tamaño se suma al original)
+    [SerializeField] private float BUTTON_RESIZE; // Tamaï¿½o para redimensaionar (el tamaï¿½o se suma al original)
 
     [Header("Events")]
     public UnityEvent<PlayerSlotManager> OnItemPressed; // When an item is totally selected (player clicked on the object)
@@ -90,7 +90,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         this.SwitchItem(null); // Remove icon
         OnItemPressed?.Invoke(null); // Reset selection
         this.buttonObject.GetComponent<RectTransform>().localScale = originalSize; // Revert size
-        this.inventoryManager.RemoveItem(item);
+        //this.inventoryManager.RemoveItem(item);
     }
 
     /// <summary>

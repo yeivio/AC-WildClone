@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4224,6 +4224,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260265998039366861, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00000074120726
+      objectReference: {fileID: 0}
+    - target: {fileID: 260265998039366861, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.590376
+      objectReference: {fileID: 0}
+    - target: {fileID: 260265998039366861, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.732689
+      objectReference: {fileID: 0}
     - target: {fileID: 825656266431263649, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
       propertyPath: field of view
       value: 18.4
@@ -4351,6 +4363,18 @@ PrefabInstance:
     - target: {fileID: 4888307412105315554, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
       propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DialogManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460413181662100279, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00000074120726
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460413181662100279, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.590376
+      objectReference: {fileID: 0}
+    - target: {fileID: 5460413181662100279, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.732689
       objectReference: {fileID: 0}
     - target: {fileID: 7357456030780328537, guid: 6033d02d1b7746640901515a1ba5f4c3, type: 3}
       propertyPath: m_UIInputModule
@@ -8364,6 +8388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridLayout: {fileID: 734137748}
   prefab1: {fileID: 8644013149300115109, guid: 28595bcf7186afd488cd7577116c9f7d, type: 3}
+  tile: {fileID: 11400000, guid: 227e50c4d2df1e54ab352230b14d1d1c, type: 2}
+  tilemap: {fileID: 1477309970}
 --- !u!1001 &736576500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14046,7 +14072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 186.173}
   m_AnchorMin: {x: 0.039129317, y: 0.7774027}
   m_AnchorMax: {x: 0.29160836, y: 1}
-  m_AnchoredPosition: {x: -11, y: 7}
+  m_AnchoredPosition: {x: -11, y: 7.0000076}
   m_SizeDelta: {x: 9.8051, y: -0.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201927415
@@ -17401,7 +17427,7 @@ Transform:
   m_GameObject: {fileID: 1444480011}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.723086, y: 0.18334772, z: 0}
+  m_LocalPosition: {x: -13.723084, y: 0.18334761, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

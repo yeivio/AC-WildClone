@@ -7,60 +7,94 @@ using UnityEngine.UIElements;
 
 public class GridData
 {
-    Dictionary<Vector3Int, PlacementData> placedObjects = new();
+    Dictionary<Vector3, PlacementData> placedObjects = new();
 
-    public void AddObjectAt(Vector3Int gridPosition,
-                            Vector3Int objectSize,
-                            int ID,
-                            int placedObjectIndex)
+    public Vector3 AddObjectAt(Vector3 gridPosition,
+                            Vector3 objectSize,
+                            Vector3 direction,
+                            GameObject placedObject)
     {
         /*
          * Add an object to the gridData
          */
 
-        Debug.Log($"Object to be added at position: {gridPosition}");
-        List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
-        PlacementData data = new(positionToOccupy, ID, placedObjectIndex);
-        foreach (var pos in positionToOccupy)
+        List<Vector3> positionsToOccupy = CalculatePositions(gridPosition, objectSize, direction);
+        PlacementData data = new(positionsToOccupy, placedObject);
+        foreach (var pos in positionsToOccupy)
         {
-            Debug.Log($"Position to be occuppied: {pos}");
             if(placedObjects.ContainsKey(pos))
             {
                 throw new Exception($"Cell in position {pos} already occupied");
             }
             placedObjects.Add(pos, data);
         }
+        return CentralPosition(positionsToOccupy);
     }
+    public Vector3 CentralPosition(List<Vector3> positionsToOccupy)
+    {
+        float minZ = float.MaxValue;
+        float maxZ = float.MinValue;
+        float minX = float.MaxValue;
+        float maxX = float.MinValue;
 
-    private List<Vector3Int> CalculatePositions(Vector3Int gridPosition, Vector3Int objectSize)
+        foreach (Vector3 vertex in positionsToOccupy)
+        {
+            Debug.Log(vertex);
+            minX = Mathf.Min(minX, vertex.x);
+            minZ = Mathf.Min(minZ, vertex.z);
+            maxX = Mathf.Max(maxX, vertex.x);
+            maxZ = Mathf.Max(maxZ, vertex.z);
+        }
+
+        Vector3 p0 = new(maxX, 0, maxZ);
+        Vector3 p3 = new(minX, 0, minZ);
+
+        Vector3 center = Vector3.Lerp(p0,p3,0.5f);
+
+        Debug.Log($"{minX} {maxX} {minZ} {maxZ} ");
+        Debug.Log($"p0 {p0} p3 {p3}");
+        //if(p0 == new Vector3(maxX, 0, maxZ) ||
+          //  p3 == new Vector3(minX, 0, minZ) ||
+            //p3 == p0) return 
+
+
+        return BuildingSystem.current.gridLayout.LocalToWorld(center);
+
+
+
+    }
+    private List<Vector3> CalculatePositions(Vector3 initialPos, Vector3 objectSize, Vector3 direction)
     {
         /*
-         * Return a list of Vector3Int with the positions occuppied by an object
+         * Return a list of Vector3 with the positions occuppied by an object
          * with an initial position at gridPosition and a size of objectSize
+         * direction is a vector of the form (x,0,y) being x,y ∈ {1,-1}
          */
 
-        List<Vector3Int> returnVal = new();
+        List<Vector3> returnVal = new();
         for(int x = 0; x< objectSize.x; x++)
         {
             for(int z=0; z < objectSize.z; z++)
             {
-                returnVal.Add(gridPosition + new Vector3Int(x, 0, z));
+                returnVal.Add(initialPos + Vector3.Scale(direction,new Vector3(x, 0, z)));
             }
         }
+
+        
         return returnVal;
     }
 
-    public PlacementData CanPlaceObjectAt(Vector3Int gridPosition, Vector3Int objectSize)
+    public PlacementData CanPlaceObjectAt(Vector3 gridPosition, Vector3 objectSize, Vector3 direction)
     {
         /*
          * Define wehter the object can be placed at a position given its size
          * If the object can't be placed the data of the grid position is returned
          * in other case null is returned indicating there's nothing in there.
          */
-        List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
+        List<Vector3> positionToOccupy = CalculatePositions(gridPosition, objectSize, direction);
         foreach(var pos in positionToOccupy)
         {
-            Debug.Log($"Position{pos}");
+            //Debug.Log($"Position{pos}");
             if(placedObjects.ContainsKey(pos))
             {
                 //Debug.Log($"Key that is contained: {pos}\n" +
@@ -95,13 +129,13 @@ public class GridData
             PlaceableObject placeableData = gObject.GetComponent<PlaceableObject>();
             Vector3 position = placeableData.GetStartPosition();
             gridData.AddObjectAt(
-                new Vector3Int(
+                new Vector3(
                     Mathf.FloorToInt(position.x),
                     0,
                     Mathf.FloorToInt(position.z)),
                 placeableData.Size,
-                gObject.GetInstanceID(),
-                gObject.GetInstanceID());
+                new(1,0,1),
+                gObject);
         }
         return gridData;
     }
@@ -109,15 +143,13 @@ public class GridData
 
 public class PlacementData
 {
-    public List<Vector3Int> occupiedPositions;
-    public int ID { get; private set; }
-    public int PlacedObjectIndex { get; private set; }
+    public List<Vector3> occupiedPositions;
+    public GameObject PlacedObject { get; private set; }
 
-    public PlacementData(List<Vector3Int> occuppiedPositions, int iD, int placedObjectIndex)
+    public PlacementData(List<Vector3> occuppiedPositions, GameObject placedObject)
     {
         this.occupiedPositions = occuppiedPositions;
-        ID = iD;
-        PlacedObjectIndex = placedObjectIndex;
+        PlacedObject = placedObject;
     }
 
 

@@ -44,13 +44,16 @@ public class DialogManager : MonoBehaviour
     public void DropItem()
     {
 
-        Vector3 position = FindAnyObjectByType<PlayerController>().transform.position;
         InventoryItem_ScriptableObject delItem = currentSelectedItem.itemSO;
         //Debug.Log($"Building system: {BuildingSystem.current}");
         //Debug.Log($"Item {delItem}");
         //Debug.Log($"Object3D: {delItem.object3D}");
-
-        bool droped = BuildingSystem.current.DropItem(delItem.object3D, position);
+        PlayerController player = FindAnyObjectByType<PlayerController>();
+        BuildingSystem buildSys = BuildingSystem.current;
+        bool droped = buildSys.DropItem(
+            delItem.object3D,
+            player.gameObject,
+            buildSys.LookingDirection(player.gameObject));
         if (droped)
         {
             // TODO only delete the visual item if the item is being droped
