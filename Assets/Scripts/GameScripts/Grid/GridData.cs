@@ -17,11 +17,12 @@ public class GridData
         /*
          * Add an object to the gridData
          */
-
+        gridPosition = new Vector3(gridPosition.x, 0, gridPosition.z);
         List<Vector3> positionsToOccupy = CalculatePositions(gridPosition, objectSize, direction);
         PlacementData data = new(positionsToOccupy, placedObject);
         foreach (var pos in positionsToOccupy)
         {
+            Debug.Log(pos);
             if(placedObjects.ContainsKey(pos))
             {
                 throw new Exception($"Cell in position {pos} already occupied");
@@ -39,7 +40,6 @@ public class GridData
 
         foreach (Vector3 vertex in positionsToOccupy)
         {
-            Debug.Log(vertex);
             minX = Mathf.Min(minX, vertex.x);
             minZ = Mathf.Min(minZ, vertex.z);
             maxX = Mathf.Max(maxX, vertex.x);
@@ -50,12 +50,6 @@ public class GridData
         Vector3 p3 = new(minX, 0, minZ);
 
         Vector3 center = Vector3.Lerp(p0,p3,0.5f);
-
-        Debug.Log($"{minX} {maxX} {minZ} {maxZ} ");
-        Debug.Log($"p0 {p0} p3 {p3}");
-        //if(p0 == new Vector3(maxX, 0, maxZ) ||
-          //  p3 == new Vector3(minX, 0, minZ) ||
-            //p3 == p0) return 
 
 
         return BuildingSystem.current.gridLayout.LocalToWorld(center);
@@ -91,6 +85,7 @@ public class GridData
          * If the object can't be placed the data of the grid position is returned
          * in other case null is returned indicating there's nothing in there.
          */
+        gridPosition = new Vector3(gridPosition.x, 0, gridPosition.z);
         List<Vector3> positionToOccupy = CalculatePositions(gridPosition, objectSize, direction);
         foreach(var pos in positionToOccupy)
         {
@@ -127,12 +122,9 @@ public class GridData
 
             // Then we add the object to the gridData with the corrected position
             PlaceableObject placeableData = gObject.GetComponent<PlaceableObject>();
-            Vector3 position = placeableData.GetStartPosition();
+            Vector3 position = placeableData.transform.position;
             gridData.AddObjectAt(
-                new Vector3(
-                    Mathf.FloorToInt(position.x),
-                    0,
-                    Mathf.FloorToInt(position.z)),
+                position,
                 placeableData.Size,
                 new(1,0,1),
                 gObject);
