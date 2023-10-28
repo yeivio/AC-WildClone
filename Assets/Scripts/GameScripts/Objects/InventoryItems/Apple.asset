@@ -16,6 +16,6 @@ MonoBehaviour:
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: Apple
   <ItemSprite>k__BackingField: {fileID: 21300000, guid: 577a17c02df0a6f4cb97de1847580972, type: 3}
-  <object3D>k__BackingField: {fileID: 839520325486491067, guid: a586e659928c05541ba5522bebb0f0dd, type: 3}
+  <object3D>k__BackingField: {fileID: 7380154711439901988, guid: c85dbb8aef5be43edb13ddbc3f90bdb2, type: 3}
   <IsPlantable>k__BackingField: 0
   <IsEatable>k__BackingField: 0
