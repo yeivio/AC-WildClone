@@ -15,7 +15,6 @@ public class PlayerInteractionsController : MonoBehaviour
     private MovableObject movingObject; // Object the player is moving
     private float moveObjectCooldown = 0.5f; //Cooldown of moving an object
     private float lastMovedTimestamp; // Timestamp of the last moment a player moved an object
-
     private void Start()
     {
         playerInput = this.GetComponent<PlayerInput>();
@@ -41,7 +40,6 @@ public class PlayerInteractionsController : MonoBehaviour
             interactingObject.TryGetComponent<TalkableObject>(out TalkableObject talkObj))
         {
             this.playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
-            //this.cam.SetActive(false);
             talkObj.talk();
 
         }
@@ -51,6 +49,12 @@ public class PlayerInteractionsController : MonoBehaviour
         {
             movingObject = movObj;
             playerInput.SwitchCurrentActionMap(Utils.MOVING_OBJECTS_INPUTMAP);
+        }
+
+        if (interactingObject.TryGetComponent<FishingObject>(out FishingObject fishObj))  // Fishing point
+        {
+            playerInput.SwitchCurrentActionMap(Utils.FISHING_INPUTMAP);
+            fishObj.interaction();
         }
     }
 

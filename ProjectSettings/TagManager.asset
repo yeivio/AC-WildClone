@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Grid
   - Hole
+  - FishingPoint
   layers:
   - Default
   - TransparentFX

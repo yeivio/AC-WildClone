@@ -488,6 +488,54 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "FishingUI",
+            "id": "af7e0ff0-1ba3-4a6a-9da8-7d9ad6cedf81",
+            "actions": [
+                {
+                    "name": "Fishing_Quit",
+                    "type": "Button",
+                    "id": "4d600c3c-9d4e-411b-ad38-fb389b1580ab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fishing_Action",
+                    "type": "Button",
+                    "id": "850cd76e-32b2-432b-a3d4-3e9b5080049e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2cd8fbba-3609-4c24-a22f-2e4b7be86551",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Fishing_Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fad141d-28c1-42e6-872b-73fd824ea925",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Fishing_Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
