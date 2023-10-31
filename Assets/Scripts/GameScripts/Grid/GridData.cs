@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 using System;
-using System.Xml.Linq;
-using UnityEngine.UIElements;
 
 public class GridData
 {
@@ -12,20 +9,26 @@ public class GridData
     public Vector3 AddObjectAt(Vector3 gridPosition,
                             Vector3 objectSize,
                             Vector3 direction,
-                            GameObject placedObject)
+                            GameObject objectToPlace)
     {
         /*
          * Add an object to the gridData
          */
+        BuildingSystem buildingSystem = BuildingSystem.current;
+        
         gridPosition = new Vector3(gridPosition.x, 0, gridPosition.z);
         List<Vector3> positionsToOccupy = CalculatePositions(gridPosition, objectSize, direction);
+        
+        GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, CentralPosition(positionsToOccupy));
         PlacementData data = new(positionsToOccupy, placedObject);
         foreach (var pos in positionsToOccupy)
         {
             //Debug.Log(pos);
             if(placedObjects.ContainsKey(pos))
             {
+                GameObject.Destroy(placedObject);
                 throw new Exception($"Cell in position {pos} already occupied");
+
             }
             placedObjects.Add(pos, data);
         }
@@ -130,6 +133,14 @@ public class GridData
                 gObject);
         }
         return gridData;
+    }
+    public void FreeSpace(PlacementData data)
+    {
+        GameObject.Destroy(data.PlacedObject.gameObject);
+        foreach(Vector3 position in data.occupiedPositions)
+        {
+            placedObjects.Remove(position);
+        }
     }
 }
 

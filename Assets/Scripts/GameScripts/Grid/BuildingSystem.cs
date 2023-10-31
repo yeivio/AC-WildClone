@@ -9,6 +9,7 @@ public class BuildingSystem : MonoBehaviour
     public GridLayout gridLayout; // reference to the grid where we will build
     private Grid grid; // Reference to the grid component of the grid GameObject
 
+    public PlaceableObject hole;
     public GameObject prefab1;
     [SerializeField] private Tile tile;
     [SerializeField] private Tilemap tilemap;
@@ -39,6 +40,11 @@ public class BuildingSystem : MonoBehaviour
             //Debug.Log($"{NextPositionInGrid(player.gameObject)}, {LookingDirection(player.gameObject)}");
             CheckDrop(NextPositionInGrid(player.gameObject), LookingDirection(player.gameObject));
         }
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            PlayerController player = FindAnyObjectByType<PlayerController>();
+            Dig(NextPositionInGrid(player.gameObject), LookingDirection(player.gameObject));
+        }
         
     }
 
@@ -64,7 +70,6 @@ public class BuildingSystem : MonoBehaviour
                 direction,
                 objectToPlace.gameObject);
             Debug.Log($"Object to be positioned at: {positionToPlace}");
-            InitializeWithObject(objectToPlace.gameObject, positionToPlace);
         }
         else if (
             objectToPlace.TryGetComponent<PlantableObject>(out PlantableObject toPlant) && // If we are trying to place a plant
@@ -122,10 +127,11 @@ public class BuildingSystem : MonoBehaviour
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlace = obj.GetComponent<PlaceableObject>();
     }
-    public void InitializeWithObject(GameObject prefab, Vector3 position)
+    public GameObject InitializeWithObject(GameObject prefab, Vector3 position)
     {
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlace = obj.GetComponent<PlaceableObject>();
+        return obj;
 
         //Debug.Log($"Termine de inicializar {objectToPlace} objeto");
     }
@@ -137,6 +143,28 @@ public class BuildingSystem : MonoBehaviour
             0,
             dif.z >= 0 ? 1 : -1
             ) ;
+    }
+
+    public bool Dig(Vector3 position, Vector3 direction)
+    {
+        Debug.Log("hola");
+        PlacementData placementData = gridData.CanPlaceObjectAt(position, hole.Size, direction);
+        if (placementData != null)
+        {
+            
+            if (placementData.PlacedObject.CompareTag("Hole"))
+            {
+                Debug.Log("holaaaa");
+                gridData.FreeSpace(placementData);
+            }
+                
+            // Free space
+            return false;
+        }
+        Debug.Log("adioh");
+        objectToPlace = hole;
+        CheckDrop(position, direction);
+        return true;
     }
 
 }

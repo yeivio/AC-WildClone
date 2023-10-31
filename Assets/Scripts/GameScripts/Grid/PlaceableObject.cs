@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class PlaceableObject : MonoBehaviour
 {
-    public Vector3Int Size;
+    public Vector3Int Size; // Size, compared with a cube
 
 
     /// <summary>
