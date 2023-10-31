@@ -51,11 +51,8 @@ public class PlayerInventoryManager : MonoBehaviour
     /// </summary>
     public void OpenInventory(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
-            this.inventoryBackground.SetActive(true);
-        }
+        playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
+        this.inventoryBackground.SetActive(true);
     }
 
     /// <summary>

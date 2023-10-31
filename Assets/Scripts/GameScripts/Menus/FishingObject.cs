@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class FishingObject : MonoBehaviour
 {
-    [SerializeField] private GameObject FishingUI;
+    [SerializeField] private FishingUI_Manager FishingUI;
     private PlayerInput playerInput;
 
     private void Start()
@@ -17,7 +17,7 @@ public class FishingObject : MonoBehaviour
     /// </summary>
     public void interaction()
     {
-        this.FishingUI.SetActive(true);
+        this.FishingUI.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ public class FishingObject : MonoBehaviour
     {
         if (!context.performed)
             return;
-        this.FishingUI.SetActive(false);
+        this.FishingUI.gameObject.SetActive(false);
         playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
     }
 }

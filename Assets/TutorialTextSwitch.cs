@@ -22,7 +22,7 @@ public class TutorialTextSwitch : MonoBehaviour
     {
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.FREEMOVE_INPUTMAP) && !this.free_move.activeSelf)
             activarUI(free_move);
-        if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.MOVING_OBJECTS_INPUTMAP) && !this.moving.activeSelf)
+        if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.MOVINGOBJECTS_INPUTMAP) && !this.moving.activeSelf)
             activarUI(moving);
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.UI_INPUTMAP) && !this.UI.activeSelf)
             activarUI(UI);

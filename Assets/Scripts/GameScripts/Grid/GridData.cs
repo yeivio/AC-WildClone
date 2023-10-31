@@ -22,7 +22,7 @@ public class GridData
         PlacementData data = new(positionsToOccupy, placedObject);
         foreach (var pos in positionsToOccupy)
         {
-            Debug.Log(pos);
+            //Debug.Log(pos);
             if(placedObjects.ContainsKey(pos))
             {
                 throw new Exception($"Cell in position {pos} already occupied");

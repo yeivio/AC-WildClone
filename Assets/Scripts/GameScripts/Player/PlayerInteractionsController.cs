@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.Interactions;
 public class PlayerInteractionsController : MonoBehaviour
 {
     [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory data
-    private PlayerInput playerInput; //Player input
+    [SerializeField] private PlayerInputController playerInputController;
     public GameObject cam;  //Player camera
 
     private Coroutine refCoroutines; // Different coroutines references
@@ -15,10 +15,7 @@ public class PlayerInteractionsController : MonoBehaviour
     private MovableObject movingObject; // Object the player is moving
     private float moveObjectCooldown = 0.5f; //Cooldown of moving an object
     private float lastMovedTimestamp; // Timestamp of the last moment a player moved an object
-    private void Start()
-    {
-        playerInput = this.GetComponent<PlayerInput>();
-    }
+    
     public void Interact(InputAction.CallbackContext context)
     {
         if (!context.performed || !interactingObject)
@@ -39,7 +36,7 @@ public class PlayerInteractionsController : MonoBehaviour
         if (context.interaction is PressInteraction && // Talking Object
             interactingObject.TryGetComponent<TalkableObject>(out TalkableObject talkObj))
         {
-            this.playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
+            this.playerInputController.SwitchInputMap(Utils.UI_INPUTMAP);
             talkObj.talk();
 
         }
@@ -48,12 +45,12 @@ public class PlayerInteractionsController : MonoBehaviour
             interactingObject.TryGetComponent<MovableObject>(out MovableObject movObj))
         {
             movingObject = movObj;
-            playerInput.SwitchCurrentActionMap(Utils.MOVING_OBJECTS_INPUTMAP);
+            this.playerInputController.SwitchInputMap(Utils.MOVINGOBJECTS_INPUTMAP);
         }
 
         if (interactingObject.TryGetComponent<FishingObject>(out FishingObject fishObj))  // Fishing point
         {
-            playerInput.SwitchCurrentActionMap(Utils.FISHING_INPUTMAP);
+            this.playerInputController.SwitchInputMap(Utils.FISHING_INPUTMAP);
             fishObj.interaction();
         }
     }
@@ -72,7 +69,7 @@ public class PlayerInteractionsController : MonoBehaviour
     {
         if (!context.performed)
             return;
-        playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
+        this.playerInputController.SwitchInputMap(Utils.FREEMOVE_INPUTMAP);
     }
 
     IEnumerator RotateFixedToInteraction(GameObject interactingObject)
