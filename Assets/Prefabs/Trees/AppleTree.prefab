@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6205565598688531231}
     m_Modifications:
+    - target: {fileID: 695344366282601617, guid: c85dbb8aef5be43edb13ddbc3f90bdb2, type: 3}
+      propertyPath: treePrefab
+      value: 
+      objectReference: {fileID: 6725362587514866085}
     - target: {fileID: 7380154711439901988, guid: c85dbb8aef5be43edb13ddbc3f90bdb2, type: 3}
       propertyPath: m_Name
       value: manzana
@@ -86,6 +90,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6205565598688531231}
     m_Modifications:
+    - target: {fileID: 695344366282601617, guid: c85dbb8aef5be43edb13ddbc3f90bdb2, type: 3}
+      propertyPath: treePrefab
+      value: 
+      objectReference: {fileID: 6725362587514866085}
     - target: {fileID: 7380154711439901988, guid: c85dbb8aef5be43edb13ddbc3f90bdb2, type: 3}
       propertyPath: m_Name
       value: manzana (2)
@@ -247,6 +255,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a30fe12eef4c4bc408aebaa38290a5b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3717715485638092455}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a30fe12eef4c4bc408aebaa38290a5b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5853372685337126850}
   m_SourcePrefab: {fileID: 100100000, guid: a30fe12eef4c4bc408aebaa38290a5b1, type: 3}
 --- !u!4 &6205565598688531231 stripped
 Transform:
@@ -302,6 +313,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.521465, y: 6.240667, z: 2.2047288}
   m_Center: {x: 0.053054627, y: 3.1042647, z: -0.09174032}
+--- !u!114 &5853372685337126850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725362587514866085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8e455523fd35142bcc031e53ccf180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: {x: 1, y: 0, z: 1}
 --- !u!1001 &8201125168012800635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -310,6 +334,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6205565598688531231}
     m_Modifications:
+    - target: {fileID: 695344366282601617, guid: c85dbb8aef5be43edb13ddbc3f90bdb2, type: 3}
+      propertyPath: treePrefab
+      value: 
+      objectReference: {fileID: 6725362587514866085}
     - target: {fileID: 7380154711439901988, guid: c85dbb8aef5be43edb13ddbc3f90bdb2, type: 3}
       propertyPath: m_Name
       value: manzana (1)

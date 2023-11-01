@@ -29,11 +29,9 @@ public class PlayerInteractionsController : MonoBehaviour
             Vector3 copia = pickObj.transform.position; //In case we need to respawn the object
             if (!inventoryData.AddItem(pickObj.inventorySprite))
             {
-                Debug.Log("cloni");
                 Instantiate(pickObj, copia, Quaternion.identity);
             }
             else{
-                Debug.Log("destroi");
                 pickObj.takeObject();
             }
         }

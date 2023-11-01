@@ -2,6 +2,7 @@
 
 public class PlantableObject : MonoBehaviour
 {
+	public GameObject treePrefab;
 	// Use this for initialization
 	void Start()
 	{

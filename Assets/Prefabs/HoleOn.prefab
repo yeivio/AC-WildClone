@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8d29d3e5903254e90b6491ea059d35c5, type: 3}
       propertyPath: m_TagString
-      value: Hole
+      value: Grid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66,6 +66,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d29d3e5903254e90b6491ea059d35c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2300209313976963527}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d29d3e5903254e90b6491ea059d35c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8322183731410336861}
   m_SourcePrefab: {fileID: 100100000, guid: 8d29d3e5903254e90b6491ea059d35c5, type: 3}
 --- !u!1 &8101766710319417597 stripped
 GameObject:
@@ -106,3 +109,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4500008, y: 3.3350706, z: 2.5189896}
   m_Center: {x: -0.046936035, y: 1.1675353, z: 0.031040192}
+--- !u!114 &8322183731410336861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101766710319417597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f91d71033bc54748bff953ba2c9dd8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

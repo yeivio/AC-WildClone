@@ -9,8 +9,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6678119
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.2823415
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: -8678823145569952518, guid: c000e0051a114469c953cdaa2a66d12e, type: 3}
     - target: {fileID: 919132149155446097, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
       propertyPath: m_Name
-      value: manzana
+      value: manzana_prefab
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
       propertyPath: m_TagString
@@ -73,6 +77,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4285914508198164603}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 695344366282601617}
   m_SourcePrefab: {fileID: 100100000, guid: 1a1b9bd60627b4e579bd994bdeef3a68, type: 3}
 --- !u!1 &7380154711439901988 stripped
 GameObject:
@@ -126,3 +133,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySprite: {fileID: 11400000, guid: 68602438d2be71042b30cdd8ce53649a, type: 2}
+--- !u!114 &695344366282601617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380154711439901988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9e9cf54fc8d4b08a5f15082e3afaab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treePrefab: {fileID: 6725362587514866085, guid: eabfc82bad6957348b9fb6968b118eed, type: 3}

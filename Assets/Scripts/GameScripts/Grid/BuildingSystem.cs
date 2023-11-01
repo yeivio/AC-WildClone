@@ -68,7 +68,6 @@ public class BuildingSystem : MonoBehaviour
         Vector3 cellPosition = SnapCoordinateToGrid(position);
         PlacementData canBePlace = gridData.CanPlaceObjectAt(cellPosition, objectToPlace.Size, direction);
         PlayerInteractionsController player = FindAnyObjectByType<PlayerInteractionsController>();
-        Debug.Log($"Object can be placed: {canBePlace == null}");
         if (canBePlace == null)
         {
             
@@ -81,12 +80,20 @@ public class BuildingSystem : MonoBehaviour
         }
         else if (
             objectToPlace.TryGetComponent<PlantableObject>(out PlantableObject toPlant) && // If we are trying to place a plant
-            player.interactingObject != null && // And we are interacting with something
-            player.interactingObject.CompareTag("Hole") // And that something is a hole
+            canBePlace.PlacedObject.TryGetComponent<HoleObject>(out HoleObject hole) // And that something is a hole
             )
         {
-            //Debug.Log("Planted");
-            Destroy(player.interactingObject);
+            Debug.Log("Hola");
+            objectToPlace = toPlant.treePrefab.GetComponent<PlaceableObject>();
+            gridData.FreeSpace(canBePlace);
+            Debug.Log("Holaaa");
+            Vector3 positionToPlace = gridData.AddObjectAt(
+                cellPosition,
+                objectToPlace.Size,
+                direction,
+                objectToPlace.gameObject);
+
+            return true;
         }
         else
         {
