@@ -28,11 +28,6 @@ public class BuildingSystem : MonoBehaviour
     private void Start()
     {
         gridData = GridData.Initialize();
-        List<PlacementData> neighbors = gridData.Neighbors(FindAnyObjectByType<PlayerController>().transform.position, 3);
-        foreach(PlacementData neighbor in neighbors)
-        {
-            Destroy(neighbor.PlacedObject);
-        }
         
     }
     private void Update()
