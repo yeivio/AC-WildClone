@@ -17,19 +17,23 @@ public class BuildingSystem : MonoBehaviour
     private PlaceableObject objectToPlace; // Component of the object to be placed on the grid
     private GridData gridData; // Data of the grid with the objects that are placed
 
-    private Vector3 centerFirstCell;
     private void Awake()
     {
         current = this; // Patron Singleton
         
         
         grid = gridLayout.gameObject.GetComponent<Grid>();
-        centerFirstCell = SnapCoordinateToGrid(new(0,0,0));
 
     }
     private void Start()
     {
         gridData = GridData.Initialize();
+        List<PlacementData> neighbors = gridData.Neighbors(FindAnyObjectByType<PlayerController>().transform.position, 3);
+        foreach(PlacementData neighbor in neighbors)
+        {
+            Destroy(neighbor.PlacedObject);
+        }
+        
     }
     private void Update()
     {
@@ -49,10 +53,19 @@ public class BuildingSystem : MonoBehaviour
     }
 
     public bool DropItem(GameObject objectToDrop, GameObject gObject, Vector3 direction)
+    // Drop Item thought to take the objectToDrop and place it at the front (forward axis) of the
+    // gObject ocupying the direction passed
     {
         objectToPlace = objectToDrop.GetComponent<PlaceableObject>();
         return CheckDrop(NextPositionInGrid(gObject), direction);
 
+    }
+    public bool DropItem(GameObject objectToDrop, GameObject gObject, Vector3 direction, Vector3 forward)
+    // Drop Item thought to take the objectToDrop and place it at the side specified by forward of the
+    // gObject ocupying the direction passed
+    {
+        objectToPlace = objectToDrop.GetComponent<PlaceableObject>();
+        return CheckDrop(NextPositionInGrid(gObject,forward), direction);
     }
     public bool CheckDrop(Vector3 position, Vector3 direction)
     {
@@ -115,6 +128,16 @@ public class BuildingSystem : MonoBehaviour
                 );
         return SnapCoordinateToGrid(sum);
     }
+    public Vector3 NextPositionInGrid(GameObject gObject, Vector3 forward)
+    {
+        Vector3 rot = forward.normalized;
+        Vector3 sum = (
+                rot *
+                current.gridLayout.cellSize.x +
+                gObject.transform.position
+                );
+        return SnapCoordinateToGrid(sum);
+    }
 
     /// <summary>
     /// Instanciador de objetos 
@@ -147,21 +170,17 @@ public class BuildingSystem : MonoBehaviour
 
     public bool Dig(Vector3 position, Vector3 direction)
     {
-        Debug.Log("hola");
         PlacementData placementData = gridData.CanPlaceObjectAt(position, hole.Size, direction);
         if (placementData != null)
         {
             
             if (placementData.PlacedObject.CompareTag("Hole"))
             {
-                Debug.Log("holaaaa");
                 gridData.FreeSpace(placementData);
             }
                 
-            // Free space
             return false;
         }
-        Debug.Log("adioh");
         objectToPlace = hole;
         CheckDrop(position, direction);
         return true;
