@@ -9,7 +9,7 @@ public class TreeManager : MonoBehaviour
 {
     [SerializeField] private Mesh[] treeLevels; // Saves the different tree meshes 
     [SerializeField] private Transform[] fruitPositions;    // Positions on the tree where the fruit should appear
-    [SerializeField] private GameObject fruit;  // @TODO Fruit the tree grows. This should be passed through an InventoryObject_SO
+    public GameObject fruit;  // @TODO Fruit the tree grows. This should be passed through an InventoryObject_SO
     [SerializeField] private int[] levelUpTimers;   // Min time that should pass for the tree to be able to upgrade into the next level
 
     private bool hasApples; // Tree has apples at this time
@@ -20,9 +20,10 @@ public class TreeManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(LevelUpTimer());
         existingTime = 0;
         hasApples = false;
+        this.GetComponent<MeshFilter>().mesh = treeLevels[currentLevel]; // Change into the first level mesh
+        StartCoroutine(LevelUpTimer());
     }
 
     /// <summary>

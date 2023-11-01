@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class PickableObject : MonoBehaviour
 {
-   [SerializeField] private InventoryItem_ScriptableObject inventorySprite;
+   public InventoryItem_ScriptableObject inventorySprite;
 
-   public InventoryItem_ScriptableObject takeObject()
+   public void takeObject()
    {
-        Destroy(gameObject);
-        return inventorySprite;
+        Destroy(this.gameObject);
    }
-
 }

@@ -25,8 +25,10 @@ public class PlayerInventory_ScriptableObject : ScriptableObject
     /// doesn't have enough space</returns>
     public bool AddItem(InventoryItem_ScriptableObject newItem)
     {
+
         if (inventoryItems.Count >= Size)
             return false;
+        Debug.Log("Add");
         inventoryItems.Add(newItem);
         OnAddItem?.Invoke(newItem, inventoryItems.Count-1);
         return true;
