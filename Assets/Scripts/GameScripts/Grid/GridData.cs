@@ -187,7 +187,52 @@ public class GridData
 
         return toReturn;
     }
-   
+
+    public List<Vector3> FreeNeighbors(Vector3 position, int howFar)
+    // Return the neighbors cell data to the position
+    // howFar indicate how far to look for neighbors
+    // howFar = 1 indicates to look for only the sourounding neighbors
+    {
+        position = BuildingSystem.current.SnapCoordinateToGrid(position);
+        List<Vector3> toReturn = new();
+
+        List<Vector3> vectors = new();
+        for (int i = 1; i <= howFar; i++)
+        {
+            vectors.Add(Vector3.forward * i);
+            vectors.Add(Vector3.back * i);
+            vectors.Add(Vector3.left * i);
+            vectors.Add(Vector3.right * i);
+            for (int j = 1; j <= howFar; j++)
+            {
+                vectors.Add(Vector3.right * j + Vector3.forward * i);
+                vectors.Add(Vector3.right * j + Vector3.back * i);
+                vectors.Add(Vector3.left * j + Vector3.forward * i);
+                vectors.Add(Vector3.left * j + Vector3.back * i);
+            }
+
+        };
+        Vector3 cellSize = new(
+            BuildingSystem.current.gridLayout.cellSize.x,
+            0,
+            BuildingSystem.current.gridLayout.cellSize.y);
+
+        foreach (Vector3 vector in vectors)
+        {
+            Vector3 aux = vector;
+
+            aux.Scale(cellSize);
+            if (placedObjects.ContainsKey(aux + position))
+            {
+                toReturn.Add(aux + position);
+            }
+
+        }
+
+
+        return toReturn;
+    }
+
 }
 
 public class PlacementData
