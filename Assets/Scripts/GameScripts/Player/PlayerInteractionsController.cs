@@ -56,6 +56,11 @@ public class PlayerInteractionsController : MonoBehaviour
             this.playerInputController.SwitchInputMap(Utils.FISHING_INPUTMAP);
             fishObj.interaction();
         }
+
+        if (interactingObject.TryGetComponent<TreeManager>(out TreeManager treeObj))  // Fishing point
+        {
+            treeObj.shakeTree();
+        }
     }
 
     public void MoveObject(InputAction.CallbackContext context)

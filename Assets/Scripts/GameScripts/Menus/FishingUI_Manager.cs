@@ -15,16 +15,21 @@ public class FishingUI_Manager : MonoBehaviour
     [SerializeField] private PlayerInventory_ScriptableObject playerInventory;
     [SerializeField] private InventoryItem_ScriptableObject fish;
 
+    private bool isCoroutineRunning;    // In case the object is called multiple times at the same time.
+
 
     private void Start()
     {
+        this.isCoroutineRunning = false;
         playerInput = FindAnyObjectByType<PlayerInput>();
     }
 
     private void OnEnable()
     {
-        keyPressed = false;
-        StartCoroutine(FishingAnimation());
+        if (!isCoroutineRunning) { 
+            keyPressed = false;
+            StartCoroutine(FishingAnimation());
+        }
     }
 
     private void OnDisable()
@@ -62,12 +67,12 @@ public class FishingUI_Manager : MonoBehaviour
     }
     IEnumerator FishingAnimation()
     {
-
+        isCoroutineRunning = true;
         while (!keyPressed)
         {
             float time = 0;
 
-            while (time < 1 && !keyPressed)
+            while (time < 1 && !keyPressed) // Going right animation
             {
                 cursor.transform.position = Vector3.Lerp(startingPoint.position, endingPoint.position, time);
                 time += Time.deltaTime * lerpSpeed;
@@ -76,12 +81,13 @@ public class FishingUI_Manager : MonoBehaviour
 
             time = 0;
 
-            while (time < 1 && !keyPressed)
+            while (time < 1 && !keyPressed) // Going left animation
             {
                 cursor.transform.position = Vector3.Lerp(endingPoint.position, startingPoint.position, time);
                 time += Time.deltaTime * lerpSpeed;
                 yield return null;
             }
         }
+        isCoroutineRunning = false;
     }
 }
