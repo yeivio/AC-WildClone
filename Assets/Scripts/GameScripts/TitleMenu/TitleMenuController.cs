@@ -1,16 +1,21 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleMenuController : MonoBehaviour
 {
-    [SerializeField] private Animator loadingAnimation;
-    public Animation anim;
-    
-    
+    [SerializeField] private GameObject panelLoading;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.anyKey)
-            loadingAnimation.Play(anim.ToString());
+        if (Input.anyKey) {
+            panelLoading.GetComponent<Animator>().enabled = true;
+
+        }
+    }
+
+    void eventoFinalAnimation()
+    {
+        SceneManager.LoadScene(1);
     }
 }
