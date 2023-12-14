@@ -7,7 +7,7 @@ using UnityEngine;
  * The fruitPositions should be empty gameobjects.*/ 
 public class TreeManager : MonoBehaviour
 {
-    [SerializeField] private Mesh[] treeLevels; // Saves the different tree meshes 
+    [SerializeField] private GameObject[] treeLevels; // Saves the different tree meshes 
     [SerializeField] private MeshRenderer[] fruitPositions;    // Positions on the tree where the fruit should appear
     public GameObject fruit;  // @TODO Fruit the tree grows. This should be passed through an InventoryObject_SO
     [SerializeField] private int[] levelUpTimers;   // Min time that should pass for the tree to be able to upgrade into the next level
@@ -16,14 +16,16 @@ public class TreeManager : MonoBehaviour
     private float existingTime; // Time passed since creation or the last time a player dropped the fruits
     private int currentLevel;   //  Current level of the tree
 
-    private const float TREE_UPDATE = 5f; // Const for set when the tree coroutines should continue their iterations
+    private const float TREE_UPDATE = 2f; // Const for set when the tree coroutines should continue their iterations
     private const float TREE_REFILL= 5f; // Minimun Time that should pass before refilling the tree with apples
+
+    private GameObject currentActiveObject;
 
     private void Start()
     {
         existingTime = 0;
         hasApples = false;
-        this.GetComponent<MeshFilter>().mesh = treeLevels[currentLevel]; // Change into the first level mesh
+        currentActiveObject = Instantiate(treeLevels[currentLevel], this.transform); // Change into the first level mesh
         StartCoroutine(LevelUpTimer());
     }
 
@@ -68,7 +70,8 @@ public class TreeManager : MonoBehaviour
             existingTime += TREE_UPDATE;  // Update timer
             if (existingTime >= levelUpTimers[currentLevel])    // Upgrade level
             {
-                this.GetComponent<MeshFilter>().mesh = treeLevels[currentLevel];
+                Destroy(currentActiveObject);
+                currentActiveObject = Instantiate(treeLevels[currentLevel], this.transform);
                 currentLevel++;
             }
             if (currentLevel >= levelUpTimers.Length)   // Last level
