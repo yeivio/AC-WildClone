@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput; // Input readed from the inputmap
     private Vector3 direction; // Vector3 created from the movementInput vector2
 
+    [SerializeField] private Animator playerModelAnimator;
+    [SerializeField] private AudioSource walkingSound;
+
     private void Start()
     {
         joystick_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_MOVE);
@@ -41,10 +44,21 @@ public class PlayerController : MonoBehaviour
         // Movement
         if (direction.magnitude >= 0.1f)
         {
+            if(!walkingSound.isPlaying)
+                walkingSound.Play();
+            playerModelAnimator.SetBool("isMoving", true);
+            
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             controller.Move(direction * currentSpeed * Time.deltaTime);
         }
+        else
+        {
+            walkingSound.Stop();
+            playerModelAnimator.SetBool("isMoving", false);
+        }
     }
+
+
 }
