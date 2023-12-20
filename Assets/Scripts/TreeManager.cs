@@ -14,12 +14,16 @@ public class TreeManager : MonoBehaviour
 
     private bool hasApples; // Tree has apples at this time
     private float existingTime; // Time passed since creation or the last time a player dropped the fruits
-    private int currentLevel;   //  Current level of the tree
+    public int currentLevel;   //  Current level of the tree
 
     private const float TREE_UPDATE = 2f; // Const for set when the tree coroutines should continue their iterations
     private const float TREE_REFILL= 5f; // Minimun Time that should pass before refilling the tree with apples
 
     private GameObject currentActiveObject;
+    public enum TreeState{
+        GROWING, FULL_GROWN
+    }
+
 
     private void Start()
     {
@@ -35,8 +39,11 @@ public class TreeManager : MonoBehaviour
     /// </summary>
     public void shakeTree()
     {
+        if(currentActiveObject.TryGetComponent<Animator>(out Animator animator))
+            animator.GetComponent<Animator>().Play("AppleTree_Shake");
         if (!hasApples)
             return;
+        
 
         if (!BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.forward * -1))
             BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(2, 0, 1), this.gameObject.transform.forward * -1);
@@ -100,5 +107,17 @@ public class TreeManager : MonoBehaviour
             objVector.enabled = true;
         }
         this.hasApples = true;
+    }
+
+
+    public TreeState getTreeState()
+    {
+        if (this.currentLevel > levelUpTimers.Length - 1) {
+            
+            return TreeState.FULL_GROWN;
+        
+        }
+        
+        return TreeState.GROWING;
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -15,7 +16,42 @@ public class PlayerInteractionsController : MonoBehaviour
     private MovableObject movingObject; // Object the player is moving
     private float moveObjectCooldown = 0.5f; //Cooldown of moving an object
     private float lastMovedTimestamp; // Timestamp of the last moment a player moved an object
-    
+
+    private PlayerAnimationManager playerAnimationManager;
+    private PlayerState currentPlayerState;
+
+    public bool hasShovel;
+    private GameObject shovel_item;
+
+    public enum PlayerState
+    {
+        EMPTY_HANDS,
+        SHOVEL
+    }
+
+    private void Start()
+    {
+        playerAnimationManager = this.GetComponent<PlayerAnimationManager>();
+        currentPlayerState = PlayerState.EMPTY_HANDS;
+        shovel_item = GameObject.FindGameObjectWithTag("Shovel");   // Find Shovel
+        shovel_item.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (hasShovel)
+        {
+            shovel_item.SetActive(true);
+            this.setPlayerState(PlayerState.SHOVEL);
+        }
+        else
+        {
+            shovel_item.SetActive(false);
+            this.setPlayerState(PlayerState.EMPTY_HANDS);
+        }
+    }
+
+
     public void Interact(InputAction.CallbackContext context)
     {
         if (!context.performed || !interactingObject)
@@ -26,6 +62,7 @@ public class PlayerInteractionsController : MonoBehaviour
         if (context.interaction is PressInteraction && // Pickup Object
             interactingObject.TryGetComponent<PickableObject>(out PickableObject pickObj))
         {
+            this.playerAnimationManager.PlayAnimaton(this.getPlayerState(), "PickingObject");
             Vector3 copia = pickObj.transform.position; //In case we need to respawn the object
             if (!inventoryData.AddItem(pickObj.inventorySprite))
             {
@@ -40,7 +77,7 @@ public class PlayerInteractionsController : MonoBehaviour
             interactingObject.TryGetComponent<TalkableObject>(out TalkableObject talkObj))
         {
             this.playerInputController.SwitchInputMap(Utils.UI_INPUTMAP);
-            talkObj.talk();
+            talkObj.talk(this);
 
         }
 
@@ -57,9 +94,28 @@ public class PlayerInteractionsController : MonoBehaviour
             fishObj.interaction();
         }
 
-        if (interactingObject.TryGetComponent<TreeManager>(out TreeManager treeObj))  // Fishing point
+        if (interactingObject.TryGetComponent<TreeManager>(out TreeManager treeObj))  // Tree object
         {
+            this.PlayerShakesTree(treeObj);
             treeObj.shakeTree();
+        }
+    }
+
+
+    public void PlayerShakesTree(TreeManager treeObj)
+    {
+        switch (treeObj.getTreeState())
+        {
+            case TreeManager.TreeState.GROWING:
+                {
+                    
+                }
+                break;
+            case TreeManager.TreeState.FULL_GROWN:
+                {
+                    this.playerAnimationManager.PlayAnimaton(this.getPlayerState(), "ShakingTree");
+                }
+                break;
         }
     }
 
@@ -118,5 +174,19 @@ public class PlayerInteractionsController : MonoBehaviour
     {
         interactingObject = null;
     }
+    public PlayerState getPlayerState()
+    {
+        return this.currentPlayerState;
+    }
 
+
+    public void setPlayerState(PlayerState state)
+    {
+        this.currentPlayerState = state;
+        this.GetComponentInChildren< Animator>().SetInteger("PlayerState", ((int)this.currentPlayerState));
+        if (state == PlayerState.SHOVEL)
+            shovel_item.SetActive(true);
+        else
+            shovel_item.SetActive(false);
+    }
 }

@@ -20,13 +20,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput; // Input readed from the inputmap
     private Vector3 direction; // Vector3 created from the movementInput vector2
 
-    [SerializeField] private Animator playerModelAnimator;
+    private Animator playerModelAnimator;
     [SerializeField] private AudioSource walkingSound;
 
     private void Start()
     {
         joystick_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_MOVE);
         sprint_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_SPRINT);
+        playerModelAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame

@@ -21,8 +21,12 @@ public class TalkableObject : MonoBehaviour
     }
 
 
-    public void talk()
+    public void talk(PlayerInteractionsController player)
     {
+        Vector3 targetPostition = new Vector3(player.transform.position.x,
+                                       this.transform.position.y,
+                                       player.transform.position.z);
+        this.transform.LookAt(targetPostition);
         OnTalk?.Invoke(config, this);
     }
     
