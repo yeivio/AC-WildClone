@@ -117,8 +117,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RippleSlimness: 5
-    - _RippledDesnity: 7
+    - _RippleSlimness: 3.01
+    - _RippledDesnity: 28.09
     - _RippledSpeed: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -126,6 +126,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _WaveSpeed: 0.09
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
