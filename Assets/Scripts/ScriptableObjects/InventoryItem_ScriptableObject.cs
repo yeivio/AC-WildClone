@@ -5,13 +5,29 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InventoryItems_ScriptableObject", menuName = "Custom Assets/InventoryItems")]
 public class InventoryItem_ScriptableObject : ScriptableObject
 {
-    [field: SerializeField] public bool IsStackable { get; set; }
-    [field: SerializeField] public int MaxStackSize { get; set; } = 1;
-    [field: SerializeField] public string Name { get; set; }
-    [field: SerializeField] public Sprite ItemSprite { get; set; }
-    [field: SerializeField] public GameObject object3D { get; set; }
-    [field: SerializeField] public bool IsPlantable { get; set; }
-    [field: SerializeField] public bool IsEatable { get; set; }
-    public int ID => GetInstanceID();
+    [Header("Atributos Visuales")]
+    [SerializeField] private Sprite _ItemSprite;
+    [SerializeField] private GameObject _object3D;
 
+    [Header("Atributos cuantitativos")]
+    [SerializeField] private bool _IsStackable;
+    [SerializeField] private int _MaxStackSize;
+
+    [Header("Atributos cualitativos")]
+    [SerializeField] private string _Name;
+    [SerializeField] private bool _IsPlantable;
+    [SerializeField] private bool _IsEatable;
+    [SerializeField] private bool _IsEquipable;
+    [SerializeField] private bool _IsDropeable;
+
+    public int ID => GetInstanceID();
+    public bool IsStackable => _IsStackable;
+    public int MaxStackSize => _MaxStackSize;
+    public string Name => _Name;
+    public Sprite ItemSprite => _ItemSprite;
+    public GameObject object3D => _object3D;
+    public bool IsPlantable => _IsPlantable;
+    public bool IsEatable => _IsEatable;
+    public bool IsEquipable => _IsEquipable;
+    public bool IsDropeable => _IsDropeable;
 }

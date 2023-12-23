@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa6427a4c71d5241998a6dfbba58cf1, type: 3}
   m_Name: Fish
   m_EditorClassIdentifier: 
-  <IsStackable>k__BackingField: 0
-  <MaxStackSize>k__BackingField: 1
-  <Name>k__BackingField: Fish
-  <ItemSprite>k__BackingField: {fileID: 21300000, guid: f7f57db981cb3624f9c1e12df1751d50, type: 3}
-  <object3D>k__BackingField: {fileID: 0}
-  <IsPlantable>k__BackingField: 0
-  <IsEatable>k__BackingField: 0
+  _ItemSprite: {fileID: 21300000, guid: f7f57db981cb3624f9c1e12df1751d50, type: 3}
+  _object3D: {fileID: 0}
+  _IsStackable: 0
+  _MaxStackSize: 0
+  _Name: pescado
+  _IsPlantable: 0
+  _IsEatable: 1
+  _IsEquipable: 0
+  _IsDropeable: 0

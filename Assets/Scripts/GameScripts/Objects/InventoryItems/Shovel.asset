@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa6427a4c71d5241998a6dfbba58cf1, type: 3}
   m_Name: Shovel
   m_EditorClassIdentifier: 
-  <IsStackable>k__BackingField: 0
-  <MaxStackSize>k__BackingField: 1
-  <Name>k__BackingField: Shovel
-  <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4ec398eac2cc7994e92761269ef2b8bf, type: 3}
-  <object3D>k__BackingField: {fileID: 558441926000658456, guid: ce7f4352c08855f488e5450102e6f531, type: 3}
-  <IsPlantable>k__BackingField: 0
-  <IsEatable>k__BackingField: 0
+  _ItemSprite: {fileID: 21300000, guid: 4ec398eac2cc7994e92761269ef2b8bf, type: 3}
+  _object3D: {fileID: 558441926000658456, guid: ce7f4352c08855f488e5450102e6f531, type: 3}
+  _IsStackable: 0
+  _MaxStackSize: 0
+  _Name: pala
+  _IsPlantable: 0
+  _IsEatable: 0
+  _IsEquipable: 1
+  _IsDropeable: 1
