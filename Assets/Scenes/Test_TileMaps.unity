@@ -694,6 +694,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -790,6 +794,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1171225044}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -887,6 +903,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -983,6 +1003,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 636155584}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -1819,6 +1851,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1915,6 +1951,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1275888233}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -1956,6 +2004,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2052,6 +2104,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1906419088}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -2241,6 +2305,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2337,6 +2405,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1286948625}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -2378,6 +2458,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2474,6 +2558,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 666345942}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -2587,6 +2683,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2683,6 +2783,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 836933589}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -2853,6 +2965,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2949,6 +3065,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1917106676}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -2979,6 +3107,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3075,6 +3207,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1474255038}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -3116,6 +3260,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3212,6 +3360,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1791779864}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -3702,6 +3862,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3798,6 +3962,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 734083388}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -3903,6 +4079,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3999,6 +4179,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1347519926}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -4040,6 +4232,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3232140919883717538, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4140,6 +4336,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 544640133}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -4393,6 +4601,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4489,6 +4701,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 2024513563}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -4771,6 +4995,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4867,6 +5095,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 2081428830}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -4995,7 +5235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem_Text: {fileID: 1515597318}
   closeMenu_Text: {fileID: 1076096795}
-  eatObject_Text: {fileID: 2008300353}
+  equipObject_Text: {fileID: 2008300353}
   plant_Text: {fileID: 1198303075}
   OnClose:
     m_PersistentCalls:
@@ -5552,6 +5792,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5648,6 +5892,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1872554977}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -5749,6 +6005,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5845,6 +6105,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1929088321}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -5943,6 +6215,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6039,6 +6315,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 527167771}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -6122,40 +6410,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764ab0c506424d44d99998c994bc9261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlots:
-  - {fileID: 9211404468364353936}
-  - {fileID: 1147702138}
-  - {fileID: 1893429536}
-  - {fileID: 1036930984}
-  - {fileID: 1506071182}
-  - {fileID: 976182754}
-  - {fileID: 1843956664}
-  - {fileID: 1929088322}
-  - {fileID: 1645039370}
-  - {fileID: 1992803232}
-  - {fileID: 1580351603}
-  - {fileID: 1474255039}
-  - {fileID: 566636766}
-  - {fileID: 1132411287}
-  - {fileID: 1872554979}
-  - {fileID: 1347519927}
-  - {fileID: 1395113213}
-  - {fileID: 1223071904}
-  - {fileID: 1791779865}
-  - {fileID: 1328889392}
-  - {fileID: 2133863295}
-  - {fileID: 734083389}
-  - {fileID: 941420223}
-  - {fileID: 2127159202}
-  - {fileID: 2024513565}
-  - {fileID: 666345943}
-  - {fileID: 658316090}
-  - {fileID: 1903945487}
-  - {fileID: 2081428832}
-  - {fileID: 1906419089}
+  invSlotsManager: {fileID: 1771266169}
   dialogWindow: {fileID: 1101997574}
   inventoryBackground: {fileID: 1771266165}
-  inventoryData: {fileID: 11400000, guid: 927889b4008211f43bd04a1c2791db77, type: 2}
 --- !u!1001 &1328889388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6164,6 +6421,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6260,6 +6521,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 913512714}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -6312,6 +6585,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6408,6 +6685,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 6379136491003441819}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -6795,6 +7084,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6891,6 +7184,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 201261140}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -7230,6 +7535,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7326,6 +7635,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 936168137}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -7356,6 +7677,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7452,6 +7777,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 724310654}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -7684,6 +8021,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7780,6 +8121,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 2127159200}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -7810,6 +8163,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7906,6 +8263,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 658316089}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -8595,15 +8964,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771266166}
+  - component: {fileID: 1771266169}
   - component: {fileID: 1771266168}
   - component: {fileID: 1771266167}
   m_Layer: 5
-  m_Name: PlayerInventory_Background
+  m_Name: PlayerInventory_Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1771266166
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8618,8 +8988,24 @@ RectTransform:
   m_Children:
   - {fileID: 2421116991283350527}
   - {fileID: 1088041899}
+  - {fileID: 2081428829}
+  - {fileID: 1040413657}
+  - {fileID: 1542580876}
+  - {fileID: 2127159199}
+  - {fileID: 2133863292}
+  - {fileID: 1328889389}
+  - {fileID: 913512713}
+  - {fileID: 1347519925}
   - {fileID: 936168136}
   - {fileID: 544640132}
+  - {fileID: 1563145265}
+  - {fileID: 658316088}
+  - {fileID: 666345941}
+  - {fileID: 836933588}
+  - {fileID: 734083387}
+  - {fileID: 1791779863}
+  - {fileID: 1223071901}
+  - {fileID: 1496622973}
   - {fileID: 1286948624}
   - {fileID: 527167770}
   - {fileID: 1275888232}
@@ -8630,22 +9016,6 @@ RectTransform:
   - {fileID: 1474255037}
   - {fileID: 201261139}
   - {fileID: 636155583}
-  - {fileID: 1496622973}
-  - {fileID: 1347519925}
-  - {fileID: 913512713}
-  - {fileID: 1223071901}
-  - {fileID: 1791779863}
-  - {fileID: 1328889389}
-  - {fileID: 2133863292}
-  - {fileID: 734083387}
-  - {fileID: 836933588}
-  - {fileID: 2127159199}
-  - {fileID: 1542580876}
-  - {fileID: 666345941}
-  - {fileID: 658316088}
-  - {fileID: 1040413657}
-  - {fileID: 2081428829}
-  - {fileID: 1563145265}
   m_Father: {fileID: 1304773344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8691,6 +9061,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771266165}
   m_CullTransparentMesh: 1
+--- !u!114 &1771266169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771266165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6cada8497c5dd43a9c6a83ebf58426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySlots:
+  - {fileID: 9211404468364353936}
+  - {fileID: 1147702138}
+  - {fileID: 2081428832}
+  - {fileID: 1903945487}
+  - {fileID: 2024513565}
+  - {fileID: 2127159202}
+  - {fileID: 2133863295}
+  - {fileID: 1328889392}
+  - {fileID: 1395113213}
+  - {fileID: 1347519927}
+  - {fileID: 1893429536}
+  - {fileID: 1036930984}
+  - {fileID: 1906419089}
+  - {fileID: 658316090}
+  - {fileID: 666345943}
+  - {fileID: 941420223}
+  - {fileID: 734083389}
+  - {fileID: 1791779865}
+  - {fileID: 1223071904}
+  - {fileID: 1872554979}
+  - {fileID: 1506071182}
+  - {fileID: 976182754}
+  - {fileID: 1843956664}
+  - {fileID: 1929088322}
+  - {fileID: 1645039370}
+  - {fileID: 1992803232}
+  - {fileID: 1580351603}
+  - {fileID: 1474255039}
+  - {fileID: 566636766}
+  - {fileID: 1132411287}
+  inventoryData: {fileID: 11400000, guid: 927889b4008211f43bd04a1c2791db77, type: 2}
 --- !u!1 &1782573857
 GameObject:
   m_ObjectHideFlags: 0
@@ -8838,6 +9252,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8934,6 +9352,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1223071902}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -9535,7 +9965,7 @@ GameObject:
   - component: {fileID: 2008300356}
   - component: {fileID: 2008300355}
   m_Layer: 5
-  m_Name: EatItem
+  m_Name: EquipItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9636,7 +10066,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Comer
+  m_text: Equipar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9735,6 +10165,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154a7738ccc611a4e8aa36f15f4fd77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2032101224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3232140919883717538, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+  m_PrefabInstance: {fileID: 2953513866584644228}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2072458042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7863358853436235678, guid: c85dbb8aef5be43edb13ddbc3f90bdb2, type: 3}
@@ -9748,6 +10189,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9844,6 +10289,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1903945485}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -10357,6 +10814,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10453,6 +10914,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 2133863293}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -10580,6 +11053,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10676,6 +11153,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1328889390}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 8944801556458000937, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000022888184
@@ -11067,9 +11556,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1771266166}
     m_Modifications:
+    - target: {fileID: 1280712749302863899, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
     - target: {fileID: 3232140919883717538, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232140919883717538, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232140919883717538, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Pivot.x
@@ -11152,6 +11653,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3881780720973209413, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881780720973209413, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.8934078
       objectReference: {fileID: 0}
@@ -11203,6 +11708,22 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 1088041900}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: itemImage
+      value: 
+      objectReference: {fileID: 2032101224}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: default_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: c765b40b68952f0489a922ebf3a5f5cf, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: focused_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c3f6c1094e9cd458deb978741ceb60, type: 3}
+    - target: {fileID: 6132790649500717267, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
+      propertyPath: selected_slotImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fc3c2f65d415d0f4190cb1942512629c, type: 3}
     - target: {fileID: 7565241070098345391, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_IsActive
       value: 0

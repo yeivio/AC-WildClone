@@ -1,50 +1,28 @@
-using NUnit.Framework.Internal;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-//This class is the manager in order to keep the PlayerInventory_SO, and activate and deactivate the player inventory UI and the dialog windows
+//This class is the manager in charge of opening and closing the player inventories menus
 public class PlayerInventoryManager : MonoBehaviour
 {
 
     [Header("Mandatory Assets")]
-    [SerializeField] private PlayerSlotManager[] inventorySlots = new PlayerSlotManager[30];
+    [SerializeField] private InventorySlotsManager invSlotsManager; // Player inventory slots manager
     [SerializeField] private DialogManager dialogWindow; // Dialog window reference
     [SerializeField] private GameObject inventoryBackground; // GameObject which contains the visuals of the player inventory
-    [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory container
 
     private PlayerInput playerInput; //Player input reference
 
     private void Start()
     {
-        inventorySlots[0].GetComponent<Button>().Select(); // Autoselect the first button for navigation
-
         playerInput = FindFirstObjectByType<PlayerInput>();
-        /* Event subscibe */
-        this.inventoryData.OnAddItem.AddListener(this.AddItem); 
-        this.dialogWindow.OnClose.AddListener(this.DialogClose);
 
-        this.dialogWindow.gameObject.SetActive(false);  // Hide the DialogWindow UI
-        this.inventoryBackground.SetActive(false);   // Hide the player inventory UI
+        // Hide all the UI
+        this.dialogWindow.gameObject.SetActive(false);  
+        this.inventoryBackground.SetActive(false);   
     }
-
-    /// <summary>
-    /// When an item is added to the playerInventory SO we pick the PlayerSlot of the given index and load the item SO
-    /// </summary>
-    private void AddItem(InventoryItem_ScriptableObject item, int index){ this.inventorySlots[index].SwitchItem(item); }
-    
-    /// <summary>
-    /// When an item is deleted from a playerslot, we update and remove the player inventory SO
-    /// </summary>
-    public void RemoveItem(InventoryItem_ScriptableObject item) { inventoryData.DeleteItem(item); }
-
-    
-    /// <summary>
-    /// When the dialog is closed, we force select the slot we were. This is to keep the navigation.
-    /// </summary>
-    private void DialogClose(PlayerSlotManager slot) { slot.gameObject.GetComponent<Button>().Select(); }
 
     /// <summary>
     /// When the player press the open inventory button, we switch the Action map and display the player inventory UI
@@ -63,7 +41,7 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         if (!context.performed)
             return;
-        if (EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>().itemSO) { 
+        if (EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>().GetItemSO()) { 
             this.dialogWindow.gameObject.SetActive(true);
         }
     }
@@ -80,7 +58,7 @@ public class PlayerInventoryManager : MonoBehaviour
 
         if (dialogWindow.gameObject.activeSelf) { // If dialogwindow is active, we only close dialogWindow
             dialogWindow.gameObject.SetActive(false);
-            inventorySlots[0].GetComponent<Button>().Select();
+            invSlotsManager.FocusItem(0);
         }
         else {
             this.dialogWindow.gameObject.SetActive(false);
