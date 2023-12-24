@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "Hold,Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FreeMove_UnequipItem",
+                    "type": "Button",
+                    "id": "b67fb77d-5e78-4f6f-81cf-d9186099ced9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -172,6 +181,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "FreeMove_Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9bb96ee2-81d2-4437-98b2-eade1f6119dc",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "FreeMove_UnequipItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,18 +1,17 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
 
 public class TitleMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject panelLoading;
     [SerializeField] private AudioSource theme_song;
 
+    public bool isOntitle; // This same script is used on the title menu and the start of the game. this will distinguish between the versions
 
     void Update()
     {
-        if (Input.anyKey) {
+        if (Input.anyKey && isOntitle) {
             panelLoading.GetComponent<Animator>().enabled = true;
             StartCoroutine(Countdown());
         }
@@ -21,6 +20,11 @@ public class TitleMenuController : MonoBehaviour
     void eventoFinalAnimation()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void stopFinalAnimation()
+    {
+        this.gameObject.SetActive(false);
     }
 
     IEnumerator Countdown()

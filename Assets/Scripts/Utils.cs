@@ -10,8 +10,9 @@ public class Utils
     public static string FREEMOVE_SPRINT { get; } = FREEMOVE_INPUTMAP + "_Sprint"; 
     public static string FREEMOVE_INVENTORY { get; } = FREEMOVE_INPUTMAP + "_Inventory";
     public static string FREEMOVE_INTERACT { get; } =  FREEMOVE_INPUTMAP + "_Interact";
+    public static string FREEMOVE_UNEQUIP_ITEM { get; } = FREEMOVE_INPUTMAP + "_UnequipItem";
     #endregion
-    
+
     #region UI inputMap
     public static string UI_INPUTMAP { get; } = "UI"; //Action map for when player is on an UI
     public static string UI_INPUTMAP_NAVIGATE { get; } = UI_INPUTMAP + "_Navigate"; 

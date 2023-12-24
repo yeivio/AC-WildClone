@@ -31,6 +31,7 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
         this.inventoryBackground.SetActive(true);
+
     }
 
     /// <summary>

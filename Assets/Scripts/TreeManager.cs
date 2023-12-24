@@ -11,6 +11,7 @@ public class TreeManager : MonoBehaviour
     [SerializeField] private MeshRenderer[] fruitPositions;    // Positions on the tree where the fruit should appear
     public GameObject fruit;  // @TODO Fruit the tree grows. This should be passed through an InventoryObject_SO
     [SerializeField] private int[] levelUpTimers;   // Min time that should pass for the tree to be able to upgrade into the next level
+    private AudioSource audioSource;
 
     private bool hasApples; // Tree has apples at this time
     private float existingTime; // Time passed since creation or the last time a player dropped the fruits
@@ -27,6 +28,7 @@ public class TreeManager : MonoBehaviour
 
     private void Start()
     {
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         existingTime = 0;
         hasApples = false;
         currentActiveObject = Instantiate(treeLevels[currentLevel], this.transform); // Change into the first level mesh
@@ -41,6 +43,8 @@ public class TreeManager : MonoBehaviour
     {
         if(currentActiveObject.TryGetComponent<Animator>(out Animator animator))
             animator.GetComponent<Animator>().Play("AppleTree_Shake");
+
+        audioSource.Play();
         if (!hasApples)
             return;
         

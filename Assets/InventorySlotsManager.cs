@@ -57,4 +57,10 @@ public class InventorySlotsManager : MonoBehaviour
         }
     }
 
+
+    public void removeItem(InventoryItem_ScriptableObject item)
+    {
+        if (item != null)
+            this.inventoryData.DeleteItem(item);
+    }
 }

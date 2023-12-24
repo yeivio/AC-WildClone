@@ -1,12 +1,9 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TalkableObject : MonoBehaviour
 {
     [SerializeField] private NPCConfig_ScriptableObject config;
-
-
-    public UnityEvent<NPCConfig_ScriptableObject, TalkableObject> OnTalk;   // Event for when a player talks with the npc
+    [SerializeField] private Npc_Dialogue npcText_UI;
 
     public GameObject cam;  //Dialogue camera
     
@@ -23,11 +20,14 @@ public class TalkableObject : MonoBehaviour
 
     public void talk(PlayerInteractionsController player)
     {
+        //Npc looks at player
         Vector3 targetPostition = new Vector3(player.transform.position.x,
                                        this.transform.position.y,
                                        player.transform.position.z);
         this.transform.LookAt(targetPostition);
-        OnTalk?.Invoke(config, this);
+
+        npcText_UI.gameObject.SetActive(true);
+        npcText_UI.StartDialogueBox(config, this);
     }
     
 }

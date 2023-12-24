@@ -37,21 +37,6 @@ public class PlayerInteractionsController : MonoBehaviour
         shovel_item.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (hasShovel)
-        {
-            shovel_item.SetActive(true);
-            this.setPlayerState(PlayerState.SHOVEL);
-        }
-        else
-        {
-            shovel_item.SetActive(false);
-            this.setPlayerState(PlayerState.EMPTY_HANDS);
-        }
-    }
-
-
     public void Interact(InputAction.CallbackContext context)
     {
         if (!context.performed || !interactingObject)
@@ -188,5 +173,21 @@ public class PlayerInteractionsController : MonoBehaviour
             shovel_item.SetActive(true);
         else
             shovel_item.SetActive(false);
+    }
+
+    public void EquipShovel()
+    {
+        shovel_item.SetActive(true);
+        this.setPlayerState(PlayerState.SHOVEL);
+    }
+
+    public void SaveShovel(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        if (this.currentPlayerState == PlayerState.EMPTY_HANDS)
+            return;
+        shovel_item.SetActive(false);
+        this.setPlayerState(PlayerState.EMPTY_HANDS);
     }
 }

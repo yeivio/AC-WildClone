@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -10,12 +9,14 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject closeMenu_Text;
     [SerializeField] private GameObject equipObject_Text;
     [SerializeField] private GameObject plant_Text;
+    [SerializeField] private PlayerInteractionsController playerController;
+
 
     private PlayerSlotManager currentSelectedItem;
 
-    public UnityEvent<PlayerSlotManager> OnClose;
-    public UnityEvent<PlayerSlotManager> OnCreate;
     private List<Button> listActiveButtons;
+
+  
 
     private void OnDisable()
     {
@@ -30,7 +31,6 @@ public class DialogManager : MonoBehaviour
     {
         this.listActiveButtons = new List<Button>();
         currentSelectedItem = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
-        OnCreate?.Invoke(currentSelectedItem);
 
         if (currentSelectedItem.GetItemSO().IsPlantable) {
             this.plant_Text.SetActive(true);
@@ -70,15 +70,20 @@ public class DialogManager : MonoBehaviour
         {
             // TODO only delete the visual item if the item is being droped
             // Possible solution drop the item on the position of the player
-            //currentSelectedItem.DropItem(currentSelectedItem.itemSO);
+            currentSelectedItem.removeItemSO();
             this.CloseMenu();
         }
         
     }
 
+    public void EquipItem()
+    {
+        playerController.EquipShovel();
+    }
+
     public void CloseMenu()
     {
-        this.OnClose?.Invoke(currentSelectedItem);
+        currentSelectedItem.gameObject.GetComponent<Button>().Select();
         this.gameObject.SetActive(false);
     }
 
