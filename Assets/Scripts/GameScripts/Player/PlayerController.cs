@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
 
     private Animator playerModelAnimator;
     [SerializeField] private AudioSource walkingSound;
-
+    [SerializeField] private ParticleSystem playerParticles;
+    private float defaultPlayerParticles = 0.78f;
+    private float sprintingPlayerParticles = 1.5f;
     private void Start()
     {
         joystick_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_MOVE);
@@ -46,15 +48,24 @@ public class PlayerController : MonoBehaviour
         {
             if(!walkingSound.isPlaying)
                 walkingSound.Play();
+
+            //Particles 
+            if(!playerParticles.isPlaying)
+                playerParticles.Play();
+            if(this.currentSpeed == sprintSpeed) { playerParticles.startSize = sprintingPlayerParticles; } else { playerParticles.startSize = defaultPlayerParticles; }
+
+            //Animation
             playerModelAnimator.SetBool("isMoving", true);
             
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             controller.Move(direction * currentSpeed * Time.deltaTime);
+
         }
         else
         {
+            this.playerParticles.Stop();
             walkingSound.Stop();
             playerModelAnimator.SetBool("isMoving", false);
         }
