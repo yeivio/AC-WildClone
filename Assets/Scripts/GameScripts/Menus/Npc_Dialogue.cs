@@ -9,6 +9,8 @@ public class Npc_Dialogue : MonoBehaviour
     [SerializeField] private TextMeshProUGUI villagerText;  // Text box for dialogue text
     [SerializeField] private TextMeshProUGUI villagerName;  // Text box for villager name text
     [SerializeField] private NPCConfig_ScriptableObject OnNPCInteract;  // Villager dialogue data
+    [SerializeField] private AudioClip npcTalk_clip;  // Villager talking audio
+
 
     [Header("Dialogue config")]
     [SerializeField] private float speedText = 0.05f;   // Speed of the appearing text
@@ -18,9 +20,11 @@ public class Npc_Dialogue : MonoBehaviour
     private bool isActive;  // Tracks if the dialog window is active
     private bool isCoroutineActive;
     private int visibleChar = 0;    // Current visible chars
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         input = FindAnyObjectByType<PlayerInput>();
         isActive = false;
     }
@@ -29,7 +33,7 @@ public class Npc_Dialogue : MonoBehaviour
     {
         if (isCoroutineActive && Input.anyKeyDown) // Speedup the dialog appearing text
             this.speedText = this.speedText / 5;
-
+        
     }
 
     /// <summary>
@@ -47,16 +51,18 @@ public class Npc_Dialogue : MonoBehaviour
         villagerName.text = config.name;
         villagerText.maxVisibleCharacters = visibleChar;
         isActive = true;
-        
+
+        input.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
         this.talkObj.EnableCamera(); // Enable the npc camera
         StartCoroutine(slowText());
+
 
     }
 
     /// <summary>
     /// If the dialogbox is active, disable all the dialog UI, disable the dialogue camera and change the input map to FREEMOVE
     /// </summary>
-    public void CloseDialog()
+    public void CloseDialog(InputAction.CallbackContext context)
     {
         if (!isActive)
             return;
@@ -75,13 +81,15 @@ public class Npc_Dialogue : MonoBehaviour
     /// <returns></returns>
     IEnumerator slowText()
     {
+        audioSource.PlayOneShot(npcTalk_clip);
         this.isCoroutineActive = true;
         int visibleChar = 0;
         int fullTextSize = OnNPCInteract.dialogue.Length;
+        float audioDuration = this.npcTalk_clip.length;
         while (visibleChar < fullTextSize)
         {
             villagerText.maxVisibleCharacters = visibleChar;
-            yield return new WaitForSeconds(speedText);
+            yield return new WaitForSeconds(audioDuration / fullTextSize);
             visibleChar++;
         }
         this.isCoroutineActive = false;

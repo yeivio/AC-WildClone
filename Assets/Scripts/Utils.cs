@@ -32,7 +32,8 @@ public class Utils
     #region Fishing UI inputMap
     public static string FISHING_INPUTMAP { get; } = "FishingUI"; // ActionMap for when a player is fishing
     public static string FISHING_INPUTMAP_ACTION { get; } = FISHING_INPUTMAP + "_Action"; 
-    public static string FISHING_INPUTMAP_QUIT { get; } = FISHING_INPUTMAP + "_Quit"; 
+    public static string FISHING_INPUTMAP_QUIT { get; } = FISHING_INPUTMAP + "_Quit";
 
     #endregion
+
 }

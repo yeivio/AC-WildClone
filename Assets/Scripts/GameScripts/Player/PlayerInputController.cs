@@ -14,7 +14,7 @@ public class PlayerInputController : MonoBehaviour
     public PlayerInteractionsController interactionController;
     public FishingObject fishingObj;
     public FishingUI_Manager fishingUI;
-
+    public Npc_Dialogue npcdialog;
 
     private void Start()
     { 
@@ -25,6 +25,7 @@ public class PlayerInputController : MonoBehaviour
 
         //UI ACTIONS
         this.inputAction.FindAction(Utils.UI_INPUTMAP_CLOSEMENU).performed += this.inventoryManager.CloseMenu;
+        this.inputAction.FindAction(Utils.UI_INPUTMAP_CLOSEMENU).performed += this.npcdialog.CloseDialog;
         this.inputAction.FindAction(Utils.UI_INPUTMAP_ALTERNATIVECONFIRM).performed += this.inventoryManager.OpenDialogWindow;
 
         //MOVING OBJECTS ACTIONS
