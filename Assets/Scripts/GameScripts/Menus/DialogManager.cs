@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class DialogManager : MonoBehaviour
 {
@@ -56,6 +57,8 @@ public class DialogManager : MonoBehaviour
 
     public void DropItem()
     {
+        PlayerInteractionsController playerInteraction = FindAnyObjectByType<PlayerInteractionsController>();
+
         InventoryItem_ScriptableObject delItem = currentSelectedItem.GetItemSO();
         //Debug.Log($"Building system: {BuildingSystem.current}");
         //Debug.Log($"Item {delItem}");
@@ -70,6 +73,10 @@ public class DialogManager : MonoBehaviour
         {
             // TODO only delete the visual item if the item is being droped
             // Possible solution drop the item on the position of the player
+
+            //Checks if the object is equipped 
+            if (playerInteraction.getEquippedItem() == delItem)
+                playerInteraction.UnequipItem();
             currentSelectedItem.removeItemSO();
             this.CloseMenu();
         }
@@ -78,7 +85,7 @@ public class DialogManager : MonoBehaviour
 
     public void EquipItem()
     {
-        playerController.EquipShovel();
+        playerController.EquipItem(this.currentSelectedItem.GetItemSO());
     }
 
     public void CloseMenu()

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ItemSprite: {fileID: 21300000, guid: 4ec398eac2cc7994e92761269ef2b8bf, type: 3}
   _object3D: {fileID: 558441926000658456, guid: ce7f4352c08855f488e5450102e6f531, type: 3}
+  _equipableModel: {fileID: 3962648714174023398, guid: 26ea856d17537a8448708d14ffabd29c, type: 3}
   _IsStackable: 0
   _MaxStackSize: 0
   _Name: pala

@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 //This class is the manager in charge of opening and closing the player inventories menus
 public class PlayerInventoryManager : MonoBehaviour

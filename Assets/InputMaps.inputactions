@@ -556,6 +556,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "NPC_TALK",
+            "id": "e84eb8f8-5d0b-4d88-8020-936a015a94ca",
+            "actions": [
+                {
+                    "name": "NPC_TALK_Quit",
+                    "type": "Button",
+                    "id": "be0c374a-cd41-4e8c-b27f-ffa6971130fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a6cb1dc0-3dba-479d-a096-a0f0ffb328bb",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

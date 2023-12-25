@@ -8,6 +8,7 @@ TagManager:
   - Hole
   - FishingPoint
   - Shovel
+  - EquipableItem
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class InventoryItem_ScriptableObject : ScriptableObject
     [Header("Atributos Visuales")]
     [SerializeField] private Sprite _ItemSprite;
     [SerializeField] private GameObject _object3D;
+    [SerializeField] private GameObject _equipableModel;
 
     [Header("Atributos cuantitativos")]
     [SerializeField] private bool _IsStackable;
@@ -26,6 +27,7 @@ public class InventoryItem_ScriptableObject : ScriptableObject
     public string Name => _Name;
     public Sprite ItemSprite => _ItemSprite;
     public GameObject object3D => _object3D;
+    public GameObject equipableModel => _equipableModel;
     public bool IsPlantable => _IsPlantable;
     public bool IsEatable => _IsEatable;
     public bool IsEquipable => _IsEquipable;

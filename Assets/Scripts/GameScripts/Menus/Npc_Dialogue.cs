@@ -52,7 +52,7 @@ public class Npc_Dialogue : MonoBehaviour
         villagerText.maxVisibleCharacters = visibleChar;
         isActive = true;
 
-        input.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
+        input.SwitchCurrentActionMap(Utils.NPC_TALK_INPUTMAP);
         this.talkObj.EnableCamera(); // Enable the npc camera
         StartCoroutine(slowText());
 
