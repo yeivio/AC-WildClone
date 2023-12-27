@@ -7,17 +7,32 @@ public class TitleMenuController : MonoBehaviour
     [SerializeField] private GameObject panelLoading;
     [SerializeField] private AudioSource theme_song;
 
+    [SerializeField] private AudioSource boatSound;
+    [SerializeField] private AudioSource boatWater;
+
+
     public bool isOntitle; // This same script is used on the title menu and the start of the game. this will distinguish between the versions
+
+    private void Start()
+    {
+        if (!isOntitle)
+        {
+            this.gameObject.GetComponent<Animator>().enabled = true;
+            this.gameObject.GetComponent<Animator>().Play("FadeOut");
+        }
+    }
 
     void Update()
     {
         if (Input.anyKey && isOntitle) {
             panelLoading.GetComponent<Animator>().enabled = true;
             StartCoroutine(Countdown());
+            boatSound.Play();
+            boatWater.Play();
         }
     }
 
-    void eventoFinalAnimation()
+    public void eventoFinalAnimation()
     {
         SceneManager.LoadScene(1);
     }

@@ -26,7 +26,7 @@ public class TutorialTextSwitch : MonoBehaviour
             activarUI(moving);
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.UI_INPUTMAP) && !this.UI.activeSelf)
             activarUI(UI);
-        if(playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.NPC_TALK_INPUTMAP) && !this.UI.activeSelf)
+        if(playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.NPC_TALK_INPUTMAP) && !this.NPC_Talk.activeSelf)
             activarUI(NPC_Talk);
     }
 
