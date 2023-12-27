@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ScaledMap.unity
-    guid: 337a5c443e8a44de69df800f8679e597
+    path: Assets/Scenes/TitleMenu.unity
+    guid: 489bbdef9819fc646abdc0dbc6bc2048
+  - enabled: 1
+    path: Assets/Scenes/Test_TileMaps.unity
+    guid: 7c455cf5759fc314fa1d027038c6f6ed
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

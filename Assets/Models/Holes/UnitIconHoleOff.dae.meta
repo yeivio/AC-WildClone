@@ -3,7 +3,12 @@ guid: 90207d246d2214206bd49aebc174b641
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mUnitIconHoleOff
+    second: {fileID: 2100000, guid: 2e030468f18a2574a8ab3d293534f35c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

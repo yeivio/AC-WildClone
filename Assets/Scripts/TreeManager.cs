@@ -7,22 +7,31 @@ using UnityEngine;
  * The fruitPositions should be empty gameobjects.*/ 
 public class TreeManager : MonoBehaviour
 {
-    [SerializeField] private Mesh[] treeLevels; // Saves the different tree meshes 
-    [SerializeField] private Transform[] fruitPositions;    // Positions on the tree where the fruit should appear
+    [SerializeField] private GameObject[] treeLevels; // Saves the different tree meshes 
+    [SerializeField] private MeshRenderer[] fruitPositions;    // Positions on the tree where the fruit should appear
     public GameObject fruit;  // @TODO Fruit the tree grows. This should be passed through an InventoryObject_SO
     [SerializeField] private int[] levelUpTimers;   // Min time that should pass for the tree to be able to upgrade into the next level
+    private AudioSource audioSource;
 
     private bool hasApples; // Tree has apples at this time
-    private int existingTime; // Time passed since creation or the last time a player dropped the fruits
-    private int currentLevel;   //  Current level of the tree
+    private float existingTime; // Time passed since creation or the last time a player dropped the fruits
+    public int currentLevel;   //  Current level of the tree
 
-    private const float TREE_UPDATE = 5f; // Const for set when the tree coroutines should continue their iterations
+    private const float TREE_UPDATE = 2f; // Const for set when the tree coroutines should continue their iterations
+    private const float TREE_REFILL= 5f; // Minimun Time that should pass before refilling the tree with apples
+
+    private GameObject currentActiveObject;
+    public enum TreeState{
+        GROWING, FULL_GROWN
+    }
+
 
     private void Start()
     {
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         existingTime = 0;
         hasApples = false;
-        this.GetComponent<MeshFilter>().mesh = treeLevels[currentLevel]; // Change into the first level mesh
+        currentActiveObject = Instantiate(treeLevels[currentLevel], this.transform); // Change into the first level mesh
         StartCoroutine(LevelUpTimer());
     }
 
@@ -32,8 +41,29 @@ public class TreeManager : MonoBehaviour
     /// </summary>
     public void shakeTree()
     {
+        if(currentActiveObject.TryGetComponent<Animator>(out Animator animator))
+            animator.GetComponent<Animator>().Play("AppleTree_Shake");
+
+        audioSource.Play();
         if (!hasApples)
             return;
+        
+
+        if (!BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.forward * -1))
+            BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(2, 0, 1), this.gameObject.transform.forward * -1);
+
+        if (!BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.right))
+            BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(1, 0, 2), this.gameObject.transform.forward * -1);
+
+        if (!BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.right * -1))
+            BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(2, 0, 1), this.gameObject.transform.forward * -1);
+
+        this.hasApples = false;
+        foreach (MeshRenderer objVector in fruitPositions)
+        {
+            objVector.enabled = false;
+        }
+        StartCoroutine(TreeRefiller());
     }
 
     /// <summary>
@@ -48,19 +78,50 @@ public class TreeManager : MonoBehaviour
         while (currentLevel < levelUpTimers.Length)
         {
             yield return new WaitForSeconds(TREE_UPDATE);
-            existingTime += 5;  // Update timer
+            existingTime += TREE_UPDATE;  // Update timer
             if (existingTime >= levelUpTimers[currentLevel])    // Upgrade level
             {
-                this.GetComponent<MeshFilter>().mesh = treeLevels[currentLevel];
+                Destroy(currentActiveObject);
+                currentActiveObject = Instantiate(treeLevels[currentLevel], this.transform);
                 currentLevel++;
             }
             if (currentLevel >= levelUpTimers.Length)   // Last level
             {
-                foreach (Transform objVector in fruitPositions)
-                    Instantiate(this.fruit, objVector); 
+                foreach (MeshRenderer objVector in fruitPositions) {
+                    objVector.enabled = true;
+                }
+                this.hasApples = true;
                 currentLevel = levelUpTimers.Length + 1; // Break
                 yield return null;
             }
         }
+    }
+
+    private IEnumerator TreeRefiller()
+    {
+        existingTime = 0;
+        while (existingTime < TREE_REFILL)
+        {
+            yield return new WaitForSeconds(TREE_UPDATE);
+            existingTime += TREE_UPDATE;  // Update 
+        }
+
+        foreach (MeshRenderer objVector in fruitPositions)
+        {
+            objVector.enabled = true;
+        }
+        this.hasApples = true;
+    }
+
+
+    public TreeState getTreeState()
+    {
+        if (this.currentLevel > levelUpTimers.Length - 1) {
+            
+            return TreeState.FULL_GROWN;
+        
+        }
+        
+        return TreeState.GROWING;
     }
 }
