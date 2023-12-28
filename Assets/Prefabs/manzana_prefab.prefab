@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySprite: {fileID: 11400000, guid: 68602438d2be71042b30cdd8ce53649a, type: 2}
+  bS: {fileID: 0}
 --- !u!114 &695344366282601617
 MonoBehaviour:
   m_ObjectHideFlags: 0

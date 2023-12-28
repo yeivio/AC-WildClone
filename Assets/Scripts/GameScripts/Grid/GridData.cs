@@ -232,6 +232,15 @@ public class GridData
 
         return toReturn;
     }
+    public void FreeObject(Vector3 position)
+    // Free the spaces ocupied by the object in the position passed as argument
+    {
+        PlacementData data;
+        if (placedObjects.TryGetValue(position, out data))
+        {
+            FreeSpace(data);
+        }
+    }
 
 }
 
