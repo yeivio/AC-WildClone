@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class BuildingSystem : MonoBehaviour
 {
@@ -61,6 +62,11 @@ public class BuildingSystem : MonoBehaviour
     {
         objectToPlace = objectToDrop.GetComponent<PlaceableObject>();
         return CheckDrop(NextPositionInGrid(gObject,forward), direction);
+    }
+    public void PickItem(GameObject objectToDrop)
+    {
+        Vector3 cellPosition = SnapCoordinateToGrid(objectToDrop.transform.position);
+        gridData.FreeObject(cellPosition);
     }
     public bool CheckDrop(Vector3 position, Vector3 direction)
     {
