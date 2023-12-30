@@ -19,21 +19,29 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput; // Input readed from the inputmap
     private Vector3 direction; // Vector3 created from the movementInput vector2
 
-    private Animator playerModelAnimator;
+    private PlayerAnimationManager playerModelAnimator;    // Player animation manager
     [SerializeField] private AudioSource walkingSound;
     [SerializeField] private ParticleSystem playerParticles;
     private float defaultPlayerParticles = 0.78f;
     private float sprintingPlayerParticles = 1.5f;
+
+    private bool canMove; // Variable for enable/disable player movement
+
     private void Start()
     {
+        playerModelAnimator = this.gameObject.GetComponent<PlayerAnimationManager>();
         joystick_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_MOVE);
         sprint_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_SPRINT);
-        playerModelAnimator = GetComponentInChildren<Animator>();
+        canMove = true;
     }
 
     // Update is called once per frame
+    [System.Obsolete]
     private void Update()
     {
+        if (!canMove)   // When movement is disable, you can't move
+            return;
+
         movementInput = joystick_input.ReadValue<Vector2>();
         direction = new Vector3(movementInput[0], 0, movementInput[1]);
 
@@ -55,7 +63,7 @@ public class PlayerController : MonoBehaviour
             if(this.currentSpeed == sprintSpeed) { playerParticles.startSize = sprintingPlayerParticles; } else { playerParticles.startSize = defaultPlayerParticles; }
 
             //Animation
-            playerModelAnimator.SetBool("isMoving", true);
+            playerModelAnimator.getActivePlayerAnimator().SetBool("isMoving", true);
             
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -67,9 +75,18 @@ public class PlayerController : MonoBehaviour
         {
             this.playerParticles.Stop();
             walkingSound.Stop();
-            playerModelAnimator.SetBool("isMoving", false);
+            playerModelAnimator.getActivePlayerAnimator().SetBool("isMoving", false);
         }
     }
 
 
+    public void disableMovement()
+    {
+        this.canMove = false;
+    }
+
+    public void enableMovement()
+    {
+        this.canMove = true;
+    }
 }

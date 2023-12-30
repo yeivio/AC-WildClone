@@ -10,7 +10,7 @@ public class PlayerInteractionsController : MonoBehaviour
     [SerializeField] private PlayerInputController playerInputController;
     public GameObject cam;  //Player camera
 
-    public GameObject interactingObject; //Object which they player is interacting
+    private GameObject interactingObject; //Object which they player is interacting
 
     private MovableObject movingObject; // Object the player is moving
     private float moveObjectCooldown = 0.5f; //Cooldown of moving an object
@@ -84,7 +84,6 @@ public class PlayerInteractionsController : MonoBehaviour
             this.PlayerShakesTree(treeObj);
             treeObj.shakeTree();
         }
-        Debug.Log("pl" + interactingObject);
     }
 
 

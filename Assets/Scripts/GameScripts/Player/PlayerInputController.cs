@@ -50,6 +50,10 @@ public class PlayerInputController : MonoBehaviour
         playerInput.SwitchCurrentActionMap(newMap);
     }
 
+    /// <summary>
+    /// Detects the current device the player is using and switches the UI Icons.
+    /// </summary>
+    /// <param name="input"></param>
     public void ControlChange(PlayerInput input)
     {
         if(input.currentControlScheme == input.defaultControlScheme)

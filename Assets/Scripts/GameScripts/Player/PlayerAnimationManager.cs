@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static PlayerInteractionsController;
 
 public class PlayerAnimationManager : MonoBehaviour
 {
-    
+
     private Animator playerAnimator;
 
     private void Start()
@@ -48,7 +49,6 @@ public class PlayerAnimationManager : MonoBehaviour
 
             case "ShakingTree":
                 {
-                    Debug.Log("ShakingTree");
                     playerAnimator.Play("ShakingTree_EmptyHands");
                 }
                 break;
@@ -77,7 +77,7 @@ public class PlayerAnimationManager : MonoBehaviour
 
             case "ShakingTree":
                 {
-                    Debug.Log("ShakingTree");
+                    
                     playerAnimator.Play("ShakingTree_Shovel");
                 }
                 break;
@@ -87,5 +87,15 @@ public class PlayerAnimationManager : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void updatePlayerAnimator()
+    {
+        playerAnimator = GetComponentInChildren<Animator>();
+    }
+
+    public Animator getActivePlayerAnimator()
+    {
+        return this.playerAnimator;
     }
 }
