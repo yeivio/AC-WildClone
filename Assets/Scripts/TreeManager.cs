@@ -9,7 +9,7 @@ public class TreeManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] treeLevels; // Saves the different tree meshes 
     [SerializeField] private MeshRenderer[] fruitPositions;    // Positions on the tree where the fruit should appear
-    public GameObject fruit;  // @TODO Fruit the tree grows. This should be passed through an InventoryObject_SO
+    public GameObject fruit;  // Fruit the tree grows.
     [SerializeField] private int[] levelUpTimers;   // Min time that should pass for the tree to be able to upgrade into the next level
     private AudioSource audioSource;
 
@@ -41,10 +41,10 @@ public class TreeManager : MonoBehaviour
     /// </summary>
     public void shakeTree()
     {
-        if(currentActiveObject.TryGetComponent<Animator>(out Animator animator))
+        if(currentActiveObject.TryGetComponent(out Animator animator)) { 
             animator.GetComponent<Animator>().Play("AppleTree_Shake");
-
-        audioSource.Play();
+            audioSource.Play();
+        }
         if (!hasApples)
             return;
         
@@ -79,7 +79,7 @@ public class TreeManager : MonoBehaviour
         {
             yield return new WaitForSeconds(TREE_UPDATE);
             existingTime += TREE_UPDATE;  // Update timer
-            if (existingTime >= levelUpTimers[currentLevel])    // Upgrade level
+            if (existingTime >= levelUpTimers[currentLevel])    // Upgrade level if not visible
             {
                 Destroy(currentActiveObject);
                 currentActiveObject = Instantiate(treeLevels[currentLevel], this.transform);

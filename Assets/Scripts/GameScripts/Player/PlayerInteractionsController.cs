@@ -74,6 +74,7 @@ public class PlayerInteractionsController : MonoBehaviour
 
         if (interactingObject.TryGetComponent<FishingObject>(out FishingObject fishObj))  // Fishing point
         {
+            Debug.Log("ActivoPesca");
             this.playerInputController.SwitchInputMap(Utils.FISHING_INPUTMAP);
             fishObj.interaction();
         }
@@ -83,6 +84,7 @@ public class PlayerInteractionsController : MonoBehaviour
             this.PlayerShakesTree(treeObj);
             treeObj.shakeTree();
         }
+        Debug.Log("pl" + interactingObject);
     }
 
 
@@ -131,7 +133,8 @@ public class PlayerInteractionsController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        interactingObject = collision.gameObject;
+        if(!collision.gameObject.CompareTag("LimitWall"))
+            interactingObject = collision.gameObject;
     }
 
     private void OnCollisionExit(Collision collision)

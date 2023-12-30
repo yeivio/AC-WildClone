@@ -9,6 +9,7 @@ TagManager:
   - FishingPoint
   - Shovel
   - EquipableItem
+  - LimitWall
   layers:
   - Default
   - TransparentFX
