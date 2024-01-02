@@ -18,6 +18,11 @@ public class BuildingSystem : MonoBehaviour
     private PlaceableObject objectToPlace; // Component of the object to be placed on the grid
     private GridData gridData; // Data of the grid with the objects that are placed
 
+    [SerializeField] private Border rightBorder;
+    [SerializeField] private Border leftBorder;
+    [SerializeField] private Border topBorder;
+    [SerializeField] private Border bottomBorder;
+
     private void Awake()
     {
         current = this; // Patron Singleton
@@ -70,10 +75,13 @@ public class BuildingSystem : MonoBehaviour
     }
     public bool CheckDrop(Vector3 position, Vector3 direction)
     {
+        if (bottomBorder.isColliding || topBorder.isColliding || leftBorder.isColliding || rightBorder.isColliding)
+            return false;
+
         //Debug.Log($"Object to place: {objectToPlace}");
         Vector3 cellPosition = SnapCoordinateToGrid(position);
         PlacementData canBePlace = gridData.CanPlaceObjectAt(cellPosition, objectToPlace.Size, direction);
-        PlayerInteractionsController player = FindAnyObjectByType<PlayerInteractionsController>();
+
         if (canBePlace == null)
         {
             
@@ -107,6 +115,7 @@ public class BuildingSystem : MonoBehaviour
         }
         return true;
     }
+
 
     /// <summary>
     /// Dada una posici�n, devuelve el vector de la casilla m�s cercana
