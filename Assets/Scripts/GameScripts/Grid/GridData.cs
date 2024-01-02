@@ -20,6 +20,7 @@ public class GridData
         List<Vector3> positionsToOccupy = CalculatePositions(gridPosition, objectSize, direction);
         
         GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, CentralPosition(positionsToOccupy));
+        placedObject.transform.rotation = objectToPlace.transform.rotation;
         PlacementData data = new(positionsToOccupy, placedObject);
         foreach (var pos in positionsToOccupy)
         {
