@@ -116,6 +116,13 @@ public class BuildingSystem : MonoBehaviour
         return true;
     }
 
+    public bool CanPlaceObject(Vector3 position, Vector3 direction)
+    {
+        Vector3 cellPosition = SnapCoordinateToGrid(position);
+        PlacementData canBePlace = gridData.CanPlaceObjectAt(cellPosition, objectToPlace.Size, direction);
+
+        return canBePlace == null;
+    }
 
     /// <summary>
     /// Dada una posici�n, devuelve el vector de la casilla m�s cercana
