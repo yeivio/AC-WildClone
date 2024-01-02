@@ -8,14 +8,14 @@ public class Border : MonoBehaviour
     {
         isColliding = false;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
+        if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
             isColliding = true;
     }
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
+        if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
             isColliding = false;
     }
 }
