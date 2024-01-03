@@ -188,6 +188,7 @@ MonoBehaviour:
   fruitPositions: []
   fruit: {fileID: 0}
   levelUpTimers: 
+  currentLevel: 0
 --- !u!65 &23279703477616446
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -221,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8e455523fd35142bcc031e53ccf180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Size: {x: 1, y: 0, z: 1}
+  Size: {x: 3, y: 0, z: 3}
 --- !u!1 &7965707843030096436
 GameObject:
   m_ObjectHideFlags: 0

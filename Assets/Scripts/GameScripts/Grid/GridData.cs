@@ -18,8 +18,9 @@ public class GridData
         
         gridPosition = new Vector3(gridPosition.x, 0, gridPosition.z);
         List<Vector3> positionsToOccupy = CalculatePositions(gridPosition, objectSize, direction);
-        
         GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, CentralPosition(positionsToOccupy));
+
+        Debug.Log($"Position to be occupied: {CentralPosition(positionsToOccupy)}. Real world: {placedObject.transform.position}");
         placedObject.transform.rotation = objectToPlace.transform.rotation;
         PlacementData data = new(positionsToOccupy, placedObject);
         foreach (var pos in positionsToOccupy)
@@ -68,12 +69,13 @@ public class GridData
          * with an initial position at gridPosition and a size of objectSize
          * direction is a vector of the form (x,0,y) being x,y ∈ {1,-1}
          */
-
         List<Vector3> returnVal = new();
+        Debug.Log("Calculated positions.");
         for(int x = 0; x< objectSize.x; x++)
         {
             for(int z=0; z < objectSize.z; z++)
             {
+                Debug.Log(initialPos + Vector3.Scale(direction, new Vector3(x, 0, z)));
                 returnVal.Add(initialPos + Vector3.Scale(direction,new Vector3(x, 0, z)));
             }
         }
@@ -81,7 +83,28 @@ public class GridData
         
         return returnVal;
     }
+    private List<Vector3> CalculatePositionsFromCenter(Vector3 center, Vector3 objectSize, Vector3 direction)
+    {
+        Vector3 toRest = objectSize/2;
+        if (objectSize.x == 1)
+            toRest.x = 0;
+        if (objectSize.z == 1)
+            toRest.z = 0;
+        Vector3 initialPos = center - toRest;
+        List<Vector3> returnVal = new();
+        Debug.Log("Calculated positions.");
+        for (int x = 0; x < objectSize.x; x++)
+        {
+            for (int z = 0; z < objectSize.z; z++)
+            {
+                Debug.Log(initialPos + Vector3.Scale(direction, new Vector3(x, 0, z)));
+                returnVal.Add(initialPos + Vector3.Scale(direction, new Vector3(x, 0, z)));
+            }
+        }
 
+        return returnVal.ConvertAll<Vector3>(BuildingSystem.current.SnapCoordinateToGrid);
+        
+    }
     public PlacementData CanPlaceObjectAt(Vector3 gridPosition, Vector3 objectSize, Vector3 direction)
     {
         /*
@@ -126,15 +149,46 @@ public class GridData
 
             // Then we add the object to the gridData with the corrected position
             PlaceableObject placeableData = gObject.GetComponent<PlaceableObject>();
-            Vector3 position = placeableData.transform.position;
-            gridData.AddObjectAt(
-                position,
+
+            Debug.Log(gObject);
+            gridData.AddObjectAtGivenCenter(
+                gObject.transform.position,
                 placeableData.Size,
                 new(1,0,1),
                 gObject);
             GameObject.Destroy(gObject);
         }
         return gridData;
+    }
+    private Vector3 AddObjectAtGivenCenter(Vector3 gridPosition,
+                            Vector3 objectSize,
+                            Vector3 direction,
+                            GameObject objectToPlace)
+    {
+        /*
+         * Add an object to the gridData
+         */
+        BuildingSystem buildingSystem = BuildingSystem.current;
+
+        gridPosition = new Vector3(gridPosition.x, 0, gridPosition.z);
+        List<Vector3> positionsToOccupy = CalculatePositionsFromCenter(gridPosition, objectSize, direction);
+        GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, gridPosition);
+
+        Debug.Log($"Position to be occupied: {CentralPosition(positionsToOccupy)}. Given position: {gridPosition}");
+        placedObject.transform.rotation = objectToPlace.transform.rotation;
+        PlacementData data = new(positionsToOccupy, placedObject);
+        foreach (var pos in positionsToOccupy)
+        {
+            //Debug.Log(pos);
+            if (placedObjects.ContainsKey(pos))
+            {
+                GameObject.Destroy(placedObject);
+                throw new Exception($"Cell in position {pos} already occupied");
+
+            }
+            placedObjects.Add(pos, data);
+        }
+        return CentralPosition(positionsToOccupy);
     }
     public void FreeSpace(PlacementData data)
     {

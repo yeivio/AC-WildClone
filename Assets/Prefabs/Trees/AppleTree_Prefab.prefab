@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8e455523fd35142bcc031e53ccf180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Size: {x: 1, y: 0, z: 1}
+  Size: {x: 3, y: 0, z: 3}
 --- !u!82 &5150012899733937530
 AudioSource:
   m_ObjectHideFlags: 0

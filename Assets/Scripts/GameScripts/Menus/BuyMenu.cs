@@ -24,8 +24,8 @@ public class BuyMenu : MonoBehaviour
 
         foreach (GameObject b in GameObject.FindGameObjectsWithTag("BuySlot"))
         {
-            Debug.Log(b);
-            Debug.Log(b.GetComponent<Button>());
+            //Debug.Log(b);
+            //Debug.Log(b.GetComponent<Button>());
             shellingElements.Add(b.GetComponent<Button>());
         }
     }

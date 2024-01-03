@@ -20,9 +20,5 @@ public class BuyButton : MonoBehaviour
 
         }
     }
-	void Test()
-	{
-		Debug.Log("EY");
-	}
 }
 

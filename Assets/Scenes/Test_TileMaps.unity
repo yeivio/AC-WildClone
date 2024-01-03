@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6661,7 +6661,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734137747}
   m_Enabled: 1
-  m_CellSize: {x: 2, y: 2, z: 0}
+  m_CellSize: {x: 1, y: 1, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 1
@@ -10501,7 +10501,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 186.173}
   m_AnchorMin: {x: 0.039129317, y: 0.7774027}
   m_AnchorMax: {x: 0.29160836, y: 1}
-  m_AnchoredPosition: {x: -10.999878, y: 6.999748}
+  m_AnchoredPosition: {x: -10.999878, y: 6.9998093}
   m_SizeDelta: {x: 9.8051, y: -0.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201927415
@@ -11832,7 +11832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.9516602
+      value: -3.9516296
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19207,7 +19207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6807435188458810896, guid: 0863ac2f6d080cf4c81facb713ba599d, type: 3}
       propertyPath: Size.x
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6807435188458810896, guid: 0863ac2f6d080cf4c81facb713ba599d, type: 3}
       propertyPath: Size.y
@@ -19215,7 +19215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6807435188458810896, guid: 0863ac2f6d080cf4c81facb713ba599d, type: 3}
       propertyPath: Size.z
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7456182042373275253, guid: 0863ac2f6d080cf4c81facb713ba599d, type: 3}
       propertyPath: m_Size.x
