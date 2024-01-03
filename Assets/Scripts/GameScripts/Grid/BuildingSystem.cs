@@ -116,8 +116,9 @@ public class BuildingSystem : MonoBehaviour
         return true;
     }
 
-    public bool CanPlaceObject(Vector3 position, Vector3 direction)
+    public bool CanPlaceObject(GameObject objectToDrop,Vector3 position, Vector3 direction)
     {
+        objectToPlace = objectToDrop.GetComponent<PlaceableObject>();
         Vector3 cellPosition = SnapCoordinateToGrid(position);
         PlacementData canBePlace = gridData.CanPlaceObjectAt(cellPosition, objectToPlace.Size, direction);
 
