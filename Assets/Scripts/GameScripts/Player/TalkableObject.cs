@@ -5,6 +5,8 @@ public class TalkableObject : MonoBehaviour
 {
     [SerializeField] private NPCConfig_ScriptableObject config;
     [SerializeField] private Npc_Dialogue npcText_UI;
+    [SerializeField] private AudioClip npcTalkAudio;
+
 
     public GameObject cam;  //Dialogue camera
     private Animator playerAnimator;
@@ -58,7 +60,7 @@ public class TalkableObject : MonoBehaviour
         playerAnimator.SetBool("isTalking", true);
         
         npcText_UI.gameObject.SetActive(true);
-        npcText_UI.StartDialogueBox(config, this);
+        npcText_UI.StartDialogueBox(config, npcTalkAudio, this);
 
     }
 

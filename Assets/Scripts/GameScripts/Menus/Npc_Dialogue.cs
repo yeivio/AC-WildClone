@@ -8,15 +8,12 @@ public class Npc_Dialogue : MonoBehaviour
     [Header("Mandatory objects references")]
     [SerializeField] private TextMeshProUGUI villagerText;  // Text box for dialogue text
     [SerializeField] private TextMeshProUGUI villagerName;  // Text box for villager name text
-    [SerializeField] private NPCConfig_ScriptableObject OnNPCInteract;  // Villager dialogue data
-    [SerializeField] private AudioClip npcTalk_clip;  // Villager talking audio
 
 
-    [Header("Dialogue config")]
-    [SerializeField] private float speedText = 0.05f;   // Speed of the appearing text
-
+    private NPCConfig_ScriptableObject OnNPCInteract;  // Villager dialogue data
+    private AudioClip npcTalk_clip;  // Villager talking audio
     private PlayerInput input;
-    private TalkableObject talkObj;
+    private TalkableObject talkObj; // NPC object Ref
     private bool isActive;  // Tracks if the dialog window is active
     private bool isCoroutineActive;
     private int visibleChar = 0;    // Current visible chars
@@ -29,21 +26,16 @@ public class Npc_Dialogue : MonoBehaviour
         isActive = false;
     }
 
-    private void Update()
-    {
-        if (isCoroutineActive && Input.anyKeyDown) // Speedup the dialog appearing text
-            this.speedText = this.speedText / 5;
-        
-    }
-
     /// <summary>
     /// Given an SO of an NPC loads the text into the separated dialogBoxes and starts the coroutine for the appearing text animation.
     /// </summary>
     /// <param name="config"></param>
-    public void StartDialogueBox(NPCConfig_ScriptableObject config, TalkableObject talkObj)
+    public void StartDialogueBox(NPCConfig_ScriptableObject config, AudioClip npcAudio ,TalkableObject talkObj)
     {
         this.OnNPCInteract = config;
         this.talkObj = talkObj;
+        this.npcTalk_clip = npcAudio;
+
         foreach (Transform child in transform) //Activate text and backgrounds
             child.gameObject.SetActive(true);
 
@@ -76,7 +68,7 @@ public class Npc_Dialogue : MonoBehaviour
     }
     
     /// <summary>
-    /// Animation for the npc dialogue text. The Coroutine spawns the string char by char at a speedtext speed.
+    /// Animation for the npc dialogue text. The Coroutine spawns the string char by char to match the length of the audio
     /// </summary>
     /// <returns></returns>
     IEnumerator slowText()
@@ -86,7 +78,7 @@ public class Npc_Dialogue : MonoBehaviour
         int visibleChar = 0;
         int fullTextSize = OnNPCInteract.dialogue.Length;
         float audioDuration = this.npcTalk_clip.length;
-        while (visibleChar < fullTextSize)
+        while (visibleChar <= fullTextSize)
         {
             villagerText.maxVisibleCharacters = visibleChar;
             yield return new WaitForSeconds(audioDuration / fullTextSize);

@@ -15,6 +15,6 @@ MonoBehaviour:
   OnNPCInteract:
     m_PersistentCalls:
       m_Calls: []
-  npc_name: Godofredo
-  dialogue: "Hola amigos del yutuf esto es un texto largo para poder ponermuchas
-    cosas y que pete en alg\xFAn momento ejejjejejejej"
+  npc_name: yeivio
+  dialogue: "Yo sol\xEDa ser un protagonista como t\xFA, pero un d\xEDa mi creador
+    aprendi\xF3 a pintar mejor"
