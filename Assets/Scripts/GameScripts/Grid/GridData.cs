@@ -20,7 +20,7 @@ public class GridData
         List<Vector3> positionsToOccupy = CalculatePositions(gridPosition, objectSize, direction);
         GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, CentralPosition(positionsToOccupy));
 
-        Debug.Log($"Position to be occupied: {CentralPosition(positionsToOccupy)}. Real world: {placedObject.transform.position}");
+        //Debug.Log($"Position to be occupied: {CentralPosition(positionsToOccupy)}. Real world: {placedObject.transform.position}");
         placedObject.transform.rotation = objectToPlace.transform.rotation;
         PlacementData data = new(positionsToOccupy, placedObject);
         foreach (var pos in positionsToOccupy)
@@ -70,12 +70,12 @@ public class GridData
          * direction is a vector of the form (x,0,y) being x,y ∈ {1,-1}
          */
         List<Vector3> returnVal = new();
-        Debug.Log("Calculated positions.");
+        //Debug.Log("Calculated positions.");
         for(int x = 0; x< objectSize.x; x++)
         {
             for(int z=0; z < objectSize.z; z++)
             {
-                Debug.Log(initialPos + Vector3.Scale(direction, new Vector3(x, 0, z)));
+                //Debug.Log(initialPos + Vector3.Scale(direction, new Vector3(x, 0, z)));
                 returnVal.Add(initialPos + Vector3.Scale(direction,new Vector3(x, 0, z)));
             }
         }
@@ -92,12 +92,12 @@ public class GridData
             toRest.z = 0;
         Vector3 initialPos = center - toRest;
         List<Vector3> returnVal = new();
-        Debug.Log("Calculated positions.");
+        //Debug.Log("Calculated positions.");
         for (int x = 0; x < objectSize.x; x++)
         {
             for (int z = 0; z < objectSize.z; z++)
             {
-                Debug.Log(initialPos + Vector3.Scale(direction, new Vector3(x, 0, z)));
+                //Debug.Log(initialPos + Vector3.Scale(direction, new Vector3(x, 0, z)));
                 returnVal.Add(initialPos + Vector3.Scale(direction, new Vector3(x, 0, z)));
             }
         }
@@ -112,6 +112,7 @@ public class GridData
          * If the object can't be placed the data of the grid position is returned
          * in other case null is returned indicating there's nothing in there.
          */
+        Debug.Log($"Position {gridPosition} ObjectSize {objectSize} Direction {direction}");
         gridPosition = new Vector3(gridPosition.x, 0, gridPosition.z);
         List<Vector3> positionToOccupy = CalculatePositions(gridPosition, objectSize, direction);
         foreach(var pos in positionToOccupy)
@@ -150,7 +151,7 @@ public class GridData
             // Then we add the object to the gridData with the corrected position
             PlaceableObject placeableData = gObject.GetComponent<PlaceableObject>();
 
-            Debug.Log(gObject);
+            //Debug.Log(gObject);
             gridData.AddObjectAtGivenCenter(
                 gObject.transform.position,
                 placeableData.Size,
@@ -174,7 +175,7 @@ public class GridData
         List<Vector3> positionsToOccupy = CalculatePositionsFromCenter(gridPosition, objectSize, direction);
         GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, gridPosition);
 
-        Debug.Log($"Position to be occupied: {CentralPosition(positionsToOccupy)}. Given position: {gridPosition}");
+        //Debug.Log($"Position to be occupied: {CentralPosition(positionsToOccupy)}. Given position: {gridPosition}");
         placedObject.transform.rotation = objectToPlace.transform.rotation;
         PlacementData data = new(positionsToOccupy, placedObject);
         foreach (var pos in positionsToOccupy)

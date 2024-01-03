@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
@@ -61,6 +62,15 @@ public class BuildingSystem : MonoBehaviour
         return CheckDrop(NextPositionInGrid(gObject), direction);
 
     }
+
+    /// <summary>
+    /// Dropea un objeto si es posible
+    /// </summary>
+    /// <param name="objectToDrop"> objeto a ser puesto, debe ser un PlacebleObject</param>
+    /// <param name="gObject"> objeto a ser puesto, si es un PlacebleObject debe tener indicado el tamaño del mismo correctamente</param>
+    /// <param name="direction"> Dirección a ser puesto un objeto, si el objeto es de tamaño 1 es un tanto irrelevante </param>
+    /// <param name="forward"> Dirección en la cual empezar a colocar el objeto </param>
+    /// <returns></returns> 
     public bool DropItem(GameObject objectToDrop, GameObject gObject, Vector3 direction, Vector3 forward)
     // Drop Item thought to take the objectToDrop and place it at the side specified by forward of the
     // gObject ocupying the direction passed
@@ -81,6 +91,7 @@ public class BuildingSystem : MonoBehaviour
         //Debug.Log($"Object to place: {objectToPlace}");
         Vector3 cellPosition = SnapCoordinateToGrid(position);
         PlacementData canBePlace = gridData.CanPlaceObjectAt(cellPosition, objectToPlace.Size, direction);
+        Debug.Log($"placing {canBePlace}");
 
         if (canBePlace == null)
         {
@@ -116,12 +127,20 @@ public class BuildingSystem : MonoBehaviour
         return true;
     }
 
-    public bool CanPlaceObject(GameObject objectToDrop,Vector3 position, Vector3 direction)
+    /// <summary>
+    /// Indica si un objeto puede ser posicionado por otro
+    /// </summary>
+    /// <param name="objectToDrop"> objeto a ser puesto, debe ser un PlacebleObject</param>
+    /// <param name="gObject"> objeto a ser puesto, si es un PlacebleObject debe tener indicado el tamaño del mismo correctamente</param>
+    /// <param name="direction"> Dirección a ser puesto un objeto, si el objeto es de tamaño 1 es un tanto irrelevante </param>
+    /// <param name="forward"> Dirección en la cual empezar a colocar el objeto </param>
+    /// <returns></returns> 
+    public bool CanPlaceObject(GameObject objectToDrop, GameObject gObject, Vector3 direction, Vector3 forward)
     {
         objectToPlace = objectToDrop.GetComponent<PlaceableObject>();
-        Vector3 cellPosition = SnapCoordinateToGrid(position);
+        Vector3 cellPosition = SnapCoordinateToGrid(NextPositionInGrid(gObject, forward));
         PlacementData canBePlace = gridData.CanPlaceObjectAt(cellPosition, objectToPlace.Size, direction);
-
+        Debug.Log($"test placing {canBePlace}");
         return canBePlace == null;
     }
 
@@ -155,11 +174,22 @@ public class BuildingSystem : MonoBehaviour
     }
     public Vector3 NextPositionInGrid(GameObject gObject, Vector3 forward)
     {
+        Vector3 positionedElement = new(0, 0, 0); // if element is a positioned have in mind its size 
+        if(gObject.TryGetComponent<PlaceableObject>(out PlaceableObject p))
+        {
+            if(p.Size.x != 1)
+                positionedElement.x = p.Size.x/2;
+            if (p.Size.z != 1)
+                positionedElement.z = p.Size.z/2;
+        }
+            
         Vector3 rot = forward.normalized;
+        positionedElement.Scale(rot);
         Vector3 sum = (
                 rot *
                 current.gridLayout.cellSize.x +
-                gObject.transform.position
+                gObject.transform.position +
+                positionedElement
                 );
         return SnapCoordinateToGrid(sum);
     }

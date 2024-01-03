@@ -49,21 +49,21 @@ public class TreeManager : MonoBehaviour
             return;
 
 
-        if (BuildingSystem.current.CanPlaceObject(this.fruit, new(1, 0, 1), this.gameObject.transform.forward * -1))
+        if (BuildingSystem.current.CanPlaceObject(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.forward * -1))
         {
             BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.forward * -1);
             fruitPositions[0].GetComponent<MeshRenderer>().enabled = false;
             Debug.Log("Desaparece 1");
         }
 
-        if (BuildingSystem.current.CanPlaceObject(this.fruit, new(1, 0, 1), this.gameObject.transform.right))
+        if (BuildingSystem.current.CanPlaceObject(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.right))
         {
             BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.right);
             fruitPositions[1].GetComponent<MeshRenderer>().enabled = false;
             Debug.Log("Desaparece 2");
         }
 
-        if (BuildingSystem.current.CanPlaceObject(this.fruit, new(1, 0, 1), this.gameObject.transform.right * -1))
+        if (BuildingSystem.current.CanPlaceObject(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.right * -1))
         {
             BuildingSystem.current.DropItem(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.right * -1);
             fruitPositions[2].GetComponent<MeshRenderer>().enabled = false;
