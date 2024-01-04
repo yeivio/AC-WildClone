@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4502319, g: 0.5002657, b: 0.575377, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1531,6 +1531,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 734137749}
     m_Modifications:
+    - target: {fileID: 2300209313976963527, guid: a8f379e1537a5489d834afa76e61aa2a, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300209313976963527, guid: a8f379e1537a5489d834afa76e61aa2a, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8101766710319417597, guid: a8f379e1537a5489d834afa76e61aa2a, type: 3}
       propertyPath: m_Name
       value: UnitIconHoleOn
@@ -6201,13 +6209,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.36993182, y: -0.23695505, z: -0.09816549, w: 0.8929537}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 37.89, y: -38.921, z: -26.378}
 --- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10643,7 +10651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 186.173}
   m_AnchorMin: {x: 0.039129317, y: 0.7774027}
   m_AnchorMax: {x: 0.29160836, y: 1}
-  m_AnchoredPosition: {x: -10.999878, y: 6.9998093}
+  m_AnchoredPosition: {x: -10.999878, y: 6.9998016}
   m_SizeDelta: {x: 9.8051, y: -0.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201927415
@@ -19343,6 +19351,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2239982068772469532, guid: 0863ac2f6d080cf4c81facb713ba599d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 44d829157ec61cc4394b4efb2a67e6dd, type: 2}
     - target: {fileID: 6684029202704806555, guid: 0863ac2f6d080cf4c81facb713ba599d, type: 3}
       propertyPath: m_Name
       value: ExitPlace
@@ -19591,6 +19603,18 @@ PrefabInstance:
     - target: {fileID: 558441926000658456, guid: ce7f4352c08855f488e5450102e6f531, type: 3}
       propertyPath: m_Name
       value: Shovel_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2039783256579702024, guid: ce7f4352c08855f488e5450102e6f531, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2039783256579702024, guid: ce7f4352c08855f488e5450102e6f531, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2039783256579702024, guid: ce7f4352c08855f488e5450102e6f531, type: 3}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7115609613478366026, guid: ce7f4352c08855f488e5450102e6f531, type: 3}
       propertyPath: m_LocalPosition.x
