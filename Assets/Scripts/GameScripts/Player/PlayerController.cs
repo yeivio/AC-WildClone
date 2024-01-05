@@ -27,8 +27,15 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove; // Variable for enable/disable player movement
 
+
+    // Show time while static variables
+    private TimerMenuManager timerMenuManager;
+    private float notMovedTimer; // Timer that counts the time of the player when it's static
+
     private void Start()
     {
+        this.timerMenuManager = GameObject.FindAnyObjectByType<TimerMenuManager>();
+        notMovedTimer = 0;
         playerModelAnimator = this.gameObject.GetComponent<PlayerAnimationManager>();
         joystick_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_MOVE);
         sprint_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_SPRINT);
@@ -54,7 +61,11 @@ public class PlayerController : MonoBehaviour
         // Movement
         if (direction.magnitude >= 0.1f)
         {
-            if(!walkingSound.isPlaying)
+            notMovedTimer = 0; // Reset timer
+            if (timerMenuManager.isActive())
+                timerMenuManager.hideTimer(); // Hide the time
+
+            if (!walkingSound.isPlaying)
                 walkingSound.Play();
 
             //Particles 
@@ -76,6 +87,11 @@ public class PlayerController : MonoBehaviour
             this.playerParticles.Stop();
             walkingSound.Stop();
             playerModelAnimator.getActivePlayerAnimator().SetBool("isMoving", false);
+            this.notMovedTimer += Time.deltaTime;
+            if (!timerMenuManager.isActive() && notMovedTimer >= 5)
+                timerMenuManager.showTimer();
+
+
         }
     }
 
