@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4502319, g: 0.5002657, b: 0.575377, a: 1}
+  m_IndirectSpecularColor: {r: 0.4513924, g: 0.5009053, b: 0.57242507, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6132,6 +6132,7 @@ GameObject:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
   - component: {fileID: 705507996}
+  - component: {fileID: 705507997}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -6209,13 +6210,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36993182, y: -0.23695505, z: -0.09816549, w: 0.8929537}
+  m_LocalRotation: {x: 0.3539538, y: -0.35148197, z: -0.14561163, w: 0.8543854}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 37.89, y: -38.921, z: -26.378}
+  m_LocalEulerAnglesHint: {x: 30.163, y: -54.477, z: -35.139}
 --- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6239,6 +6240,23 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &705507997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4761e475b144b4ebe000a32b6608d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayStartRotation: {x: 30.163, y: -54.477, z: -32.129}
+  dayEndRotation: {x: 29.844, y: 54.999, z: 35.4}
+  timer: 0
+  DURACION_DIA: 15
+  DURACION_NOCHE: 0
 --- !u!1001 &714027091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6836,7 +6854,7 @@ MonoBehaviour:
   gridLayout: {fileID: 734137748}
   hole: {fileID: 4667267732543755441, guid: a8f379e1537a5489d834afa76e61aa2a, type: 3}
   prefab1: {fileID: 8644013149300115109, guid: 28595bcf7186afd488cd7577116c9f7d, type: 3}
-  tile: {fileID: 11400000, guid: 227e50c4d2df1e54ab352230b14d1d1c, type: 2}
+  tile: {fileID: 0}
   tilemap: {fileID: 1477309970}
   rightBorder: {fileID: 1841421582}
   leftBorder: {fileID: 1720234058}
@@ -10651,7 +10669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 186.173}
   m_AnchorMin: {x: 0.039129317, y: 0.7774027}
   m_AnchorMax: {x: 0.29160836, y: 1}
-  m_AnchoredPosition: {x: -10.999878, y: 6.9998016}
+  m_AnchoredPosition: {x: -10.999878, y: 6.999817}
   m_SizeDelta: {x: 9.8051, y: -0.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201927415
