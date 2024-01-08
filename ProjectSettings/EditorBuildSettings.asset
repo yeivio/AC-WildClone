@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test_TileMaps.unity
     guid: 7c455cf5759fc314fa1d027038c6f6ed
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/House_Interior.unity
     guid: 71c7e8d0ebf4f284495733f1bf278924
   m_configObjects: {}

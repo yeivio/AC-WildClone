@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
+using System.Linq;
 
 public class BuildingSystem : MonoBehaviour
 {
@@ -19,10 +16,7 @@ public class BuildingSystem : MonoBehaviour
     private PlaceableObject objectToPlace; // Component of the object to be placed on the grid
     private GridData gridData; // Data of the grid with the objects that are placed
 
-    [SerializeField] private Border rightBorder;
-    [SerializeField] private Border leftBorder;
-    [SerializeField] private Border topBorder;
-    [SerializeField] private Border bottomBorder;
+    [SerializeField] private Border[] limitBorders;
 
     private void Awake()
     {
@@ -85,7 +79,7 @@ public class BuildingSystem : MonoBehaviour
     }
     public bool CheckDrop(Vector3 position, Vector3 direction)
     {
-        if (bottomBorder.isColliding || topBorder.isColliding || leftBorder.isColliding || rightBorder.isColliding)
+        if (limitBorders.Any(x => x.isColliding))
             return false;
 
         //Debug.Log($"Object to place: {objectToPlace}");
@@ -240,5 +234,4 @@ public class BuildingSystem : MonoBehaviour
         CheckDrop(position, direction);
         return true;
     }
-
 }
