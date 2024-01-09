@@ -77,7 +77,6 @@ public class PlayerAnimationManager : MonoBehaviour
 
             case "ShakingTree":
                 {
-                    
                     playerAnimator.Play("ShakingTree_Shovel");
                 }
                 break;

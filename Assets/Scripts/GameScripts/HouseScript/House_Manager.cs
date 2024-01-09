@@ -15,7 +15,10 @@ public abstract class House_Manager : MonoBehaviour
     private void Start()
     {
         isTransitioning = false;
-        exitPlayerPosition = playerExitPosition.transform.position;
+        if (exitPlayerPosition != null)
+            exitPlayerPosition = playerExitPosition.transform.position;
+        else
+            exitPlayerPosition = Vector3.zero;
     }
 
     /// <summary>

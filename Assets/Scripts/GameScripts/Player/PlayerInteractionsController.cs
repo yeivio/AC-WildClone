@@ -8,6 +8,7 @@ public class PlayerInteractionsController : MonoBehaviour
 {
     [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory data
     [SerializeField] private PlayerInputController playerInputController;
+    [SerializeField] private AudioSource pickupSound;
     public GameObject cam;  //Player camera
 
     private GameObject interactingObject; //Object which they player is interacting
@@ -54,6 +55,7 @@ public class PlayerInteractionsController : MonoBehaviour
             }
             else{
                 pickObj.takeObject();
+                pickupSound.Play();
             }
         }
 

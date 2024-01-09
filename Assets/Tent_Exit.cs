@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class Tent_Exit : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
+    [SerializeField] private PlayerHouseManager houseManager;
 
-    private void Start()
+    private void OnEnable()
     {
+        houseManager = FindAnyObjectByType<PlayerHouseManager>();
+        player = FindAnyObjectByType<PlayerController>();
         this.PlayEnterHouseAnimation(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 5f));
     }
 
@@ -17,7 +20,9 @@ public class Tent_Exit : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>())
         {
             this.player = other.gameObject.GetComponent<PlayerController>();
-            this.PlayEnterHouseAnimation(new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z - 3f), 1);
+            player.disableMovement();
+            StartCoroutine(ExitHouse(new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z - 3f)));
+            
         }
     }
 
@@ -29,16 +34,35 @@ public class Tent_Exit : MonoBehaviour
     /// Also the hitbox collider for exit the house is activated when finished
     /// </summary>
     /// <param name="endPosition"></param>
-    public void PlayEnterHouseAnimation(Vector3 endPosition,int levelLoad = -1)
+    public void PlayEnterHouseAnimation(Vector3 endPosition)
     {
         player.disableMovement();
-        StartCoroutine(EnterHouse(endPosition, levelLoad));
+        StartCoroutine(EnterHouse(endPosition));
     }
 
+    IEnumerator ExitHouse(Vector3 endPosition)
+    {
+        float duration = 1f;
+        float timer = 0;
+        Vector3 initialPos = player.transform.position;
+        Vector3 finalPos = endPosition;
+        while (timer < duration)
+        {
+            player.transform.position = Vector3.Lerp(initialPos, finalPos, timer / duration);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        player.transform.position = endPosition;
+        player.enableMovement();
+        //Activar hitbox para salir
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        houseManager.ExitHouse();
+        this.transform.parent.gameObject.SetActive(false);
+        yield return null;
+    }
+   
 
-
-
-    IEnumerator EnterHouse(Vector3 endPosition, int levelNumber)
+    IEnumerator EnterHouse(Vector3 endPosition)
     {
         float duration = 1f;
         float timer = 0;
@@ -54,7 +78,6 @@ public class Tent_Exit : MonoBehaviour
         player.enableMovement();
         //Activar hitbox para salir
         this.gameObject.GetComponent<BoxCollider>().enabled = true;
-        if (levelNumber != -1)
-            SceneManager.LoadScene(levelNumber);
+        
     }
 }
