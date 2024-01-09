@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.Rendering;
 
 public class PlayerInteractionsController : MonoBehaviour
 {
@@ -22,8 +23,9 @@ public class PlayerInteractionsController : MonoBehaviour
 
 
     // Equipable items
-    [SerializeField] private GameObject handBone;   //Bone where the equipable items will be placed
+    [SerializeField] private GameObject[] handBone;   //Bone where the equipable items will be placed
     private InventoryItem_ScriptableObject EquipableItem;
+    
 
     public enum PlayerState
     {
@@ -76,7 +78,6 @@ public class PlayerInteractionsController : MonoBehaviour
 
         if (interactingObject.TryGetComponent<FishingObject>(out FishingObject fishObj))  // Fishing point
         {
-            Debug.Log("ActivoPesca");
             this.playerInputController.SwitchInputMap(Utils.FISHING_INPUTMAP);
             fishObj.interaction();
         }
@@ -158,10 +159,21 @@ public class PlayerInteractionsController : MonoBehaviour
     {
         if(this.EquipableItem != null)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("EquipableItem")[0]); //Destroy equipped object
+            for (int i = 0; i < handBone.Length; i++)
+            {
+                if (handBone[i].gameObject.activeSelf)
+                    handBone[i].gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            //Destroy(GameObject.FindGameObjectsWithTag("EquipableItem")[0]); //Destroy equipped object
         }
         this.EquipableItem = item;
-        Instantiate(item.equipableModel, this.handBone.transform); // Instantiate object on the 
+
+        for (int i = 0; i < handBone.Length; i++){
+            if (handBone[i].gameObject.activeSelf)
+                handBone[i].gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        //Instantiate(item.equipableModel, this.handBone.transform); // Instantiate object on the 
 
         this.setPlayerState(PlayerState.SHOVEL);
     }

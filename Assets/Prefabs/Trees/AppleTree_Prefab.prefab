@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.16, y: -0.05, z: 16.64}
-  m_LocalScale: {x: 1.820848, y: 1.7793199, z: 1.6798745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8551418171227554226}
@@ -115,7 +115,6 @@ MonoBehaviour:
   levelUpTimers: 010000000200000003000000
   treeShakeAudio: {fileID: 5150012899733937530}
   itemFallAudio: {fileID: 9001055830857030521}
-  currentLevel: 0
 --- !u!65 &935972282375623367
 BoxCollider:
   m_ObjectHideFlags: 0
