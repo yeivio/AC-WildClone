@@ -8,6 +8,7 @@ public class Npc_Dialogue : MonoBehaviour
     [Header("Mandatory objects references")]
     [SerializeField] private TextMeshProUGUI villagerText;  // Text box for dialogue text
     [SerializeField] private TextMeshProUGUI villagerName;  // Text box for villager name text
+    [SerializeField] private GameObject tienda;             // Menu que se activa cuando se accede a la tienda en un dialogo
 
 
     private NPCConfig_ScriptableObject OnNPCInteract;  // Villager dialogue data
@@ -18,6 +19,7 @@ public class Npc_Dialogue : MonoBehaviour
     private bool isCoroutineActive;
     private int visibleChar = 0;    // Current visible chars
     private AudioSource audioSource;
+    
 
     private void Start()
     {
@@ -50,12 +52,30 @@ public class Npc_Dialogue : MonoBehaviour
 
 
     }
-
+    public void ContinueDialog(NPCConfig_ScriptableObject config)
+    {
+        switch(config.dialogue)
+        {
+            case "exit":
+                CloseDialog(new());
+                break;
+            case "tienda":
+                tienda.SetActive(true);
+                talkObj.tiendaAbierta = true;
+                break;
+            default:
+                StopAllCoroutines();
+                villagerText.text = config.dialogue;
+                StartCoroutine(slowText());
+                break;
+        }
+    }
     /// <summary>
     /// If the dialogbox is active, disable all the dialog UI, disable the dialogue camera and change the input map to FREEMOVE
     /// </summary>
     public void CloseDialog(InputAction.CallbackContext context)
     {
+        tienda.SetActive(false);
         if (!isActive)
             return;
         isActive = !isActive;
@@ -64,9 +84,10 @@ public class Npc_Dialogue : MonoBehaviour
             child.gameObject.SetActive(false);
         if (isCoroutineActive)  // If the animation is playing, then it's forced to stop
             StopAllCoroutines();
+        this.talkObj.actualTalk = 0;
         this.talkObj.DisableCamera(); // Disable the npc camera
+        Debug.Log($"Reseteado {this.talkObj.actualTalk}");
     }
-    
     /// <summary>
     /// Animation for the npc dialogue text. The Coroutine spawns the string char by char to match the length of the audio
     /// </summary>

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class BuyButton : MonoBehaviour
 {
 	private BuyMenu menuManger;
+	public bool hasItem;
+	public InventoryItem_ScriptableObject item;
 	// Use this for initialization
 	void Start()
 	{
@@ -14,9 +16,9 @@ public class BuyButton : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (menuManger.selected == this && Input.GetKeyDown(KeyCode.Return))
+		if (menuManger.selected == this && Input.GetKeyDown(KeyCode.Return) && hasItem)
         {
-			menuManger.buying = this;
+			menuManger.setBuying(this);
 
         }
     }

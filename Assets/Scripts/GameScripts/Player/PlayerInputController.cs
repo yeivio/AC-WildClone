@@ -15,6 +15,7 @@ public class PlayerInputController : MonoBehaviour
     public FishingObject fishingObj;
     public FishingUI_Manager fishingUI;
     public Npc_Dialogue npcdialog;
+    public TalkableObject npcTackableObject;
 
     public UI_Icon_Manager iconManager;
 
@@ -42,6 +43,7 @@ public class PlayerInputController : MonoBehaviour
 
         //NPC_TALK ACTIONS
         this.inputAction.FindAction(Utils.NPC_TALK_QUIT).performed += this.npcdialog.CloseDialog;
+        this.inputAction.FindAction(Utils.NPC_TALK_CONTINUE).performed += this.npcTackableObject.Continue;
 
     }
 

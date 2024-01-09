@@ -1,21 +1,51 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TalkableObject : MonoBehaviour
 {
-    [SerializeField] private NPCConfig_ScriptableObject config;
+    [SerializeField] private NPCConfig_ScriptableObject [] config;
     [SerializeField] private Npc_Dialogue npcText_UI;
     [SerializeField] private AudioClip npcTalkAudio;
 
 
     public GameObject cam;  //Dialogue camera
+    public int actualTalk;  // Next dialog to be carried
     private Animator playerAnimator;
+    public string previousTalk;
+    public bool tiendaAbierta;
 
     private void Start()
     {
         playerAnimator = GetComponentInChildren<Animator>();
+        actualTalk = 0;
+        previousTalk = null;
     }
-
+    public void Continue(InputAction.CallbackContext context)
+    {
+        if (tiendaAbierta == true)
+            return;
+        if (previousTalk != null)
+        {
+            config[actualTalk - 1].dialogue = previousTalk;
+            previousTalk = null;
+        }
+        npcText_UI.ContinueDialog(config[actualTalk]);
+        actualTalk += 1;
+    }
+    public void Continue(string toAdd)
+    {
+        tiendaAbierta = false;
+        if (previousTalk != null)
+        {
+            config[actualTalk - 1].dialogue = previousTalk;
+        }
+            
+        previousTalk = config[actualTalk].dialogue;
+        config[actualTalk].dialogue += toAdd;
+        npcText_UI.ContinueDialog(config[actualTalk]);
+        actualTalk += 1;
+    }
     public void DisableCamera()
     {
         this.cam.SetActive(false);
@@ -32,6 +62,7 @@ public class TalkableObject : MonoBehaviour
     public void talk(PlayerInteractionsController player)
     {
         //Npc looks at player
+        actualTalk = 0;
         Vector3 targetPostition = new Vector3(player.transform.position.x,
                                        this.transform.position.y,
                                        player.transform.position.z);
@@ -60,8 +91,9 @@ public class TalkableObject : MonoBehaviour
         playerAnimator.SetBool("isTalking", true);
         
         npcText_UI.gameObject.SetActive(true);
-        npcText_UI.StartDialogueBox(config, npcTalkAudio, this);
-
+        Debug.Log(actualTalk);
+        npcText_UI.StartDialogueBox(config[actualTalk], npcTalkAudio, this);
+        actualTalk = 1; // next talk to be done
     }
 
 }

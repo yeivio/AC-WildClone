@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ItemSprite: {fileID: 21300000, guid: f7f57db981cb3624f9c1e12df1751d50, type: 3}
   _object3D: {fileID: 0}
+  _equipableModel: {fileID: 0}
   _IsStackable: 0
   _MaxStackSize: 0
+  _BuyPrice: 20
+  _ShellPrice: 20
   _Name: pescado
   _IsPlantable: 0
   _IsEatable: 1
   _IsEquipable: 0
   _IsDropeable: 0
+  _IsAffordable: 1
+  _IsSalable: 1

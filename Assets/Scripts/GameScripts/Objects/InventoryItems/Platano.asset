@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ItemSprite: {fileID: 0}
   _object3D: {fileID: 0}
+  _equipableModel: {fileID: 0}
   _IsStackable: 0
   _MaxStackSize: 0
+  _BuyPrice: 0
+  _ShellPrice: 0
   _Name: 
   _IsPlantable: 0
   _IsEatable: 0
   _IsEquipable: 0
   _IsDropeable: 0
+  _IsAffordable: 0
+  _IsSalable: 0

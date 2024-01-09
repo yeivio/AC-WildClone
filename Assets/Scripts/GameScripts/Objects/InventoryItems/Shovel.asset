@@ -17,8 +17,12 @@ MonoBehaviour:
   _equipableModel: {fileID: 3962648714174023398, guid: 26ea856d17537a8448708d14ffabd29c, type: 3}
   _IsStackable: 0
   _MaxStackSize: 0
+  _BuyPrice: 100
+  _ShellPrice: 20
   _Name: pala
   _IsPlantable: 0
   _IsEatable: 0
   _IsEquipable: 1
   _IsDropeable: 1
+  _IsAffordable: 1
+  _IsSalable: 1

@@ -8,7 +8,6 @@ public class InventorySlotsManager : MonoBehaviour
     [SerializeField] private PlayerSlotManager[] inventorySlots; // Inventory slots
     [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory container
 
-
     private PlayerSlotManager currentSelectedObject;
 
     private void OnEnable()
@@ -46,7 +45,7 @@ public class InventorySlotsManager : MonoBehaviour
             InventoryItem_ScriptableObject aux = currentSelectedObject.GetItemSO();
             currentSelectedObject.SetItemSO(slot.GetItemSO());
             slot.SetItemSO(aux);
-            currentSelectedObject.Deselect(); // Reset last object clickedç
+            currentSelectedObject.Deselect(); // Reset last object clickedï¿½
             // Reset current selected object
             slot.Deselect();
             slot.OnSelect(null); 
