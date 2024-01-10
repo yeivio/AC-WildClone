@@ -14,7 +14,7 @@ public class InventoryItem_ScriptableObject : ScriptableObject
     [SerializeField] private bool _IsStackable;
     [SerializeField] private int _MaxStackSize;
     [SerializeField] private int _BuyPrice;
-    [SerializeField] private int _ShellPrice;
+    [SerializeField] private int _SellPrice;
 
     [Header("Atributos cualitativos")]
     [SerializeField] private string _Name;
@@ -40,5 +40,5 @@ public class InventoryItem_ScriptableObject : ScriptableObject
     public bool IsAffordable => _IsAffordable;
     public bool IsSalable => _IsSalable;
     public int BuyPrice => _BuyPrice;
-    public int ShellPrice => _ShellPrice;
+    public int SellPrice => _SellPrice;
 }

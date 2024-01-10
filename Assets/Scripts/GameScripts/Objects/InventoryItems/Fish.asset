@@ -18,7 +18,7 @@ MonoBehaviour:
   _IsStackable: 0
   _MaxStackSize: 0
   _BuyPrice: 20
-  _ShellPrice: 20
+  _SellPrice: 15
   _Name: pescado
   _IsPlantable: 0
   _IsEatable: 1

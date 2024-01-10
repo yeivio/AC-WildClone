@@ -11,6 +11,8 @@ TagManager:
   - EquipableItem
   - LimitWall
   - BuySlot
+  - SellSlot
+  - DialogWindow
   layers:
   - Default
   - TransparentFX

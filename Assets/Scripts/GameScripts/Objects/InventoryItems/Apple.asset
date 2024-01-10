@@ -18,7 +18,7 @@ MonoBehaviour:
   _IsStackable: 0
   _MaxStackSize: 0
   _BuyPrice: 10
-  _ShellPrice: 12
+  _SellPrice: 5
   _Name: manzana
   _IsPlantable: 1
   _IsEatable: 1

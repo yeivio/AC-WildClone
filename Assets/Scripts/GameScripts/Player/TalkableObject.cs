@@ -12,39 +12,31 @@ public class TalkableObject : MonoBehaviour
     public GameObject cam;  //Dialogue camera
     public int actualTalk;  // Next dialog to be carried
     private Animator playerAnimator;
-    public string previousTalk;
-    public bool tiendaAbierta;
+    public bool tiendaAbierta; // Look for an open shop menu
+    public bool isBuyShop; // if true the open shop is a buy shop, if false it is a sell shop
 
     private void Start()
     {
         playerAnimator = GetComponentInChildren<Animator>();
         actualTalk = 0;
-        previousTalk = null;
     }
     public void Continue(InputAction.CallbackContext context)
     {
         if (tiendaAbierta == true)
             return;
-        if (previousTalk != null)
-        {
-            config[actualTalk - 1].dialogue = previousTalk;
-            previousTalk = null;
-        }
+        Debug.Log($"CONTINUE INPUT ACTION {tiendaAbierta}");
         npcText_UI.ContinueDialog(config[actualTalk]);
         actualTalk += 1;
     }
     public void Continue(string toAdd)
     {
-        tiendaAbierta = false;
-        if (previousTalk != null)
-        {
-            config[actualTalk - 1].dialogue = previousTalk;
-        }
-            
-        previousTalk = config[actualTalk].dialogue;
-        config[actualTalk].dialogue += toAdd;
-        npcText_UI.ContinueDialog(config[actualTalk]);
-        actualTalk += 1;
+        string dialog;
+        if (isBuyShop)
+            dialog = "Pues el precio es: ";
+        else
+            dialog = "Te lo compro por: ";
+        dialog += toAdd;
+        npcText_UI.AfterTienda(dialog);
     }
     public void DisableCamera()
     {

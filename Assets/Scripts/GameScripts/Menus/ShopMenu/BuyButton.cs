@@ -16,7 +16,7 @@ public class BuyButton : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (menuManger.selected == this && Input.GetKeyDown(KeyCode.Return) && hasItem)
+		if (menuManger.selected == this && Input.GetKeyDown(KeyCode.Space) && hasItem)
         {
 			menuManger.setBuying(this);
 

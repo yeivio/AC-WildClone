@@ -13,11 +13,11 @@ public class BuyMenu : MonoBehaviour
     [SerializeField] private Button first;
     [SerializeField] private GameObject menu;                       // element to be disable when quiting the menu
     public BuyButton selected;
-    [SerializeField] private BuyButton buying;                      // element that is being bought
+    [SerializeField] public BuyButton buying;                      // element that is being bought
     [SerializeField] private TalkableObject npc;                    // NPC that calls the menu
 
     private Button [] shellingElements;
-    public List<InventoryItem_ScriptableObject> items;
+    public List<InventoryItem_ScriptableObject> items;              // items contained on the menu
 
     // Use this for initialization
     void Start()
@@ -37,6 +37,8 @@ public class BuyMenu : MonoBehaviour
         foreach (InventoryItem_ScriptableObject item in items)
         {
             int index = items.IndexOf(item);
+            if (index >= shellingElements.Length)
+                break;
             shellingElements[index].gameObject.GetComponent<Image>().sprite = item.ItemSprite;
             shellingElements[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = item.BuyPrice.ToString();
             shellingElements[index].gameObject.GetComponent<BuyButton>().hasItem = true;
