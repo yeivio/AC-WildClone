@@ -57,6 +57,7 @@ public class Tent_Exit : MonoBehaviour
         //Activar hitbox para salir
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
         houseManager.ExitHouse();
+        
         this.transform.parent.gameObject.SetActive(false);
         yield return null;
     }

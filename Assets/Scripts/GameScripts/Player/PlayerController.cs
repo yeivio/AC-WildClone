@@ -87,8 +87,9 @@ public class PlayerController : MonoBehaviour
             this.playerParticles.Stop();
             walkingSound.Stop();
             playerModelAnimator.getActivePlayerAnimator().SetBool("isMoving", false);
+
             this.notMovedTimer += Time.deltaTime;
-            if (!timerMenuManager.isActive() && notMovedTimer >= 5)
+            if (!timerMenuManager.isActive() && notMovedTimer >= 5 && canMove)
                 timerMenuManager.showTimer();
 
 

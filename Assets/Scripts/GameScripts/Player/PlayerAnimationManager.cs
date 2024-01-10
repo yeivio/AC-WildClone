@@ -80,6 +80,11 @@ public class PlayerAnimationManager : MonoBehaviour
                     playerAnimator.Play("ShakingTree_Shovel");
                 }
                 break;
+            case "Dig":
+                {
+                    playerAnimator.Play("Shovel_Digging");
+                }
+                break;
             case "Idle":
                 {
                     playerAnimator.Play("Idle_Shovel");

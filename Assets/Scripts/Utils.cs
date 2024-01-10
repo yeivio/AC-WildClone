@@ -11,6 +11,7 @@ public class Utils
     public static string FREEMOVE_INVENTORY { get; } = FREEMOVE_INPUTMAP + "_Inventory";
     public static string FREEMOVE_INTERACT { get; } =  FREEMOVE_INPUTMAP + "_Interact";
     public static string FREEMOVE_UNEQUIP_ITEM { get; } = FREEMOVE_INPUTMAP + "_UnequipItem";
+    public static string FREEMOVE_UNEQUIP_DIG { get; } = FREEMOVE_INPUTMAP + "_Dig";
     #endregion
 
     #region UI inputMap

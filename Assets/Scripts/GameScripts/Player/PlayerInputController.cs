@@ -27,6 +27,7 @@ public class PlayerInputController : MonoBehaviour
         this.inputAction.FindAction(Utils.FREEMOVE_INVENTORY).performed += this.inventoryManager.OpenInventory;
         this.inputAction.FindAction(Utils.FREEMOVE_INTERACT).performed += this.interactionController.Interact;
         this.inputAction.FindAction(Utils.FREEMOVE_UNEQUIP_ITEM).performed += this.interactionController.UnequipItem;
+        this.inputAction.FindAction(Utils.FREEMOVE_UNEQUIP_DIG).performed += this.interactionController.PlayerDig;
 
         //UI ACTIONS
         this.inputAction.FindAction(Utils.UI_INPUTMAP_CLOSEMENU).performed += this.inventoryManager.CloseMenu;
@@ -44,6 +45,7 @@ public class PlayerInputController : MonoBehaviour
         //NPC_TALK ACTIONS
         this.inputAction.FindAction(Utils.NPC_TALK_QUIT).performed += this.npcdialog.CloseDialog;
         this.inputAction.FindAction(Utils.NPC_TALK_CONTINUE).performed += this.npcTackableObject.Continue;
+
 
     }
 

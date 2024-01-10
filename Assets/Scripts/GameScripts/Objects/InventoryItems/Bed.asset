@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa6427a4c71d5241998a6dfbba58cf1, type: 3}
+  m_Name: Bed
+  m_EditorClassIdentifier: 
+  _ItemSprite: {fileID: 21300000, guid: b346483be047de346a24acd0f7e08a96, type: 3}
+  _object3D: {fileID: 129804302811618699, guid: cbcb258b890d1d74e960f7efb2e71d1d, type: 3}
+  _equipableModel: {fileID: 0}
+  _IsStackable: 0
+  _MaxStackSize: 0
+  _BuyPrice: 120
+  _SellPrice: 0
+  _Name: Cama
+  _IsPlantable: 0
+  _IsEatable: 0
+  _IsEquipable: 0
+  _IsDropeable: 1
+  _IsAffordable: 1
+  _IsSalable: 0

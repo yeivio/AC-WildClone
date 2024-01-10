@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] private Sprite selected_slotImage; // Visual representation of the slot when is Selected
     [SerializeField] private AudioClip focused_Audio; // Audio for slot focused
     [SerializeField] private AudioClip selected_Audio; // Audio for slot selected
+    [SerializeField] private TextMeshProUGUI displayItemName; // Item name displayer
+
     [SerializeField] private AudioSource audioSource;   
 
     public static float SELECTED_BUTTON_RESIZE = 1;
@@ -33,6 +36,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         slotManager = GetComponentInParent<InventorySlotsManager>();
         itemImage =  this.transform.GetChild(0).GetComponentInChildren<Image>();
         originalSize = this.GetComponent<Button>().transform.localScale;  // Save the original size
+        this.displayItemName.gameObject.SetActive(false);
     }
 
     private void OnDisable()
@@ -110,9 +114,14 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         this.itemSO = item;
 
         if (item == null)
+        {
             this.itemImage.gameObject.SetActive(false);
-        else
-            this.itemImage.sprite = item.ItemSprite;   
+            displayItemName.text = "";
+        }
+        else {
+            this.itemImage.sprite = item.ItemSprite;
+            displayItemName.text = item.Name;
+        }
     }
 
     public void removeItemSO()
@@ -120,5 +129,15 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         this.slotManager.removeItem(this.itemSO);
         this.itemSO = null;
         this.itemImage.gameObject.SetActive(false);
+    }
+
+    public void EnableObjectName()
+    {
+        this.displayItemName.gameObject.SetActive(true);
+    }
+
+    public void DisableObjectName()
+    {
+        this.displayItemName.gameObject.SetActive(false);
     }
 }

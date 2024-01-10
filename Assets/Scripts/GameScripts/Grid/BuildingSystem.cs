@@ -39,13 +39,7 @@ public class BuildingSystem : MonoBehaviour
             PlayerController player = FindAnyObjectByType<PlayerController>();
             //Debug.Log($"{NextPositionInGrid(player.gameObject)}, {LookingDirection(player.gameObject)}");
             CheckDrop(NextPositionInGrid(player.gameObject), LookingDirection(player.gameObject));
-        }
-        else if(Input.GetKeyDown(KeyCode.C))
-        {
-            PlayerController player = FindAnyObjectByType<PlayerController>();
-            Dig(NextPositionInGrid(player.gameObject), LookingDirection(player.gameObject));
-        }
-        
+        }        
     }
 
     public bool DropItem(GameObject objectToDrop, GameObject gObject, Vector3 direction)

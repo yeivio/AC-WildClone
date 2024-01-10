@@ -79,6 +79,7 @@ public abstract class House_Manager : MonoBehaviour
             yield return null;
         }
         player.transform.position = finalPos;
+        player.transform.eulerAngles = new Vector3(180, 180, 180);
         player.enableMovement();
         WhenHouseEnter();
         isTransitioning = false;

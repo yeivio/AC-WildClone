@@ -21,6 +21,7 @@ public class DialogManager : MonoBehaviour
 
     private void OnDisable()
     {
+        currentSelectedItem.DisableObjectName();
         this.equipObject_Text.SetActive(false);
         this.plant_Text.SetActive(false);
     }
@@ -32,14 +33,7 @@ public class DialogManager : MonoBehaviour
     {
         this.listActiveButtons = new List<Button>();
         currentSelectedItem = EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>();
-
-        if (currentSelectedItem.GetItemSO().IsPlantable) {
-            this.plant_Text.SetActive(true);
-            listActiveButtons.Add(this.plant_Text.GetComponent<Button>());
-        }
-        else {
-            this.plant_Text.SetActive(false);
-        }
+        currentSelectedItem.EnableObjectName();
         if (currentSelectedItem.GetItemSO().IsEquipable)
         {
             this.equipObject_Text.SetActive(true);
@@ -49,7 +43,18 @@ public class DialogManager : MonoBehaviour
             this.equipObject_Text.SetActive(false);
         }
 
-        listActiveButtons.Add(this.dropItem_Text.GetComponent<Button>()); // You can always drop an item
+        if (currentSelectedItem.GetItemSO().IsDropeable)
+        {
+            this.dropItem_Text.SetActive(true);
+            listActiveButtons.Add(this.dropItem_Text.GetComponent<Button>());
+        }
+        else
+        {
+            this.dropItem_Text.SetActive(false);
+        }
+
+
+
         listActiveButtons.Add(this.closeMenu_Text.GetComponent<Button>());
         this.closeMenu_Text.gameObject.GetComponent<Button>().Select();
         this.buildNavigation();
@@ -90,6 +95,7 @@ public class DialogManager : MonoBehaviour
 
     public void CloseMenu()
     {
+        currentSelectedItem.DisableObjectName();
         currentSelectedItem.gameObject.GetComponent<Button>().Select();
         this.gameObject.SetActive(false);
     }

@@ -21,7 +21,7 @@ public class PlayerSwitch_House : House_Manager
         }
 
         player.GetComponent<PlayerAnimationManager>().updatePlayerAnimator(); // Update animator
-        player.transform.Rotate(new Vector3(0, 180, 0)); // Rotate player
+        player.transform.Rotate(new Vector3(0, 180, 0)); 
         this.PlayExitHouseAnimation();  // Play exit animation
     }
 }

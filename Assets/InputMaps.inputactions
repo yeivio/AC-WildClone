@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FreeMove_Dig",
+                    "type": "Button",
+                    "id": "cb5721e7-343f-4df7-b3ba-114f520e0edb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -192,6 +201,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "FreeMove_UnequipItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "538192fe-0530-4006-9bdf-411e10ed984e",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "FreeMove_Dig",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -211,4 +211,15 @@ public class PlayerInteractionsController : MonoBehaviour
             return this.EquipableItem;
         return null;
     }
+
+    public void PlayerDig(InputAction.CallbackContext context)
+    {
+        if (!context.performed || this.currentPlayerState != PlayerState.SHOVEL)
+            return;
+        if(BuildingSystem.current.Dig(BuildingSystem.current.NextPositionInGrid(this.gameObject),
+            BuildingSystem.current.LookingDirection(this.gameObject)))
+        {
+            this.playerAnimationManager.PlayAnimaton(this.getPlayerState(), "Dig");
+        }
+    }
 }
