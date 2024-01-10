@@ -46,6 +46,7 @@ public abstract class House_Manager : MonoBehaviour
     {
         isTransitioning = true;
         player.disableMovement();
+        player.GetComponent<PlayerInteractionsController>().UnequipItem();
         StartCoroutine(EnterHouse(endPosition));
     }
 

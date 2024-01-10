@@ -51,11 +51,7 @@ public class PlayerInteractionsController : MonoBehaviour
         {
             this.playerAnimationManager.PlayAnimaton(this.getPlayerState(), "PickingObject");
             Vector3 copia = pickObj.transform.position; //In case we need to respawn the object
-            if (!inventoryData.AddItem(pickObj.inventorySprite))
-            {
-                Instantiate(pickObj, copia, Quaternion.identity);
-            }
-            else{
+            if (inventoryData.AddItem(pickObj.inventorySprite)) {
                 pickObj.takeObject();
                 pickupSound.Play();
             }
@@ -199,7 +195,12 @@ public class PlayerInteractionsController : MonoBehaviour
         this.setPlayerState(PlayerState.EMPTY_HANDS);
         if (this.EquipableItem != null)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("EquipableItem")[0]); //Destroy equipped object
+            for (int i = 0; i < handBone.Length; i++)
+            {
+                if (handBone[i].gameObject.activeSelf)
+                    handBone[i].gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            //Destroy(GameObject.FindGameObjectsWithTag("EquipableItem")[0]); //Destroy equipped object
         }
         this.EquipableItem = null; // Resets
     }
