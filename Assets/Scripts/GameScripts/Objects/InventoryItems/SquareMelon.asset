@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fa6427a4c71d5241998a6dfbba58cf1, type: 3}
-  m_Name: Platano
+  m_Name: SquareMelon
   m_EditorClassIdentifier: 
-  _ItemSprite: {fileID: 21300000, guid: a8c38ea46bfe8484fb33ba900314738d, type: 3}
-  _object3D: {fileID: 2946864935117380567, guid: ca921e285fdc1804f9e2ccbedb43ed8e, type: 3}
+  _ItemSprite: {fileID: 21300000, guid: d4f07bcec69750744a372af16d7119a9, type: 3}
+  _object3D: {fileID: 5882194205326237322, guid: 261dd05ea855e7941ba88eeeecaa91c5, type: 3}
   _equipableModel: {fileID: 0}
   _IsStackable: 0
   _MaxStackSize: 0
-  _BuyPrice: 50
-  _ShellPrice: 50
-  _Name: platano
+  _BuyPrice: 60
+  _ShellPrice: 40
+  _Name: "Mel\xF3n C\xFAbico"
   _IsPlantable: 1
   _IsEatable: 1
   _IsEquipable: 0
