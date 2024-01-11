@@ -40,9 +40,16 @@ public class BuyMenu : MonoBehaviour
             if (index >= shellingElements.Length)
                 break;
             shellingElements[index].gameObject.GetComponent<Image>().sprite = item.ItemSprite;
-            shellingElements[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = item.BuyPrice.ToString();
-            shellingElements[index].gameObject.GetComponent<BuyButton>().hasItem = true;
-            shellingElements[index].gameObject.GetComponent<BuyButton>().item = item;
+            BuyButton actualButton = shellingElements[index].gameObject.GetComponent<BuyButton>();
+            TextMeshProUGUI itemPrice = new();
+            foreach (Transform child in actualButton.transform) //Activate text and backgrounds
+            {
+                if (!child.gameObject.CompareTag("NameInfo"))
+                    itemPrice = child.gameObject.GetComponent<TextMeshProUGUI>();
+            }
+            itemPrice.text = item.BuyPrice.ToString();
+            actualButton.hasItem = true;
+            actualButton.item = item;
         }
     }
 

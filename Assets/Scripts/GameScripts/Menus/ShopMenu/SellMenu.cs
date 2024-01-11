@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System;
 
 public class SellMenu : MonoBehaviour
 {
@@ -73,12 +74,21 @@ public class SellMenu : MonoBehaviour
         int count = 0;
         foreach (InventoryItem_ScriptableObject item in items)
         {
+            if (!item.IsSalable)
+                continue;
             if (count >= this.shellingElements.Length)
                 break;
             this.shellingElements[count].gameObject.GetComponent<Image>().sprite = item.ItemSprite;
-            this.shellingElements[count].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = item.SellPrice.ToString();
-            this.shellingElements[count].gameObject.GetComponent<SellButton>().hasItem = true;
-            this.shellingElements[count].gameObject.GetComponent<SellButton>().item = item;
+            SellButton actualButton = shellingElements[count].gameObject.GetComponent<SellButton>();
+            TextMeshProUGUI itemPrice = new();
+            foreach (Transform child in actualButton.transform) //Activate text and backgrounds
+            {
+                if (!child.gameObject.CompareTag("NameInfo"))
+                    itemPrice = child.gameObject.GetComponent<TextMeshProUGUI>();
+            }
+            itemPrice.text = item.SellPrice.ToString();
+            actualButton.hasItem = true;
+            actualButton.item = item;
             count += 1;
         }
         first.Select();

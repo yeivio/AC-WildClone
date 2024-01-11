@@ -31,8 +31,10 @@ public class BuildingSystem : MonoBehaviour
         gridData = GridData.Initialize();
         
     }
+    /*
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.J))
         {
             objectToPlace = prefab1.GetComponent<PlaceableObject>();
@@ -41,7 +43,7 @@ public class BuildingSystem : MonoBehaviour
             CheckDrop(NextPositionInGrid(player.gameObject), LookingDirection(player.gameObject));
         }        
     }
-
+    */
     public bool DropItem(GameObject objectToDrop, GameObject gObject, Vector3 direction)
     // Drop Item thought to take the objectToDrop and place it at the front (forward axis) of the
     // gObject ocupying the direction passed

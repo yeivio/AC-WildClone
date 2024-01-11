@@ -18,11 +18,11 @@ MonoBehaviour:
   _IsStackable: 0
   _MaxStackSize: 0
   _BuyPrice: 100
-  _SellPrice: 50
+  _SellPrice: 0
   _Name: pala
   _IsPlantable: 0
   _IsEatable: 0
   _IsEquipable: 1
   _IsDropeable: 1
   _IsAffordable: 1
-  _IsSalable: 1
+  _IsSalable: 0

@@ -11,6 +11,7 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField] private InventorySlotsManager invSlotsManager; // Player inventory slots manager
     [SerializeField] private DialogManager dialogWindow; // Dialog window reference
     [SerializeField] private GameObject inventoryBackground; // GameObject which contains the visuals of the player inventory
+    [SerializeField] private GameObject displayMoney;
 
     private PlayerInput playerInput; //Player input reference
 
@@ -20,7 +21,9 @@ public class PlayerInventoryManager : MonoBehaviour
 
         // Hide all the UI
         this.dialogWindow.gameObject.SetActive(false);  
-        this.inventoryBackground.SetActive(false);   
+        this.inventoryBackground.SetActive(false);
+        this.displayMoney.SetActive(false);
+
     }
 
     /// <summary>
@@ -30,6 +33,7 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         playerInput.SwitchCurrentActionMap(Utils.UI_INPUTMAP);
         this.inventoryBackground.SetActive(true);
+        this.displayMoney.SetActive(true);
 
     }
 
@@ -63,6 +67,7 @@ public class PlayerInventoryManager : MonoBehaviour
         else {
             this.dialogWindow.gameObject.SetActive(false);
             this.inventoryBackground.SetActive(false);
+            this.displayMoney.SetActive(false);
             playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
         }
     }
