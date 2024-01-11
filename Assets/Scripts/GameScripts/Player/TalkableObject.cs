@@ -15,18 +15,17 @@ public class TalkableObject : MonoBehaviour
     public bool tiendaAbierta; // Look for an open shop menu
     public bool isBuyShop; // if true the open shop is a buy shop, if false it is a sell shop
         
-    private bool isActive;  // Control variable to know which TalkableObj is the player currently talking
+    public bool isActive;  // Control variable to know which TalkableObj is the player currently talking
 
     private void Start()
     {
         playerAnimator = GetComponentInChildren<Animator>();
         actualTalk = 0;
-        isActive = false;
         tiendaAbierta = false;
     }
-    public void Continue(InputAction.CallbackContext context)
+    public void Continue()
     {
-        //Debug.Log("HOLA, POR SEGUNDA VEZ");
+        Debug.Log("HOLA, POR SEGUNDA VEZ");
         if (tiendaAbierta == true || !isActive)
             return;
         Debug.Log($"CONTINUE INPUT ACTION {tiendaAbierta}");
@@ -45,7 +44,6 @@ public class TalkableObject : MonoBehaviour
     }
     public void DisableCamera()
     {
-        isActive = false;
         this.cam.SetActive(false);
         playerAnimator.SetBool("isTalking", false);
         playerAnimator.SetBool("isRotating", false);
@@ -53,7 +51,6 @@ public class TalkableObject : MonoBehaviour
 
     public void EnableCamera()
     {
-        isActive = true;
         this.cam.SetActive(true);
         StopAllCoroutines();
     }
@@ -61,6 +58,7 @@ public class TalkableObject : MonoBehaviour
     public void talk(PlayerInteractionsController player)
     {
         //Npc looks at player
+        isActive = true;
         actualTalk = 0;
         Vector3 targetPostition = new Vector3(player.transform.position.x,
                                        this.transform.position.y,

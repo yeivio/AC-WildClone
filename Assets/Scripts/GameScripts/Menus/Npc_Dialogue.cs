@@ -71,7 +71,7 @@ public class Npc_Dialogue : MonoBehaviour
         switch(config.dialogue)
         {
             case "exit":
-                CloseDialog(new());
+                 CloseDialog(new());
                 break;
             case "tienda":
                 selectionDialog.SetActive(true);
@@ -119,7 +119,7 @@ public class Npc_Dialogue : MonoBehaviour
                     wallet.Sell(dinero);
                 }
                 
-                talkObj.Continue(new InputAction.CallbackContext());
+                talkObj.Continue();
                 break;
 
             default:
@@ -146,7 +146,7 @@ public class Npc_Dialogue : MonoBehaviour
             case "si":
                 Debug.Log("SI");
                 talkObj.tiendaAbierta = false;
-                talkObj.Continue(new InputAction.CallbackContext());
+                talkObj.Continue();
                 
 
                 break;
@@ -154,7 +154,7 @@ public class Npc_Dialogue : MonoBehaviour
                 Debug.Log("NO");
                 talkObj.actualTalk += 1;
                 talkObj.tiendaAbierta = false;
-                talkObj.Continue(new InputAction.CallbackContext());
+                talkObj.Continue();
                 
 
                 break;
@@ -192,6 +192,7 @@ public class Npc_Dialogue : MonoBehaviour
             StopAllCoroutines();
         talkObj.tiendaAbierta = false;
         talkObj.actualTalk = 0;
+        talkObj.isActive = false;
         talkObj.DisableCamera(); // Disable the npc camera
     }
     /// <summary>
@@ -212,6 +213,15 @@ public class Npc_Dialogue : MonoBehaviour
             visibleChar++;
         }
         this.isCoroutineActive = false;
+    }
+    public void ContinueConversation(InputAction.CallbackContext context)
+    {
+        TalkableObject[] objects = GameObject.FindObjectsByType<TalkableObject>(FindObjectsSortMode.None);
+        foreach(TalkableObject o in objects)
+        {
+            if(o.isActive)
+                o.Continue();
+        }
     }
 
 }
