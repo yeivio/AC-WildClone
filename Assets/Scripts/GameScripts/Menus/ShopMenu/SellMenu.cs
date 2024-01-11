@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System;
+using static UnityEditor.Progress;
 
 public class SellMenu : MonoBehaviour
 {
@@ -14,13 +15,19 @@ public class SellMenu : MonoBehaviour
     private PointerEventData pt;
     [SerializeField] private Button first;
     [SerializeField] private GameObject menu;                       // element to be disable when quiting the menu
-    public SellButton selected;
+    public Button selected;
     [SerializeField] private List<SellButton> shelling = new();                      // element that is being bought
     [SerializeField] private TalkableObject npc;                    // NPC that calls the menu
 
     private Button[] shellingElements;                              // Buttons that represent each item to be sold by the player 
     public PlayerInventory_ScriptableObject inventory;              // Player Inventory
+    private InventoryItem_ScriptableObject[] inventoryItems;        // Inventory Items
     public int price;                                               // Price of the element to be selled
+
+    private int MAX_SIZE = 12;                                       // Max number of elements in a page of the sell menu
+    private int page;                                               // Actual page where user is
+
+    [SerializeField] private Sprite initialImage;
 
     // Use this for initialization
     void Start()
@@ -53,7 +60,7 @@ public class SellMenu : MonoBehaviour
         }
         */
         if (EventSystem.current.currentSelectedGameObject.TryGetComponent<Button>(out Button but))
-            selected = but.gameObject.GetComponent<SellButton>();
+            selected = but;
 
         if (Input.GetKeyDown(KeyCode.Return))
             SellAction();
@@ -70,39 +77,111 @@ public class SellMenu : MonoBehaviour
         }
         shellingElements = buttonsAux.ToArray();
 
-        List<InventoryItem_ScriptableObject> items = inventory.getList();
+        List<InventoryItem_ScriptableObject> items = new();
+
+        foreach(InventoryItem_ScriptableObject item in inventory.getList())
+        {
+            if (item.IsSalable)
+                items.Add(item);
+        }
+
+        inventoryItems = items.ToArray();
         int count = 0;
+        page = 0;
         foreach (InventoryItem_ScriptableObject item in items)
         {
-            if (!item.IsSalable)
-                continue;
-            if (count >= this.shellingElements.Length)
+            if (count >= MAX_SIZE)
                 break;
-            this.shellingElements[count].gameObject.GetComponent<Image>().sprite = item.ItemSprite;
-            SellButton actualButton = shellingElements[count].gameObject.GetComponent<SellButton>();
-            TextMeshProUGUI itemPrice = new();
-            foreach (Transform child in actualButton.transform) //Activate text and backgrounds
-            {
-                if (!child.gameObject.CompareTag("NameInfo"))
-                    itemPrice = child.gameObject.GetComponent<TextMeshProUGUI>();
-            }
-            itemPrice.text = item.SellPrice.ToString();
-            actualButton.hasItem = true;
-            actualButton.item = item;
+            modifyShellButtonInfo(
+                   count,
+                   item.ItemSprite,
+                   item.SellPrice.ToString(),
+                   item);
             count += 1;
         }
         first.Select();
     }
+    public void NextPage()
+    {
+        if (page == 2)
+            page = 0;
+        else
+            page += 1;
+        int ini = page * MAX_SIZE;
+        for (int i = 0; i<=(MAX_SIZE-1); i++)
+        {
+            int index = i + ini;
+
+            if (inventoryItems.Length <= index)
+            {
+                modifyShellButtonInfo(
+                   i,
+                   initialImage,
+                   "",
+                   null);
+            }
+            else
+            {
+                modifyShellButtonInfo(
+                   i,
+                   inventoryItems[index].ItemSprite,
+                   inventoryItems[index].SellPrice.ToString(),
+                   inventoryItems[index]);
+            }
+            
+        }
+        
+    }
+    public void PreviousPage()
+    {
+        if (page == 0)
+            page = 2;
+        else
+            page -= 1;
+        int ini = page * MAX_SIZE;
+        for (int i = 0; i <= (MAX_SIZE - 1); i++)
+        {
+            int index = i + ini;
+            if (inventoryItems.Length <= index)
+            {
+                modifyShellButtonInfo(
+                   i,
+                   initialImage,
+                   "",
+                   null);
+            }
+            else
+            {
+                modifyShellButtonInfo(
+                    i,
+                    inventoryItems[index].ItemSprite,
+                    inventoryItems[index].SellPrice.ToString(),
+                    inventoryItems[index]);
+            }
+        }
+    }
+    private void modifyShellButtonInfo(int index, Sprite sprite, string price, InventoryItem_ScriptableObject item)
+    {
+        this.shellingElements[index].gameObject.GetComponent<Image>().sprite = sprite;
+        SellButton actualButton = shellingElements[index].gameObject.GetComponent<SellButton>();
+        TextMeshProUGUI itemPrice = new();
+        foreach (Transform child in actualButton.transform) //Activate text and backgrounds
+        {
+            if (!child.gameObject.CompareTag("NameInfo"))
+                itemPrice = child.gameObject.GetComponent<TextMeshProUGUI>();
+        }
+        itemPrice.text = price;
+        actualButton.hasItem = true;
+        actualButton.item = item;
+    }
     public void SetSelling(SellButton toSell)
     {
+        if (shelling.Contains(toSell))
+            return;
         shelling.Add(toSell) ;
-        //quitText.dialogue += buying.gameObject.GetComponent<TextMeshProUGUI>().text + " bayas.";
-
-        
     }
     public void SellAction()
     {
-        Debug.Log("SELL ACTION");
         price = 0;
         foreach (SellButton sellingItem in shelling)
         {

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class SellButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
@@ -43,7 +44,7 @@ public class SellButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     // Update is called once per frame
     void Update()
     {
-        if (menuManger.selected == this && Input.GetKeyDown(KeyCode.Space) && hasItem)
+        if (menuManger.selected == this.gameObject.GetComponent<Button>() && Input.GetKeyDown(KeyCode.Space) && hasItem)
         {
             menuManger.SetSelling(this);
 

@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ToLeftMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] private SellMenu tienda;
     void Update()
     {
-        
+        if (tienda.selected == this.GetComponent<Button>() && Input.GetKeyDown(KeyCode.Space))
+        {
+            tienda.NextPage();
+
+        }
     }
 }
