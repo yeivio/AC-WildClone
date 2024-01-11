@@ -220,6 +220,7 @@ public class BuildingSystem : MonoBehaviour
             if (placementData.PlacedObject.CompareTag("Hole"))
             {
                 gridData.FreeSpace(placementData);
+                return true;
             }
                 
             return false;
