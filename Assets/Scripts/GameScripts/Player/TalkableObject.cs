@@ -22,9 +22,11 @@ public class TalkableObject : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
         actualTalk = 0;
         isActive = false;
+        tiendaAbierta = false;
     }
     public void Continue(InputAction.CallbackContext context)
     {
+        //Debug.Log("HOLA, POR SEGUNDA VEZ");
         if (tiendaAbierta == true || !isActive)
             return;
         Debug.Log($"CONTINUE INPUT ACTION {tiendaAbierta}");

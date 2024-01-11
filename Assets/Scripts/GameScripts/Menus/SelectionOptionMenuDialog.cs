@@ -20,7 +20,10 @@ public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselec
 		selected = true;
     }
 
-	
+    private void OnDisable()
+    {
+		selected = false;
+    }
 
     // Use this for initialization
     void Start()

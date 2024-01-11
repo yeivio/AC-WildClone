@@ -18,6 +18,7 @@ public class Npc_Dialogue : MonoBehaviour
     [SerializeField] private SellMenu sellTiendaController;
     [SerializeField] private GameObject selectionDialog;    // Dialog to be used when selecting between multiple choices
     [SerializeField] private Button[] selectionOptions;     // Options of the dialog multiple choice menu
+    [SerializeField] private Wallet wallet;
 
 
     private NPCConfig_ScriptableObject OnNPCInteract;  // Villager dialogue data
@@ -97,7 +98,12 @@ public class Npc_Dialogue : MonoBehaviour
                 {
                     InventoryItem_ScriptableObject item = tiendaController.GetComponent<BuyMenu>().buying.item;
                     // COMPROBAR DINERO DE LA PERSONA
-                    sellTiendaController.GetComponent<SellMenu>().inventory.AddItem(item);
+                    if(wallet.CanBuy(item.BuyPrice))
+                    {
+                        wallet.Buy(item.BuyPrice);
+                        sellTiendaController.GetComponent<SellMenu>().inventory.AddItem(item);
+                    }
+                    
 
                 }
                 
@@ -109,7 +115,8 @@ public class Npc_Dialogue : MonoBehaviour
                         sellTiendaController.GetComponent<SellMenu>().inventory.DeleteItem(item);
                     }
                     // AÑADIR Dinero
-                    // int dinero = shellTienda.GetComponent<SellMenu>().price;
+                    int dinero = sellTiendaController.GetComponent<SellMenu>().price;
+                    wallet.Sell(dinero);
                 }
                 
                 talkObj.Continue(new InputAction.CallbackContext());
@@ -172,6 +179,8 @@ public class Npc_Dialogue : MonoBehaviour
     /// </summary>
     public void CloseDialog(InputAction.CallbackContext context)
     {
+        
+        shellTienda.SetActive(false);
         tienda.SetActive(false);
         if (!isActive)
             return;
@@ -181,8 +190,9 @@ public class Npc_Dialogue : MonoBehaviour
             child.gameObject.SetActive(false);
         if (isCoroutineActive)  // If the animation is playing, then it's forced to stop
             StopAllCoroutines();
-        this.talkObj.actualTalk = 0;
-        this.talkObj.DisableCamera(); // Disable the npc camera
+        talkObj.tiendaAbierta = false;
+        talkObj.actualTalk = 0;
+        talkObj.DisableCamera(); // Disable the npc camera
     }
     /// <summary>
     /// Animation for the npc dialogue text. The Coroutine spawns the string char by char to match the length of the audio
