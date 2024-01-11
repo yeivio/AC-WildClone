@@ -9,7 +9,6 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject dropItem_Text;
     [SerializeField] private GameObject closeMenu_Text;
     [SerializeField] private GameObject equipObject_Text;
-    [SerializeField] private GameObject plant_Text;
     [SerializeField] private PlayerInteractionsController playerController;
 
 
@@ -23,7 +22,6 @@ public class DialogManager : MonoBehaviour
     {
         currentSelectedItem.DisableObjectName();
         this.equipObject_Text.SetActive(false);
-        this.plant_Text.SetActive(false);
     }
 
     /// <summary>

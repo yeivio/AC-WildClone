@@ -10,6 +10,7 @@ public class PlayerInteractionsController : MonoBehaviour
     [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory data
     [SerializeField] private PlayerInputController playerInputController;
     [SerializeField] private AudioSource pickupSound;
+    [SerializeField] private AudioSource diggingSound;
     public GameObject cam;  //Player camera
 
     private GameObject interactingObject; //Object which they player is interacting
@@ -30,7 +31,8 @@ public class PlayerInteractionsController : MonoBehaviour
     public enum PlayerState
     {
         EMPTY_HANDS,
-        SHOVEL
+        SHOVEL, // Shovel needs to be the second for animation references
+        INSIDE_HOUSE
     }
 
     private void Start()
@@ -214,12 +216,13 @@ public class PlayerInteractionsController : MonoBehaviour
 
     public void PlayerDig(InputAction.CallbackContext context)
     {
-        if (!context.performed || this.currentPlayerState != PlayerState.SHOVEL)
+        if (!context.performed || this.currentPlayerState == PlayerState.INSIDE_HOUSE || this.currentPlayerState != PlayerState.SHOVEL)
             return;
         if(BuildingSystem.current.Dig(BuildingSystem.current.NextPositionInGrid(this.gameObject),
             BuildingSystem.current.LookingDirection(this.gameObject)))
         {
             this.playerAnimationManager.PlayAnimaton(this.getPlayerState(), "Dig");
+            diggingSound.Play();
         }
     }
 }

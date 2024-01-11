@@ -8,7 +8,6 @@ public class TutorialTextSwitch : MonoBehaviour
 
     private PlayerInput playerInput;
     [SerializeField] private GameObject free_move;
-    [SerializeField] private GameObject moving;
     [SerializeField] private GameObject UI;
     [SerializeField] private GameObject NPC_Talk;
     void Start()
@@ -22,8 +21,6 @@ public class TutorialTextSwitch : MonoBehaviour
     {
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.FREEMOVE_INPUTMAP) && !this.free_move.activeSelf)
             activarUI(free_move);
-        if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.MOVINGOBJECTS_INPUTMAP) && !this.moving.activeSelf)
-            activarUI(moving);
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.UI_INPUTMAP) && !this.UI.activeSelf)
             activarUI(UI);
         if(playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.NPC_TALK_INPUTMAP) && !this.NPC_Talk.activeSelf)
@@ -33,7 +30,6 @@ public class TutorialTextSwitch : MonoBehaviour
     private void activarUI(GameObject obj)
     {
         free_move.SetActive(false);
-        moving.SetActive(false);
         UI.SetActive(false);
         NPC_Talk.SetActive(false);
         obj.SetActive(true);
