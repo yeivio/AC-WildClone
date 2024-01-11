@@ -591,6 +591,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "NPC_TALK_Navigate",
+                    "type": "PassThrough",
+                    "id": "96c4862d-c527-4cb4-9ea9-9bb9b686fe74",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(min=0.5)",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "NPC_TALK_Continue",
                     "type": "Button",
                     "id": "e24a682a-39c2-4c5b-b1e9-a2860fec241f",
@@ -620,6 +629,83 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "NPC_TALK_Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "08bc368b-e4f2-4b1a-b9d1-7b79ebe0c25d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NPC_TALK_Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "46f8e1e4-faa9-4c45-998a-374940fb29be",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "ca9bb18a-da0f-4fde-88be-08d9364d0e81",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "8a2e625d-d063-4468-bc21-1247ac13054a",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "be1bbf4b-2afc-431b-a253-659f19a36f17",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ab70dc7a-cb94-442b-a50c-84215bb9138b",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "575ac59c-3bb4-40c2-8dcd-16e66b9e678e",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_Navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

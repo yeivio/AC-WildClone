@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerInputController : MonoBehaviour
 {
@@ -18,6 +21,9 @@ public class PlayerInputController : MonoBehaviour
 
     public UI_Icon_Manager iconManager;
 
+
+    public InputSystemUIInputModule Navigation_UI;
+    public InputSystemUIInputModule Navigation_NPCTALK;
 
     private void Start()
     { 
@@ -48,9 +54,28 @@ public class PlayerInputController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        Debug.Log(playerInput.currentActionMap);
+    }
+
     public void SwitchInputMap(string newMap)
     {
         playerInput.SwitchCurrentActionMap(newMap);
+        if(newMap == Utils.NPC_TALK_INPUTMAP)
+        {
+            Navigation_UI.enabled = false;
+            Navigation_NPCTALK.enabled = true;
+            //(Navigation_UI.move.Set(this.inputAction.FindAction(Utils.NPC_TALK_NAVIGATION));
+            //Navigation_UI.submit.Set(this.inputAction.FindAction(Utils.NPC_TALK_CONTINUE));
+        }
+        else
+        {
+            Navigation_UI.enabled = true;
+            Navigation_NPCTALK.enabled = false;
+            //Navigation_UI.move.Set(this.inputAction.FindAction(Utils.UI_INPUTMAP_NAVIGATE));
+            //Navigation_UI.submit.Set(this.inputAction.FindAction(Utils.UI_INPUTMAP_CONFIRM));
+        }
     }
 
     /// <summary>

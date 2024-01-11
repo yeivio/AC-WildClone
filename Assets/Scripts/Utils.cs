@@ -42,7 +42,7 @@ public class Utils
     public static string NPC_TALK_INPUTMAP { get; } = "NPC_TALK"; // ActionMap for when a player is talking to an npc
     public static string NPC_TALK_QUIT { get; } = NPC_TALK_INPUTMAP + "_Quit";
     public static string NPC_TALK_CONTINUE { get; } = NPC_TALK_INPUTMAP + "_Continue";
-
+    public static string NPC_TALK_NAVIGATION { get; } = NPC_TALK_INPUTMAP + "_Navigation";
     #endregion
 
 }

@@ -4680,6 +4680,7 @@ MonoBehaviour:
   npc: {fileID: 8293944272059613802}
   inventory: {fileID: 11400000, guid: 927889b4008211f43bd04a1c2791db77, type: 2}
   price: 0
+  initialImage: {fileID: 0}
 --- !u!1 &341127546
 GameObject:
   m_ObjectHideFlags: 0
@@ -6839,7 +6840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.9515686
+      value: -3.951561
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8579,6 +8580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225f678d7e9274db0a967d15240fe19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tienda: {fileID: 0}
 --- !u!1 &629326375
 GameObject:
   m_ObjectHideFlags: 0
@@ -11142,6 +11144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64ddcbb96f8b45d1877465538a721a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tienda: {fileID: 0}
 --- !u!1 &732259953
 GameObject:
   m_ObjectHideFlags: 0
@@ -17521,7 +17524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 186.173}
   m_AnchorMin: {x: 0.039129317, y: 0.7774027}
   m_AnchorMax: {x: 0.29160836, y: 1}
-  m_AnchoredPosition: {x: -10.999725, y: 6.9998703}
+  m_AnchoredPosition: {x: -10.999756, y: 6.999878}
   m_SizeDelta: {x: 9.8051, y: -0.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201927415
@@ -19429,7 +19432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.9516296
+      value: -3.9516602
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -23875,8 +23878,9 @@ MonoBehaviour:
   fishingObj: {fileID: 2110827244}
   fishingUI: {fileID: 460351646}
   npcdialog: {fileID: 1659966935}
-  npcTackableObject: {fileID: 8293944272059613802}
   iconManager: {fileID: 936229338}
+  Navigation_UI: {fileID: 2112752840}
+  Navigation_NPCTALK: {fileID: 2112752840}
 --- !u!4 &1581830328
 Transform:
   m_ObjectHideFlags: 0
@@ -23989,6 +23993,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e24a682a-39c2-4c5b-b1e9-a2860fec241f
     m_ActionName: 'NPC_TALK/NPC_TALK_Continue[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cb5721e7-343f-4df7-b3ba-114f520e0edb
+    m_ActionName: 'FreeMove/FreeMove_Dig[/Keyboard/c]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96c4862d-c527-4cb4-9ea9-9bb9b686fe74
+    m_ActionName: 'NPC_TALK/NPC_TALK_Navigate[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: FreeMove
@@ -29939,6 +29951,7 @@ GameObject:
   - component: {fileID: 2112752839}
   - component: {fileID: 2112752838}
   - component: {fileID: 2112752840}
+  - component: {fileID: 2112752841}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -29996,6 +30009,36 @@ MonoBehaviour:
   m_PointAction: {fileID: 0}
   m_MoveAction: {fileID: -797797766197782544, guid: 72ac7315654671b4cb569b853c000d17, type: 3}
   m_SubmitAction: {fileID: 5014492696849841953, guid: 72ac7315654671b4cb569b853c000d17, type: 3}
+  m_CancelAction: {fileID: -1613143698691148357, guid: 72ac7315654671b4cb569b853c000d17, type: 3}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_DeselectOnBackgroundClick: 0
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 1
+--- !u!114 &2112752841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112752836}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.2
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 72ac7315654671b4cb569b853c000d17, type: 3}
+  m_PointAction: {fileID: 0}
+  m_MoveAction: {fileID: -1656966806228234984, guid: 72ac7315654671b4cb569b853c000d17, type: 3}
+  m_SubmitAction: {fileID: -7986917096288828079, guid: 72ac7315654671b4cb569b853c000d17, type: 3}
   m_CancelAction: {fileID: -1613143698691148357, guid: 72ac7315654671b4cb569b853c000d17, type: 3}
   m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
@@ -30066,6 +30109,7 @@ MonoBehaviour:
   actualTalk: 0
   tiendaAbierta: 0
   isBuyShop: 0
+  isActive: 0
 --- !u!65 &2116442878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32364,6 +32408,7 @@ MonoBehaviour:
   actualTalk: 0
   tiendaAbierta: 0
   isBuyShop: 0
+  isActive: 0
 --- !u!1 &8322643945092243678
 GameObject:
   m_ObjectHideFlags: 0
@@ -32705,12 +32750,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 2112752839}
+  - {fileID: 1581830328}
   - {fileID: 5380543688515038900}
   - {fileID: 4632699138801912862}
   - {fileID: 1783114169}
   - {fileID: 734137749}
   - {fileID: 286212512}
-  - {fileID: 1581830328}
   - {fileID: 345158025}
   - {fileID: 2649699997449731566}
   - {fileID: 458838013}
