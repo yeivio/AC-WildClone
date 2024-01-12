@@ -17,12 +17,12 @@ MonoBehaviour:
   _equipableModel: {fileID: 0}
   _IsStackable: 0
   _MaxStackSize: 0
-  _BuyPrice: 120
+  _BuyPrice: 0
   _SellPrice: 0
   _Name: Cama
   _IsPlantable: 0
   _IsEatable: 0
   _IsEquipable: 0
   _IsDropeable: 1
-  _IsAffordable: 1
+  _IsAffordable: 0
   _IsSalable: 0
