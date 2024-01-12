@@ -183,17 +183,24 @@ public class SellMenu : MonoBehaviour
         actualButton.hasItem = hasItem;
         actualButton.item = item;
     }
-    public void SetSelling(SellButton toSell)
+    public bool SetSelling(SellButton toSell)
+     // This class returns true if the element was added and false if was deleted
     {
         if (shelling.Contains(toSell))
-            return;
+        {
+            shelling.Remove(toSell);
+            return false;
+        }
+            
         shelling.Add(toSell) ;
+        return true;
     }
     public void SellAction()
     {
         price = 0;
         foreach (SellButton sellingItem in shelling)
         {
+            sellingItem.gameObject.GetComponent<Image>().color = new(255f, 255f, 255f);
             price += sellingItem.item.SellPrice;
         }
         npc.Continue(" " + price.ToString() + " bayas.");
