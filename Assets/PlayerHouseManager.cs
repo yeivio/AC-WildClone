@@ -11,6 +11,7 @@ public class PlayerHouseManager : House_Manager
         oldPlayerPosition = this.player.transform.position;
         this.player.transform.position = new Vector3(this.houseEnterPosition.transform.position.x, this.player.transform.position.y, this.houseEnterPosition.transform.position.z);
         houseEnterPosition.transform.parent.gameObject.SetActive(true);
+        this.player.gameObject.GetComponent<PlayerInteractionsController>().DisableDig();
     }
 
     public void ExitHouse()

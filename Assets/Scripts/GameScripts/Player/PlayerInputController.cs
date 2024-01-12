@@ -53,12 +53,6 @@ public class PlayerInputController : MonoBehaviour
 
 
     }
-
-    private void Update()
-    {
-        Debug.Log(playerInput.currentActionMap);
-    }
-
     public void SwitchInputMap(string newMap)
     {
         playerInput.SwitchCurrentActionMap(newMap);
@@ -66,15 +60,11 @@ public class PlayerInputController : MonoBehaviour
         {
             Navigation_UI.enabled = false;
             Navigation_NPCTALK.enabled = true;
-            //(Navigation_UI.move.Set(this.inputAction.FindAction(Utils.NPC_TALK_NAVIGATION));
-            //Navigation_UI.submit.Set(this.inputAction.FindAction(Utils.NPC_TALK_CONTINUE));
         }
-        else
+        if (newMap == Utils.UI_INPUTMAP)
         {
             Navigation_UI.enabled = true;
             Navigation_NPCTALK.enabled = false;
-            //Navigation_UI.move.Set(this.inputAction.FindAction(Utils.UI_INPUTMAP_NAVIGATE));
-            //Navigation_UI.submit.Set(this.inputAction.FindAction(Utils.UI_INPUTMAP_CONFIRM));
         }
     }
 

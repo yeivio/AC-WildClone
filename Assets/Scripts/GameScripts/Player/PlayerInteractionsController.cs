@@ -32,13 +32,15 @@ public class PlayerInteractionsController : MonoBehaviour
     {
         EMPTY_HANDS,
         SHOVEL, // Shovel needs to be the second for animation references
-        INSIDE_HOUSE
     }
+
+    private bool isDigDisable; // Bool to prevent the player from digging on phohibited sites
 
     private void Start()
     {
         playerAnimationManager = this.GetComponent<PlayerAnimationManager>();
         currentPlayerState = PlayerState.EMPTY_HANDS;
+        isDigDisable = false;
     }
 
     public void Interact(InputAction.CallbackContext context)
@@ -216,7 +218,7 @@ public class PlayerInteractionsController : MonoBehaviour
 
     public void PlayerDig(InputAction.CallbackContext context)
     {
-        if (!context.performed || this.currentPlayerState == PlayerState.INSIDE_HOUSE || this.currentPlayerState != PlayerState.SHOVEL)
+        if (!context.performed || isDigDisable || this.currentPlayerState != PlayerState.SHOVEL)
             return;
         if(BuildingSystem.current.Dig(BuildingSystem.current.NextPositionInGrid(this.gameObject),
             BuildingSystem.current.LookingDirection(this.gameObject)))
@@ -224,5 +226,15 @@ public class PlayerInteractionsController : MonoBehaviour
             this.playerAnimationManager.PlayAnimaton(this.getPlayerState(), "Dig");
             diggingSound.Play();
         }
+    }
+
+    public void DisableDig()
+    {
+        this.isDigDisable = true;
+
+    }
+    public void EnableDig()
+    {
+        this.isDigDisable = false;
     }
 }

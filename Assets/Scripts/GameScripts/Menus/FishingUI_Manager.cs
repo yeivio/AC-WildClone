@@ -11,17 +11,22 @@ public class FishingUI_Manager : MonoBehaviour
     [SerializeField] private RectTransform jackpot; // Object with the winnable zone 
     private float lerpSpeed = 1; // Speed of the cursor
     private bool keyPressed;
-    private PlayerInput playerInput;
+    private PlayerInputController playerInput;
     [SerializeField] private PlayerInventory_ScriptableObject playerInventory;
     [SerializeField] private InventoryItem_ScriptableObject fish;
+    [SerializeField] private AudioSource captureAudio;
+    [SerializeField] private AudioSource captureFailedAudio;
+
 
     private bool isCoroutineRunning;    // In case the object is called multiple times at the same time.
+    private bool isFinishAnimationRunning;
 
 
     private void Start()
     {
         this.isCoroutineRunning = false;
-        playerInput = FindAnyObjectByType<PlayerInput>();
+        isFinishAnimationRunning = false;
+        playerInput = FindAnyObjectByType<PlayerInputController>();
     }
 
     private void OnEnable()
@@ -35,6 +40,8 @@ public class FishingUI_Manager : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines(); // Force stop of coroutine
+        playerInput.SwitchInputMap(Utils.FREEMOVE_INPUTMAP);
+        isCoroutineRunning = false;
     }
     /// <summary>
     /// Función para cuando el jugador quiere parar el objeto en movimiento. Si el objeto se encuentra dentro del area del
@@ -48,10 +55,18 @@ public class FishingUI_Manager : MonoBehaviour
         if (!context.performed)
             return;
         keyPressed = true;
-        if (CheckWin()) { 
-            playerInput.SwitchCurrentActionMap(Utils.FREEMOVE_INPUTMAP);
-            this.gameObject.SetActive(false);
-            playerInventory.AddItem(fish);
+        if (CheckWin() && !isFinishAnimationRunning) {
+            isFinishAnimationRunning = true;
+            StartCoroutine(AnimationFinishWin());
+        }
+        else
+        {
+            if (!isFinishAnimationRunning)
+            {
+                isFinishAnimationRunning = true;
+                StartCoroutine(AnimationFinishLose());
+            }
+            
         }
     }
 
@@ -90,4 +105,28 @@ public class FishingUI_Manager : MonoBehaviour
         }
         isCoroutineRunning = false;
     }
+
+    IEnumerator AnimationFinishWin()
+    {
+        
+        playerInventory.AddItem(fish);
+        captureAudio.Play();
+        yield return new WaitForSeconds(2f);
+        playerInput.SwitchInputMap(Utils.FREEMOVE_INPUTMAP);
+        isFinishAnimationRunning = false;
+        this.gameObject.SetActive(false);
+        
+    }
+    IEnumerator AnimationFinishLose()
+    {
+        
+        captureFailedAudio.Play();
+        yield return new WaitForSeconds(1f);
+        playerInput.SwitchInputMap(Utils.FREEMOVE_INPUTMAP);
+        isFinishAnimationRunning = false;
+        this.gameObject.SetActive(false);
+        
+    }
+
+
 }

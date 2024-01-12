@@ -59,6 +59,7 @@ public class Tent_Exit : MonoBehaviour
         houseManager.ExitHouse();
         
         this.transform.parent.gameObject.SetActive(false);
+        this.player.gameObject.GetComponent<PlayerInteractionsController>().EnableDig();
         yield return null;
     }
    
