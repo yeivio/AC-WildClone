@@ -29,10 +29,12 @@ public class Npc_Dialogue : MonoBehaviour
     private bool isCoroutineActive;
     private int visibleChar = 0;    // Current visible chars
     private AudioSource audioSource;
-    
+
+    public bool didLastTextFinish;
 
     private void Start()
     {
+        didLastTextFinish = false;
         audioSource = this.gameObject.GetComponent<AudioSource>();
         input = FindAnyObjectByType<PlayerInput>();
         isActive = false;
@@ -54,16 +56,16 @@ public class Npc_Dialogue : MonoBehaviour
                 child.gameObject.SetActive(true);
         }
             
-
+        //Load config and start displaying text
         villagerText.text = config.dialogue;
         villagerName.text = config.name;
         villagerText.maxVisibleCharacters = visibleChar;
         isActive = true;
+        StartCoroutine(slowText());
+
 
         input.SwitchCurrentActionMap(Utils.NPC_TALK_INPUTMAP);
         this.talkObj.EnableCamera(); // Enable the npc camera
-        StartCoroutine(slowText());
-
 
     }
     public void ContinueDialog(NPCConfig_ScriptableObject config)
@@ -212,16 +214,28 @@ public class Npc_Dialogue : MonoBehaviour
             yield return new WaitForSeconds(audioDuration / fullTextSize);
             visibleChar++;
         }
+        didLastTextFinish = true;
         this.isCoroutineActive = false;
     }
     public void ContinueConversation(InputAction.CallbackContext context)
     {
+        if (!didLastTextFinish)
+            return;
+
         TalkableObject[] objects = GameObject.FindObjectsByType<TalkableObject>(FindObjectsSortMode.None);
         foreach(TalkableObject o in objects)
         {
-            if(o.isActive)
+            if (o.isActive && didLastTextFinish)
+            {
+                didLastTextFinish = false;
                 o.Continue();
+            }
         }
     }
 
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 }

@@ -22,15 +22,15 @@ public class TalkableObject : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
         actualTalk = 0;
         tiendaAbierta = false;
+        isActive = false;
     }
     public void Continue()
     {
-        Debug.Log("HOLA, POR SEGUNDA VEZ");
         if (tiendaAbierta == true || !isActive)
             return;
-        Debug.Log($"CONTINUE INPUT ACTION {tiendaAbierta}");
         npcText_UI.ContinueDialog(config[actualTalk]);
         actualTalk += 1;
+        
     }
     public void Continue(string toAdd)
     {
@@ -44,9 +44,11 @@ public class TalkableObject : MonoBehaviour
     }
     public void DisableCamera()
     {
+        isActive = false;
         this.cam.SetActive(false);
         playerAnimator.SetBool("isTalking", false);
         playerAnimator.SetBool("isRotating", false);
+        StopAllCoroutines();
     }
 
     public void EnableCamera()
@@ -57,6 +59,8 @@ public class TalkableObject : MonoBehaviour
 
     public void talk(PlayerInteractionsController player)
     {
+        if (this.isActive)
+            return;
         //Npc looks at player
         isActive = true;
         actualTalk = 0;
@@ -88,7 +92,7 @@ public class TalkableObject : MonoBehaviour
         playerAnimator.SetBool("isTalking", true);
         
         npcText_UI.gameObject.SetActive(true);
-        Debug.Log(actualTalk);
+        //Debug.Log(actualTalk);
         npcText_UI.StartDialogueBox(config[actualTalk], npcTalkAudio, this);
         actualTalk = 1; // next talk to be done
     }
