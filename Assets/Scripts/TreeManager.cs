@@ -104,13 +104,13 @@ public class TreeManager : MonoBehaviour
             itemFallAudio.Play();
         while (timer < duration)
         {
-            fruitPositions[fruitPosition].gameObject.transform.localScale = Vector3.Lerp(appleInitial, Vector3.one, timer / duration);
+            fruitPositions[fruitPosition].gameObject.transform.localScale = Vector3.Lerp(appleInitial, fruit.gameObject.transform.localScale, timer / duration);
             fruitPositions[fruitPosition].gameObject.transform.position = Vector3.Lerp(initialPos, finalPos, timer / duration);
 
             timer += Time.deltaTime;
             yield return null;
         }
-        fruitPositions[fruitPosition].gameObject.transform.localScale = Vector3.one;
+        fruitPositions[fruitPosition].gameObject.transform.localScale = fruit.gameObject.transform.localScale;
         fruitPositions[fruitPosition].enabled = false;
         
         //Reset del objeto manzana
