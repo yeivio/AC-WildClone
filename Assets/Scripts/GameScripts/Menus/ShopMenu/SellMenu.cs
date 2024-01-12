@@ -164,13 +164,17 @@ public class SellMenu : MonoBehaviour
     {
         this.shellingElements[index].gameObject.GetComponent<Image>().sprite = sprite;
         SellButton actualButton = shellingElements[index].gameObject.GetComponent<SellButton>();
-        TextMeshProUGUI itemPrice = new();
+        TextMeshProUGUI itemPrice;
         foreach (Transform child in actualButton.transform) //Activate text and backgrounds
         {
             if (!child.gameObject.CompareTag("NameInfo"))
+            {
                 itemPrice = child.gameObject.GetComponent<TextMeshProUGUI>();
+                itemPrice.text = price;
+            }
+                
         }
-        itemPrice.text = price;
+        
         actualButton.hasItem = true;
         actualButton.item = item;
     }

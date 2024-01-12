@@ -35,7 +35,7 @@ public class BuyButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     // Update is called once per frame
     void Update()
 	{
-		if (menuManger.selected == this && Input.GetKeyDown(KeyCode.Space) && hasItem)
+		if (menuManger.selected == this && Input.GetKeyDown(KeyCode.Return) && hasItem)
         {
 			menuManger.setBuying(this);
 
