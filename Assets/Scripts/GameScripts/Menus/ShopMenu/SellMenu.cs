@@ -96,7 +96,8 @@ public class SellMenu : MonoBehaviour
                    count,
                    item.ItemSprite,
                    item.SellPrice.ToString(),
-                   item);
+                   item,
+                   true);
             count += 1;
         }
         first.Select();
@@ -118,7 +119,8 @@ public class SellMenu : MonoBehaviour
                    i,
                    initialImage,
                    "",
-                   null);
+                   null,
+                   false);
             }
             else
             {
@@ -126,7 +128,8 @@ public class SellMenu : MonoBehaviour
                    i,
                    inventoryItems[index].ItemSprite,
                    inventoryItems[index].SellPrice.ToString(),
-                   inventoryItems[index]);
+                   inventoryItems[index],
+                   true);
             }
             
         }
@@ -148,7 +151,8 @@ public class SellMenu : MonoBehaviour
                    i,
                    initialImage,
                    "",
-                   null);
+                   null,
+                   false);
             }
             else
             {
@@ -156,11 +160,12 @@ public class SellMenu : MonoBehaviour
                     i,
                     inventoryItems[index].ItemSprite,
                     inventoryItems[index].SellPrice.ToString(),
-                    inventoryItems[index]);
+                    inventoryItems[index],
+                    true);
             }
         }
     }
-    private void modifyShellButtonInfo(int index, Sprite sprite, string price, InventoryItem_ScriptableObject item)
+    private void modifyShellButtonInfo(int index, Sprite sprite, string price, InventoryItem_ScriptableObject item, bool hasItem)
     {
         this.shellingElements[index].gameObject.GetComponent<Image>().sprite = sprite;
         SellButton actualButton = shellingElements[index].gameObject.GetComponent<SellButton>();
@@ -175,7 +180,7 @@ public class SellMenu : MonoBehaviour
                 
         }
         
-        actualButton.hasItem = true;
+        actualButton.hasItem = hasItem;
         actualButton.item = item;
     }
     public void SetSelling(SellButton toSell)
