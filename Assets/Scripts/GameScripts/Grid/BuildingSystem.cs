@@ -17,7 +17,6 @@ public class BuildingSystem : MonoBehaviour
     private GridData gridData; // Data of the grid with the objects that are placed
 
     [SerializeField] private Border[] limitBorders;
-    [SerializeField] private GameObject DustEffect;
 
     private void Awake()
     {
@@ -91,8 +90,7 @@ public class BuildingSystem : MonoBehaviour
                 cellPosition,
                 objectToPlace.Size,
                 direction,
-                objectToPlace.gameObject,
-                DustEffect);
+                objectToPlace.gameObject);
 
             Debug.Log($"Object to be positioned at: {positionToPlace}");
         }
@@ -109,8 +107,7 @@ public class BuildingSystem : MonoBehaviour
                 cellPosition,
                 objectToPlace.Size,
                 direction,
-                objectToPlace.gameObject,
-                DustEffect);
+                objectToPlace.gameObject);
 
             return true;
         }

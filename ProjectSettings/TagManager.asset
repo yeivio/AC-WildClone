@@ -14,6 +14,7 @@ TagManager:
   - SellSlot
   - DialogWindow
   - NameInfo
+  - Dust_Particles
   layers:
   - Default
   - TransparentFX

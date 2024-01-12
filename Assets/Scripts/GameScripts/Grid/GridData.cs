@@ -10,8 +10,7 @@ public class GridData
     public Vector3 AddObjectAt(Vector3 gridPosition,
                             Vector3 objectSize,
                             Vector3 direction,
-                            GameObject objectToPlace,
-                            GameObject dustEffect)
+                            GameObject objectToPlace)
     {
         /*
          * Add an object to the gridData
@@ -22,9 +21,13 @@ public class GridData
         List<Vector3> positionsToOccupy = CalculatePositions(gridPosition, objectSize, direction);
         Vector3 finalPosition = CentralPosition(positionsToOccupy);
         GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, finalPosition);
-        dustEffect.transform.position = finalPosition;
-        dustEffect.SetActive(false);
-        dustEffect.SetActive(true);
+        GameObject dustEffect = FindChildWithTag(objectToPlace, "Dust_Particles");
+        if (dustEffect)
+        {
+            dustEffect.SetActive(false);
+            dustEffect.SetActive(true);
+        }
+        
 
         //Debug.Log($"Position to be occupied: {CentralPosition(positionsToOccupy)}. Real world: {placedObject.transform.position}");
         placedObject.transform.rotation = objectToPlace.transform.rotation;
@@ -305,6 +308,23 @@ public class GridData
         }
     }
 
+    public GameObject FindChildWithTag(GameObject parent, string tag)
+    {
+        GameObject child = null;
+
+        foreach (Transform transform in parent.transform)
+        {
+            if (transform.CompareTag(tag))
+            {
+                child = transform.gameObject;
+                break;
+            }
+        }
+
+
+        return child;
+    }
+
 }
 
 public class PlacementData
@@ -321,3 +341,4 @@ public class PlacementData
 
 
 }
+

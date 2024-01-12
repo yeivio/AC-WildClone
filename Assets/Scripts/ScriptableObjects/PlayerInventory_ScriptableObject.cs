@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,7 +7,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "PlayerInventory_ScriptableObject", menuName = "Custom Assets/Inventory")]
 public class PlayerInventory_ScriptableObject : ScriptableObject
 {
-    private List<InventoryItem_ScriptableObject> inventoryItems; // List with the items the player currently have
+    [SerializeField] private List<InventoryItem_ScriptableObject> inventoryItems; // List with the items the player currently have
     [field: SerializeField] public int Size { get; private set; } = 30; // Default max numbers of items the player can save
 
     public UnityEvent<InventoryItem_ScriptableObject, int> OnAddItem;
