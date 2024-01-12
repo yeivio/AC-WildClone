@@ -5,11 +5,13 @@ using System;
 public class GridData
 {
     Dictionary<Vector3, PlacementData> placedObjects = new();
+    
 
     public Vector3 AddObjectAt(Vector3 gridPosition,
                             Vector3 objectSize,
                             Vector3 direction,
-                            GameObject objectToPlace)
+                            GameObject objectToPlace,
+                            GameObject dustEffect)
     {
         /*
          * Add an object to the gridData
@@ -18,10 +20,15 @@ public class GridData
         
         gridPosition = new Vector3(gridPosition.x, 0, gridPosition.z);
         List<Vector3> positionsToOccupy = CalculatePositions(gridPosition, objectSize, direction);
-        GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, CentralPosition(positionsToOccupy));
+        Vector3 finalPosition = CentralPosition(positionsToOccupy);
+        GameObject placedObject = buildingSystem.InitializeWithObject(objectToPlace.gameObject, finalPosition);
+        dustEffect.transform.position = finalPosition;
+        dustEffect.SetActive(false);
+        dustEffect.SetActive(true);
 
         //Debug.Log($"Position to be occupied: {CentralPosition(positionsToOccupy)}. Real world: {placedObject.transform.position}");
         placedObject.transform.rotation = objectToPlace.transform.rotation;
+
         PlacementData data = new(positionsToOccupy, placedObject);
         foreach (var pos in positionsToOccupy)
         {

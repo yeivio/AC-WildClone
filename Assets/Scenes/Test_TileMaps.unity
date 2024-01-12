@@ -3727,7 +3727,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f09285c7fcf0334cb4e7c0efa635824, type: 2}
   - {fileID: 11400000, guid: 72c67562863fac64fb5ae7838c9758b3, type: 2}
   - {fileID: 11400000, guid: 242a426bb2689924c954a7759f0e473b, type: 2}
-  - {fileID: 11400000, guid: 85dd4dbd54d892b44862f0c6121f49e1, type: 2}
   - {fileID: 11400000, guid: 3e2cbf7c60477bd4198de7fdae6f6cfc, type: 2}
 --- !u!1 &296957480
 GameObject:
@@ -11277,7 +11276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.9515991
+      value: -3.9515686
       objectReference: {fileID: 0}
     - target: {fileID: 3651654733835835273, guid: 70eb004d31dc8de458c1eb996650a5ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15319,6 +15318,7 @@ MonoBehaviour:
   - {fileID: 1841421582}
   - {fileID: 1154248974}
   - {fileID: 1669619768}
+  DustEffect: {fileID: 1106529968}
 --- !u!1 &739913996
 GameObject:
   m_ObjectHideFlags: 0
@@ -24549,7 +24549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1106529969
 Transform:
   m_ObjectHideFlags: 0
@@ -24560,7 +24560,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 378323861}
