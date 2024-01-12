@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Tutorial_03
   m_EditorClassIdentifier: 
   npc_name: Nobi
-  dialogue: "Una vez tengas el agujero, prueba a soltar un objeto delante del agujero
-    para que crezca el \xE1rbol"
+  dialogue: "Con la pala equipada podr\xE1s cavar agujeros y luego tirar frutas dentro."

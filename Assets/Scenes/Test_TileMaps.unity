@@ -28184,7 +28184,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 268b65113be09864e907bc5dcb135675, type: 2}
   - {fileID: 11400000, guid: 21c892060f6e30746a4019684b416fee, type: 2}
   - {fileID: 11400000, guid: 2041f40341f63ce4391950303bfe7abe, type: 2}
+  - {fileID: 11400000, guid: 67e877e5f7068bd46b272799fe1ce2e8, type: 2}
   - {fileID: 11400000, guid: beca3ae653805c246ba4fabf5324b027, type: 2}
+  - {fileID: 11400000, guid: 4454163e201fe1542a16bfb4f7686a68, type: 2}
+  - {fileID: 11400000, guid: 5c5ee067dfcd3044caeac9b3f4486d5a, type: 2}
   - {fileID: 11400000, guid: 1fe6ae97591bd4636ae3276280a96bea, type: 2}
   npcText_UI: {fileID: 1659966935}
   npcTalkAudio: {fileID: 8300000, guid: cf6606aee60f75a448d1e2f808bdbe9a, type: 3}

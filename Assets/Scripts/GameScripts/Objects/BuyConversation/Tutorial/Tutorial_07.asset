@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f60aaf5060730b447a5b1e43536ccf5f, type: 3}
-  m_Name: Tutorial_04
+  m_Name: Tutorial_07
   m_EditorClassIdentifier: 
   npc_name: Nobi
-  dialogue: "Haciendo todo esto conseguir\xE1s que crezcan \xE1rboles y podr\xE1s
-    vender sus frutos"
+  dialogue: "Puedes cambiar de personaje en la tienda que est\xE1 a la derecha de
+    nuestra posici\xF3n"

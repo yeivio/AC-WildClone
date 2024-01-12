@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Tutorial_02
   m_EditorClassIdentifier: 
   npc_name: Nobi
-  dialogue: "A continuaci\xF3n, prueba a coger esta pala y la manzana y abre tu inventario,
-    equipate la pala y cava un agujero"
+  dialogue: Ahora prueba a coger una pala y equipate la pala desde el inventario.
