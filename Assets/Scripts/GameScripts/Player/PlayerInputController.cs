@@ -22,6 +22,7 @@ public class PlayerInputController : MonoBehaviour
     public UI_Icon_Manager iconManager;
     public BuyMenu buyMenu;
     public SellMenu sellMenu;
+    public OptionsManager optionsManager;
 
     public InputSystemUIInputModule Navigation_UI;
     public InputSystemUIInputModule Navigation_NPCTALK;
@@ -53,6 +54,7 @@ public class PlayerInputController : MonoBehaviour
         //NPC_TALK ACTIONS
         this.inputAction.FindAction(Utils.NPC_TALK_QUIT).performed += this.npcdialog.CloseDialog;
         this.inputAction.FindAction(Utils.NPC_TALK_CONTINUE).performed += this.npcdialog.ContinueConversation;
+        this.inputAction.FindAction(Utils.NPC_TALK_CONFIRM).performed += this.optionsManager.Accept;
 
         //NPC_TALK BUY
         this.inputAction.FindAction(Utils.NPC_TALK_BUY_CONFIRM).performed += this.buyMenu.Confirm;
