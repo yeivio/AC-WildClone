@@ -787,10 +787,21 @@
                 {
                     "name": "",
                     "id": "709b30ce-d4dd-4ef1-9fe3-5c318925bba4",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
+                    "action": "NPC_TALK_Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa8a180d-18bf-4597-8215-da2141680f5b",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "NPC_TALK_Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -866,7 +877,7 @@
                 {
                     "name": "",
                     "id": "76fb1c74-3d6d-4ace-b42f-7507fd0bd22d",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -1031,7 +1042,7 @@
                 {
                     "name": "",
                     "id": "53b6bbd8-1e70-443d-a330-4f70075a9ec1",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -1119,10 +1130,21 @@
                 {
                     "name": "",
                     "id": "6157617e-8599-4d7f-b4e8-758b2a28709f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_SELL_Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "580f11bb-fd10-472a-9768-861c21869dc5",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "NPC_TALK_SELL_Select",
                     "isComposite": false,
                     "isPartOfComposite": false

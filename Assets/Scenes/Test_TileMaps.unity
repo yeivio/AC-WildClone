@@ -5601,7 +5601,7 @@ PrefabInstance:
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: xboxController_Icon
       value: 
-      objectReference: {fileID: 21300000, guid: 0c7076a9d3a9455419769e6428fad0e3, type: 3}
+      objectReference: {fileID: 21300000, guid: 9c6172b58c900ba4bbaf079a8e20573c, type: 3}
     - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5693,6 +5693,10 @@ PrefabInstance:
     - target: {fileID: 3689206415313098924, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: m_fontSize
       value: 27.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689206415313098924, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10260,6 +10264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049e6a9b8b42ccb41af6839d6fb169e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  first: {fileID: 1456657897}
+  second: {fileID: 1760884523}
 --- !u!1001 &714027091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14689,7 +14695,7 @@ PrefabInstance:
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: xboxController_Icon
       value: 
-      objectReference: {fileID: 21300000, guid: b346483be047de346a24acd0f7e08a96, type: 3}
+      objectReference: {fileID: 21300000, guid: 998ae3fe5402bc6418f528e2779ab46e, type: 3}
     - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16050,6 +16056,159 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 154a7738ccc611a4e8aa36f15f4fd77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1132760062
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2017444403}
+    m_Modifications:
+    - target: {fileID: 464005183040432860, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_Name
+      value: UI_Ayuda_Boton  (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 926257803751189999, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7635132
+      objectReference: {fileID: 0}
+    - target: {fileID: 926257803751189999, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 926257803751189999, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: texto
+      value: CONFIRMAR
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: buttonDisplay
+      value: 
+      objectReference: {fileID: 1132760064}
+    - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: keyBoard_Icon
+      value: 
+      objectReference: {fileID: -760605805, guid: 22924fde49373564681562037671538a, type: 3}
+    - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: xboxController_Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 998ae3fe5402bc6418f528e2779ab46e, type: 3}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 402.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 99.770004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 201.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -349.195
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689206415313098924, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_fontSize
+      value: 51.15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+--- !u!224 &1132760063 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+  m_PrefabInstance: {fileID: 1132760062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1132760064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2017151109814167122, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+  m_PrefabInstance: {fileID: 1132760062}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1147702138 stripped
@@ -19435,7 +19594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: texto
-      value: CONTINUAR
+      value: SEGUIR HABLANDO
       objectReference: {fileID: 0}
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: buttonDisplay
@@ -19540,6 +19699,10 @@ PrefabInstance:
     - target: {fileID: 3689206415313098924, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: m_fontSize
       value: 28.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689206415313098924, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21088,7 +21251,7 @@ PrefabInstance:
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: xboxController_Icon
       value: 
-      objectReference: {fileID: 21300000, guid: 0c7076a9d3a9455419769e6428fad0e3, type: 3}
+      objectReference: {fileID: 21300000, guid: 998ae3fe5402bc6418f528e2779ab46e, type: 3}
     - target: {fileID: 3067642500155514322, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -24005,8 +24168,9 @@ MonoBehaviour:
   fishingUI: {fileID: 460351646}
   npcdialog: {fileID: 1659966935}
   iconManager: {fileID: 936229338}
-  buyMenu: {fileID: 0}
-  sellMenu: {fileID: 0}
+  buyMenu: {fileID: 292994341}
+  sellMenu: {fileID: 341110844}
+  optionsManager: {fileID: 709260134}
   Navigation_UI: {fileID: 2112752840}
   Navigation_NPCTALK: {fileID: 2112752840}
   activeController: 0
@@ -24130,6 +24294,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 96c4862d-c527-4cb4-9ea9-9bb9b686fe74
     m_ActionName: 'NPC_TALK/NPC_TALK_Navigate[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c690339f-cb49-4b4d-adb2-29ccd72f2f67
+    m_ActionName: 'NPC_TALK/NPC_TALK_Confirm[/XInputControllerWindows/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0810116e-980f-423d-80f7-4376e9cc4f8c
+    m_ActionName: 'NPC_TALK_BUY/NPC_TALK_BUY_Quit[/Keyboard/escape,/XInputControllerWindows/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 43fab87d-3067-40e2-aafd-77ebe018f5bf
+    m_ActionName: 'NPC_TALK_BUY/NPC_TALK_BUY_Navigate[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/dpad,/XInputControllerWindows/leftStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0db97c93-9aee-40b1-8c3b-2620ce7b3b51
+    m_ActionName: 'NPC_TALK_BUY/NPC_TALK_BUY_Confirm[/Keyboard/enter,/XInputControllerWindows/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 66d01d18-ed59-4ac8-a701-e356424af47c
+    m_ActionName: 'NPC_TALK_SELL/NPC_TALK_SELL_Quit[/Keyboard/escape,/XInputControllerWindows/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ad07d40b-436f-4978-a819-73d61dc63cb6
+    m_ActionName: 'NPC_TALK_SELL/NPC_TALK_SELL_Navigate[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/dpad,/XInputControllerWindows/leftStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6a9372bb-f05c-4d0c-acaf-8ad5d2faf3cc
+    m_ActionName: 'NPC_TALK_SELL/NPC_TALK_SELL_Confirm[/Keyboard/enter,/XInputControllerWindows/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 90f28995-4831-4609-acdb-19a151c8c8f8
+    m_ActionName: 'NPC_TALK_SELL/NPC_TALK_SELL_Select[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: FreeMove
@@ -28159,6 +28355,7 @@ RectTransform:
   m_Children:
   - {fileID: 1999427107}
   - {fileID: 1302767690}
+  - {fileID: 1132760063}
   - {fileID: 1203085574}
   m_Father: {fileID: 558510600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

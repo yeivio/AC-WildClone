@@ -29,6 +29,8 @@ public class Npc_Dialogue : MonoBehaviour
     private bool isCoroutineActive;
     private int visibleChar = 0;    // Current visible chars
     private AudioSource audioSource;
+    private PlayerInputController inputMapsController;
+
 
     public bool didLastTextFinish;
 
@@ -37,6 +39,7 @@ public class Npc_Dialogue : MonoBehaviour
         didLastTextFinish = false;
         audioSource = this.gameObject.GetComponent<AudioSource>();
         input = FindAnyObjectByType<PlayerInput>();
+        inputMapsController = FindAnyObjectByType<PlayerInputController>();
         isActive = false;
     }
 
@@ -92,6 +95,7 @@ public class Npc_Dialogue : MonoBehaviour
                 selectionOptions[0].Select();
                 selectionOptions[1].gameObject.GetComponent<TextMeshProUGUI>().text = "no";
                 selectionOptions[1].gameObject.SetActive(true);
+
                 break;
             case "endBS":
                 talkObj.tiendaAbierta = false;
@@ -134,41 +138,41 @@ public class Npc_Dialogue : MonoBehaviour
     public void ManageResultChoiceDialog(string result)
     {
         selectionDialog.SetActive(false);
-
         switch (result)
         {
             case "comprar":
                 tienda.SetActive(true);
                 talkObj.isBuyShop = true;
                 talkObj.isSellShop = false;
+                inputMapsController.SwitchInputMap(Utils.NPC_TALK_BUY_INPUTMAP);
                 break;
             case "vender":
                 shellTienda.SetActive(true);
                 talkObj.isBuyShop = false;
                 talkObj.isSellShop = true;
+                inputMapsController.SwitchInputMap(Utils.NPC_TALK_SELL_INPUTMAP);
                 break;
             case "si":
                 Debug.Log("SI");
                 talkObj.tiendaAbierta = false;
                 talkObj.Continue();
-                
-
                 break;
             case "no":
                 Debug.Log("NO");
                 talkObj.actualTalk += 1;
                 talkObj.tiendaAbierta = false;
                 talkObj.Continue();
-                
-
                 break;
         }
     }
     public void AfterTienda(string dialog)
     {
+        Debug.Log("After tienda");
         StopAllCoroutines();
+        
         villagerText.text = dialog;
         StartCoroutine(slowText());
+        
 
         selectionDialog.SetActive(true);
         talkObj.tiendaAbierta = true;
@@ -177,6 +181,9 @@ public class Npc_Dialogue : MonoBehaviour
         selectionOptions[0].Select();
         selectionOptions[1].gameObject.GetComponent<TextMeshProUGUI>().text = "no";
         selectionOptions[1].gameObject.SetActive(true);
+
+        inputMapsController.SwitchInputMap(Utils.NPC_TALK_INPUTMAP);
+
     }
     /// <summary>
     /// If the dialogbox is active, disable all the dialog UI, disable the dialogue camera and change the input map to FREEMOVE

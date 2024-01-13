@@ -4,11 +4,13 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler
+public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
 	public GameObject dialogMenu;
 	public Npc_Dialogue dialogue;
 	private bool selected = false;
+
+    private bool canRecieveinput = false;
 
     void IDeselectHandler.OnDeselect(BaseEventData eventData)
     {
@@ -25,10 +27,11 @@ public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselec
     private void OnDisable()
     {
 		selected = false;
+        canRecieveinput = false;
     }
 
 
-	/*void Update()
+    /*void Update()
 	{
 		if( selected && Input.GetKeyDown(KeyCode.Return))
 		{
@@ -37,13 +40,18 @@ public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselec
 		}
 	}*/
 
-    public void OnSubmit(BaseEventData eventData)
-    {
-        if (selected)
+    public void Submit()
+    {        
+        if (selected && canRecieveinput)
         {
             dialogue.ManageResultChoiceDialog(this.gameObject.GetComponent<TextMeshProUGUI>().text);
             dialogMenu.SetActive(false);
         }
+    }
+
+    public void permitirInput()
+    {
+        canRecieveinput = true;
     }
 }
 

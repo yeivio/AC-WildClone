@@ -214,7 +214,7 @@ public class SellMenu : MonoBehaviour
 
         if (this.selected != null)
         {
-            SellButton var = this.gameObject.GetComponent<SellButton>();
+            SellButton var = this.selected.gameObject.GetComponent<SellButton>();
             if (var.hasItem)
             {
                 var.SelectItem();

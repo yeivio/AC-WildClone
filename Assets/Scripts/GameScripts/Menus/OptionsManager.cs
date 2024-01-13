@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class OptionsManager : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class OptionsManager : MonoBehaviour
 
         if (!gameObject.activeSelf)
             return;
-
-        first.OnSubmit(null);
-        second.OnSubmit(null);
+        first.GetComponent<SelectionOptionMenuDialog>().permitirInput();
+        second.GetComponent<SelectionOptionMenuDialog>().permitirInput();
+        first.Submit();
+        second.Submit();
     }
 }

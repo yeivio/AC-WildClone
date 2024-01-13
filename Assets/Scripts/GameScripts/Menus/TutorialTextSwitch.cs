@@ -26,7 +26,7 @@ public class TutorialTextSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(NPC_Seller_OBJ.isActive && NPC_Seller_OBJ.tiendaAbierta)
+        /*if(NPC_Seller_OBJ.isActive && NPC_Seller_OBJ.tiendaAbierta)
         {
             if (NPC_Seller_OBJ.isBuyShop)
                 activarUI(NPC_Buy);
@@ -35,7 +35,8 @@ public class TutorialTextSwitch : MonoBehaviour
             else
                 activarUI(NPC_Buy);
             return;
-        }
+        }*/
+
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.FREEMOVE_INPUTMAP) && !this.free_move.activeSelf)
             activarUI(free_move);
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.UI_INPUTMAP) && !this.UI.activeSelf)
@@ -45,6 +46,12 @@ public class TutorialTextSwitch : MonoBehaviour
 
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.FISHING_INPUTMAP) && !this.Fishing_UI.activeSelf)
             activarUI(Fishing_UI);
+
+        if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.NPC_TALK_BUY_INPUTMAP) && !this.NPC_Buy.activeSelf)
+            activarUI(NPC_Buy);
+
+        if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.NPC_TALK_SELL_INPUTMAP) && !this.NPC_Sell.activeSelf)
+            activarUI(NPC_Sell);
 
 
     }

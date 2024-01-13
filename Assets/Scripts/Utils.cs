@@ -43,6 +43,7 @@ public class Utils
     public static string NPC_TALK_QUIT { get; } = NPC_TALK_INPUTMAP + "_Quit";
     public static string NPC_TALK_CONTINUE { get; } = NPC_TALK_INPUTMAP + "_Continue";
     public static string NPC_TALK_NAVIGATION { get; } = NPC_TALK_INPUTMAP + "_Navigation";
+    public static string NPC_TALK_CONFIRM { get; } = NPC_TALK_INPUTMAP + "_Confirm";
     #endregion
 
 
