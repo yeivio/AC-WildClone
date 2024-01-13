@@ -61,7 +61,7 @@ public class Npc_Dialogue : MonoBehaviour
             
         //Load config and start displaying text
         villagerText.text = config.dialogue;
-        villagerName.text = config.name;
+        villagerName.text = config.npc_name;
         villagerText.maxVisibleCharacters = visibleChar;
         isActive = true;
         StartCoroutine(slowText());
