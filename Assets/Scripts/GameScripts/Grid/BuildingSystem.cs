@@ -103,6 +103,16 @@ public class BuildingSystem : MonoBehaviour
             objectToPlace = toPlant.treePrefab.GetComponent<PlaceableObject>();
             gridData.FreeSpace(canBePlace);
             Debug.Log("Holaaa");
+            if(gridData.CanPlaceObjectAt(cellPosition, objectToPlace.Size,direction) != null)
+            {
+                objectToPlace = toPlant.gameObject.GetComponent<PlaceableObject>();
+                gridData.AddObjectAt(
+                    cellPosition,
+                    objectToPlace.Size,
+                    direction,
+                    objectToPlace.gameObject);
+                return false;
+            }
             Vector3 positionToPlace = gridData.AddObjectAt(
                 cellPosition,
                 objectToPlace.Size,

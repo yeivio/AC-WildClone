@@ -39,7 +39,7 @@ public class SellButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     void ISelectHandler.OnSelect(BaseEventData eventData)
     {
         if (hasItem)
-            itemName.text = item.name;
+            itemName.text = item.Name;
     }
     // Update is called once per frame
     void Update()

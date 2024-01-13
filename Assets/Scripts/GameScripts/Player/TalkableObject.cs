@@ -14,6 +14,7 @@ public class TalkableObject : MonoBehaviour
     private Animator playerAnimator;
     public bool tiendaAbierta; // Look for an open shop menu
     public bool isBuyShop; // if true the open shop is a buy shop, if false it is a sell shop
+    public bool isSellShop;
         
     public bool isActive;  // Control variable to know which TalkableObj is the player currently talking
 

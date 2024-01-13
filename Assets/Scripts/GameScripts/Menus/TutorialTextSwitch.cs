@@ -27,13 +27,14 @@ public class TutorialTextSwitch : MonoBehaviour
     {
         if(NPC_Seller_OBJ.isActive && NPC_Seller_OBJ.tiendaAbierta)
         {
-            if(NPC_Seller_OBJ.isBuyShop)
+            if (NPC_Seller_OBJ.isBuyShop)
                 activarUI(NPC_Buy);
-            else
+            else if (NPC_Seller_OBJ.isSellShop)
                 activarUI(NPC_Sell);
+            else
+                activarUI(NPC_Buy);
             return;
         }
-
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.FREEMOVE_INPUTMAP) && !this.free_move.activeSelf)
             activarUI(free_move);
         if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.UI_INPUTMAP) && !this.UI.activeSelf)

@@ -140,10 +140,12 @@ public class Npc_Dialogue : MonoBehaviour
             case "comprar":
                 tienda.SetActive(true);
                 talkObj.isBuyShop = true;
+                talkObj.isSellShop = false;
                 break;
             case "vender":
                 shellTienda.SetActive(true);
                 talkObj.isBuyShop = false;
+                talkObj.isSellShop = true;
                 break;
             case "si":
                 Debug.Log("SI");
@@ -195,6 +197,8 @@ public class Npc_Dialogue : MonoBehaviour
         talkObj.tiendaAbierta = false;
         talkObj.actualTalk = 0;
         talkObj.isActive = false;
+        talkObj.isBuyShop = false;
+        talkObj.isSellShop = false;
         talkObj.DisableCamera(); // Disable the npc camera
     }
     /// <summary>
