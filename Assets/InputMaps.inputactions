@@ -206,11 +206,33 @@
                 },
                 {
                     "name": "",
+                    "id": "9b7d2196-cc5c-4ffc-ba6e-d95408500fb5",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "FreeMove_UnequipItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "538192fe-0530-4006-9bdf-411e10ed984e",
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "FreeMove_Dig",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89db6fe3-9648-4877-a8a8-d34b2d64e030",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
                     "action": "FreeMove_Dig",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -566,11 +588,33 @@
                 },
                 {
                     "name": "",
+                    "id": "83a1f370-45dc-4b8b-82b0-5835d143e6d0",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "FishingUI_Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0fad141d-28c1-42e6-872b-73fd824ea925",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "FishingUI_Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8d53b14c-7213-4a55-ace8-0560c9e6aef5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
                     "action": "FishingUI_Action",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -607,6 +651,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "NPC_TALK_Confirm",
+                    "type": "Button",
+                    "id": "c690339f-cb49-4b4d-adb2-29ccd72f2f67",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -623,11 +676,33 @@
                 },
                 {
                     "name": "",
+                    "id": "965b7d89-ce33-4279-b97d-6aed9af1d2eb",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f1522b0a-40a1-4b5b-8c91-d5638883f71a",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "NPC_TALK_Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9899cf9-5c34-4699-b2cd-4ab6b38ad87e",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
                     "action": "NPC_TALK_Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -706,6 +781,349 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "NPC_TALK_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "709b30ce-d4dd-4ef1-9fe3-5c318925bba4",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "NPC_TALK_BUY",
+            "id": "ed405fc5-d0cd-472e-88f3-f64b4b679a86",
+            "actions": [
+                {
+                    "name": "NPC_TALK_BUY_Quit",
+                    "type": "Button",
+                    "id": "0810116e-980f-423d-80f7-4376e9cc4f8c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NPC_TALK_BUY_Navigate",
+                    "type": "PassThrough",
+                    "id": "43fab87d-3067-40e2-aafd-77ebe018f5bf",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(min=0.5)",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NPC_TALK_BUY_Confirm",
+                    "type": "Button",
+                    "id": "0db97c93-9aee-40b1-8c3b-2620ce7b3b51",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8136bf9d-b279-4e02-aff9-c15b470711b9",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_BUY_Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa00f475-23ac-4c0b-9012-14237c498395",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_BUY_Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6aec7a4d-92f6-4302-ad30-231462370f35",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_BUY_Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76fb1c74-3d6d-4ace-b42f-7507fd0bd22d",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_BUY_Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "de9bfd6e-4133-4137-802d-c36546bb444f",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NPC_TALK_BUY_Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "fcba90fd-d816-451d-a607-103d1942ece3",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_BUY_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "7e77e63d-7caf-4994-ae8d-cbeb163f2398",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_BUY_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "9a3348a4-1cc0-4cc0-bd24-ec78812083d4",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_BUY_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "2e482855-9981-42a7-bd38-07ccfb68fd4d",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_BUY_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "da06dafb-f291-4c69-8ff9-ed7ac05f2940",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_BUY_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "886a444b-31c5-48d6-8058-dcf97f4cfa75",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_BUY_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "NPC_TALK_SELL",
+            "id": "c96bc283-380b-4fcc-aeb4-242cbf73ab21",
+            "actions": [
+                {
+                    "name": "NPC_TALK_SELL_Quit",
+                    "type": "Button",
+                    "id": "66d01d18-ed59-4ac8-a701-e356424af47c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NPC_TALK_SELL_Navigate",
+                    "type": "PassThrough",
+                    "id": "ad07d40b-436f-4978-a819-73d61dc63cb6",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(min=0.5)",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NPC_TALK_SELL_Confirm",
+                    "type": "Button",
+                    "id": "6a9372bb-f05c-4d0c-acaf-8ad5d2faf3cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NPC_TALK_SELL_Select",
+                    "type": "Button",
+                    "id": "90f28995-4831-4609-acdb-19a151c8c8f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c5154eed-c4c1-4fe1-9c8c-0935a0d62ac0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_SELL_Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef52f18b-8beb-44a5-94a3-387e1f834184",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_SELL_Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c1b65a8-bd33-4518-aa51-033f5f960e8b",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_SELL_Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53b6bbd8-1e70-443d-a330-4f70075a9ec1",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_SELL_Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "db8fdcd5-ad69-4692-9aad-8bf5841151b1",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NPC_TALK_SELL_Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "8423a52f-186e-4476-a954-fff9b1cb6fae",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_SELL_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "c8574201-b11e-4ed7-bb2d-b37990384d32",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_SELL_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "75441cf8-9760-45f1-b515-57fb9690c47c",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_SELL_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "d8859d02-ab64-4a80-8e8d-11481ca4820d",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NPC_TALK_SELL_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b04341c8-cdd8-4e18-b5bf-808a42ddd136",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_SELL_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25aa994e-8d88-4ef0-93ba-5f2d393aa052",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "NPC_TALK_SELL_Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6157617e-8599-4d7f-b4e8-758b2a28709f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NPC_TALK_SELL_Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

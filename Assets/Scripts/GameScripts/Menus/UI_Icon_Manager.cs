@@ -10,23 +10,32 @@ public class UI_Icon_Manager : MonoBehaviour
     [SerializeField] private Sprite xboxController_Icon;
     [SerializeField] private Image buttonDisplay;
     [SerializeField] private TextMeshProUGUI textDisplay;
+    private PlayerInputController playerInput;
+
     public static ControllerType activeController;
     
 
-    public  enum ControllerType { KEYBOARD, XBOX}
+    public enum ControllerType { KEYBOARD, XBOX}
 
     private void Start()
     {
+        playerInput = FindAnyObjectByType<PlayerInputController>();
         textDisplay.text = texto;
         activeController = ControllerType.KEYBOARD;
     }
-
+    private void OnEnable()
+    {
+        playerInput = FindAnyObjectByType<PlayerInputController>();
+        if(playerInput.activeController == ControllerType.KEYBOARD) { this.buttonDisplay.sprite = keyBoard_Icon; }
+        else { this.buttonDisplay.sprite = xboxController_Icon; }
+    }
     private void Update()
     {
-        switch (activeController)
+        switch (this.playerInput.activeController)
         {
             case ControllerType.KEYBOARD:
                 this.buttonDisplay.sprite = keyBoard_Icon;
+                
                 break;
             case ControllerType.XBOX:
                 this.buttonDisplay.sprite = xboxController_Icon;

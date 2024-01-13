@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler
 {
 	public GameObject dialogMenu;
 	public Npc_Dialogue dialogue;
@@ -20,27 +20,30 @@ public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselec
 		selected = true;
     }
 
+	
+
     private void OnDisable()
     {
 		selected = false;
     }
 
-    // Use this for initialization
-    void Start()
-	{
 
-	}
-
-	// Update is called once per frame
-	void Update()
+	/*void Update()
 	{
 		if( selected && Input.GetKeyDown(KeyCode.Return))
 		{
 			dialogue.ManageResultChoiceDialog(this.gameObject.GetComponent<TextMeshProUGUI>().text);
 			dialogMenu.SetActive(false);
 		}
-	}
+	}*/
 
-	
+    public void OnSubmit(BaseEventData eventData)
+    {
+        if (selected)
+        {
+            dialogue.ManageResultChoiceDialog(this.gameObject.GetComponent<TextMeshProUGUI>().text);
+            dialogMenu.SetActive(false);
+        }
+    }
 }
 

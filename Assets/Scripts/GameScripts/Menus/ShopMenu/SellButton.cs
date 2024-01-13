@@ -41,22 +41,19 @@ public class SellButton : MonoBehaviour, ISelectHandler, IDeselectHandler
         if (hasItem)
             itemName.text = item.Name;
     }
-    // Update is called once per frame
-    void Update()
+
+    public void SelectItem()
     {
-        if (menuManger.selected == this.gameObject.GetComponent<Button>() && Input.GetKeyDown(KeyCode.Space) && hasItem)
+        bool isAdded = menuManger.SetSelling(this);
+
+        foreach (Transform child in transform) //Activate text and backgrounds
         {
-            bool isAdded = menuManger.SetSelling(this);
+            Color32 color = new Color32(148, 255, 162, 255);
+            if (!isAdded)
+                color = new Color32(255, 255, 255, 255);
 
-            foreach (Transform child in transform) //Activate text and backgrounds
-            {
-                Color32 color = new Color32(148, 255, 162, 255);
-                if (!isAdded)
-                    color = new Color32(255,255,255,255);
-
-                if (!child.gameObject.CompareTag("NameInfo"))
-                    child.gameObject.GetComponent<TextMeshProUGUI>().color = color;
-            }
+            if (!child.gameObject.CompareTag("NameInfo"))
+                child.gameObject.GetComponent<TextMeshProUGUI>().color = color;
         }
     }
 }

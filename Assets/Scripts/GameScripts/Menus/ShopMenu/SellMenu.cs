@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 
 public class SellMenu : MonoBehaviour
 {
@@ -58,8 +60,6 @@ public class SellMenu : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject.TryGetComponent<Button>(out Button but))
             selected = but;
 
-        if (Input.GetKeyDown(KeyCode.Return))
-            SellAction();
     }
     private void OnEnable()
     {
@@ -75,7 +75,7 @@ public class SellMenu : MonoBehaviour
 
         List<InventoryItem_ScriptableObject> items = new();
 
-        foreach(InventoryItem_ScriptableObject item in inventory.getList())
+        foreach (InventoryItem_ScriptableObject item in inventory.getList())
         {
             if (item.IsSalable)
                 items.Add(item);
@@ -105,7 +105,7 @@ public class SellMenu : MonoBehaviour
         else
             page += 1;
         int ini = page * MAX_SIZE;
-        for (int i = 0; i<=(MAX_SIZE-1); i++)
+        for (int i = 0; i <= (MAX_SIZE - 1); i++)
         {
             int index = i + ini;
 
@@ -127,9 +127,9 @@ public class SellMenu : MonoBehaviour
                    inventoryItems[index],
                    true);
             }
-            
+
         }
-        
+
     }
     public void PreviousPage()
     {
@@ -173,22 +173,22 @@ public class SellMenu : MonoBehaviour
                 itemPrice = child.gameObject.GetComponent<TextMeshProUGUI>();
                 itemPrice.text = price;
             }
-                
+
         }
-        
+
         actualButton.hasItem = hasItem;
         actualButton.item = item;
     }
     public bool SetSelling(SellButton toSell)
-     // This class returns true if the element was added and false if was deleted
+    // This class returns true if the element was added and false if was deleted
     {
         if (shelling.Contains(toSell))
         {
             shelling.Remove(toSell);
             return false;
         }
-            
-        shelling.Add(toSell) ;
+
+        shelling.Add(toSell);
         return true;
     }
     public void SellAction()
@@ -205,6 +205,28 @@ public class SellMenu : MonoBehaviour
     public List<SellButton> GetSell()
     {
         return shelling;
+    }
+
+    public void Select(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        if (this.selected != null)
+        {
+            SellButton var = this.gameObject.GetComponent<SellButton>();
+            if (var.hasItem)
+            {
+                var.SelectItem();
+            }
+        }
+    }
+
+    public void Confirm(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        SellAction();
     }
 }
 

@@ -20,10 +20,13 @@ public class PlayerInputController : MonoBehaviour
     public Npc_Dialogue npcdialog;
 
     public UI_Icon_Manager iconManager;
-
+    public BuyMenu buyMenu;
+    public SellMenu sellMenu;
 
     public InputSystemUIInputModule Navigation_UI;
     public InputSystemUIInputModule Navigation_NPCTALK;
+
+    public UI_Icon_Manager.ControllerType activeController; // This is for the UI_ICON_Manager 
 
     private void Start()
     { 
@@ -51,6 +54,14 @@ public class PlayerInputController : MonoBehaviour
         this.inputAction.FindAction(Utils.NPC_TALK_QUIT).performed += this.npcdialog.CloseDialog;
         this.inputAction.FindAction(Utils.NPC_TALK_CONTINUE).performed += this.npcdialog.ContinueConversation;
 
+        //NPC_TALK BUY
+        this.inputAction.FindAction(Utils.NPC_TALK_BUY_CONFIRM).performed += this.buyMenu.Confirm;
+        this.inputAction.FindAction(Utils.NPC_TALK_BUY_QUIT).performed += this.npcdialog.CloseDialog;
+
+        //NPC_TALK SELL
+        this.inputAction.FindAction(Utils.NPC_TALK_SELL_SELECT).performed += this.sellMenu.Select;
+        this.inputAction.FindAction(Utils.NPC_TALK_SELL_CONFIRM).performed += this.sellMenu.Confirm;
+        this.inputAction.FindAction(Utils.NPC_TALK_SELL_QUIT).performed += this.npcdialog.CloseDialog;
 
     }
     public void SwitchInputMap(string newMap)
@@ -75,9 +86,9 @@ public class PlayerInputController : MonoBehaviour
     public void ControlChange(PlayerInput input)
     {
         if(input.currentControlScheme == input.defaultControlScheme)
-            UI_Icon_Manager.activeController = UI_Icon_Manager.ControllerType.KEYBOARD;
+            activeController = UI_Icon_Manager.ControllerType.KEYBOARD;
         else
-            UI_Icon_Manager.activeController = UI_Icon_Manager.ControllerType.XBOX;
+            activeController = UI_Icon_Manager.ControllerType.XBOX;
     }
 
 }

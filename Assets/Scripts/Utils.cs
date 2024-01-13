@@ -45,4 +45,21 @@ public class Utils
     public static string NPC_TALK_NAVIGATION { get; } = NPC_TALK_INPUTMAP + "_Navigation";
     #endregion
 
+
+    #region NPC BUY inputMap
+    public static string NPC_TALK_BUY_INPUTMAP { get; } = "NPC_TALK_BUY"; // ActionMap for when a player is talking to an npc
+    public static string NPC_TALK_BUY_QUIT { get; } = NPC_TALK_BUY_INPUTMAP + "_Quit";
+    public static string NPC_TALK_BUY_CONFIRM{ get; } = NPC_TALK_BUY_INPUTMAP + "_Confirm";
+    public static string NPC_TALK_BUY_NAVIGATION { get; } = NPC_TALK_BUY_INPUTMAP + "_Navigation";
+    #endregion
+
+
+    #region NPC SELL inputMap
+    public static string NPC_TALK_SELL_INPUTMAP { get; } = "NPC_TALK_SELL"; // ActionMap for when a player is talking to an npc
+    public static string NPC_TALK_SELL_QUIT { get; } = NPC_TALK_SELL_INPUTMAP + "_Quit";
+    public static string NPC_TALK_SELL_CONFIRM { get; } = NPC_TALK_SELL_INPUTMAP + "_Confirm";
+    public static string NPC_TALK_SELL_NAVIGATION { get; } = NPC_TALK_SELL_INPUTMAP + "_Navigate";
+    public static string NPC_TALK_SELL_SELECT { get; } = NPC_TALK_SELL_INPUTMAP + "_Select";
+    #endregion
+
 }

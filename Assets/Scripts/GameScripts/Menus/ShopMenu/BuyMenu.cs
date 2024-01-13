@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.InputSystem;
+using static PlayerInteractionsController;
+using Unity.VisualScripting;
 
 public class BuyMenu : MonoBehaviour
 {
@@ -97,6 +100,17 @@ public class BuyMenu : MonoBehaviour
     public BuyButton getBuying()
     {
         return buying;
+    }
+    public void Confirm(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        if (this.selected != null && this.selected.hasItem)
+        {
+            this.setBuying(this.selected);
+
+        }
     }
 }
 

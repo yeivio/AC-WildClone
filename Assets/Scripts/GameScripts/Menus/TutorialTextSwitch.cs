@@ -12,6 +12,7 @@ public class TutorialTextSwitch : MonoBehaviour
     [SerializeField] private GameObject NPC_Talk;
     [SerializeField] private GameObject NPC_Sell;
     [SerializeField] private GameObject NPC_Buy;
+    [SerializeField] private GameObject Fishing_UI;
 
 
     [SerializeField] private TalkableObject NPC_Seller_OBJ; // Npc player object
@@ -41,6 +42,11 @@ public class TutorialTextSwitch : MonoBehaviour
             activarUI(UI);
         if(playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.NPC_TALK_INPUTMAP) && !this.NPC_Talk.activeSelf)
             activarUI(NPC_Talk);
+
+        if (playerInput.currentActionMap == playerInput.actions.FindActionMap(Utils.FISHING_INPUTMAP) && !this.Fishing_UI.activeSelf)
+            activarUI(Fishing_UI);
+
+
     }
 
     private void activarUI(GameObject obj)
@@ -50,6 +56,7 @@ public class TutorialTextSwitch : MonoBehaviour
         NPC_Talk.SetActive(false);
         NPC_Sell.SetActive(false);
         NPC_Buy.SetActive(false);
+        Fishing_UI.SetActive(false);
         obj.SetActive(true);
     }
 
