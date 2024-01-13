@@ -111,7 +111,6 @@ public class BuildingSystem : MonoBehaviour
                     objectToPlace.Size,
                     direction,
                     objectToPlace.gameObject);
-                return false;
             }
             Vector3 positionToPlace = gridData.AddObjectAt(
                 cellPosition,
