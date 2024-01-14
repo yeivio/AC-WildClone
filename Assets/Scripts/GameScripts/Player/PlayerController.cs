@@ -75,7 +75,11 @@ public class PlayerController : MonoBehaviour
 
             //Animation
             playerModelAnimator.getActivePlayerAnimator().SetBool("isMoving", true);
-            
+
+
+            // This is from this video from brackeys: www.youtube.com/watch?v=4HpC--2iowE
+            // I couldn't get the exact fluent movement from the animal crossing game, but 
+            // this guy had the most similar one.
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);

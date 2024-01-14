@@ -11736,8 +11736,8 @@ Transform:
   m_GameObject: {fileID: 783256039}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -19.6, z: 127}
-  m_LocalScale: {x: 37.475224, y: 16.632, z: 43.25152}
+  m_LocalPosition: {x: 0, y: -8.4, z: 127}
+  m_LocalScale: {x: 52.016594, y: 23.085655, z: 60.03425}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -24350,7 +24350,7 @@ PrefabInstance:
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: keyBoard_Icon
       value: 
-      objectReference: {fileID: -1231876777, guid: 8ecd786e466073e4ca065ac3abeb5aa1, type: 3}
+      objectReference: {fileID: 1668932039, guid: 8ecd786e466073e4ca065ac3abeb5aa1, type: 3}
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: xboxController_Icon
       value: 
