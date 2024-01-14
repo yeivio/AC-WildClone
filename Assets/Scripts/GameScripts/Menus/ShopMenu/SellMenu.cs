@@ -226,13 +226,22 @@ public class SellMenu : MonoBehaviour
         if (!context.performed)
             return;
 
-        if (this.selected != null && this.selected.TryGetComponent<SellButton>(out SellButton var))
+        if (this.selected != null )
         {
-            if (var.hasItem)
+            if (this.selected.TryGetComponent<SellButton>(out SellButton var) && var.hasItem)
             {
                 var.SelectItem();
             }
+            else if(this.selected.TryGetComponent<ToLeftMenu>(out ToLeftMenu var2))
+            {
+                PreviousPage();
+            }
+            else if(this.selected.TryGetComponent<ToRightMenu>(out ToRightMenu var3))
+            {
+                NextPage();
+            }
         }
+
     }
 
     public void Confirm(InputAction.CallbackContext context)
