@@ -211,6 +211,13 @@ public class SellMenu : MonoBehaviour
         foreach (SellButton sellingItem in shelling)
         {
             sellingItem.gameObject.GetComponent<Image>().color = new(255f, 255f, 255f);
+            foreach (Transform child in sellingItem.transform) //Activate text and backgrounds
+            {
+                Color32 color = new Color32(255, 255, 255, 255);
+
+                if (!child.gameObject.CompareTag("NameInfo"))
+                    child.gameObject.GetComponent<TextMeshProUGUI>().color = color;
+            }
             price += sellingItem.item.SellPrice;
         }
         npc.Continue(" " + price.ToString() + " bayas.");
