@@ -13,6 +13,10 @@ public class TitleMenuController : MonoBehaviour
 
     public bool isOntitle; // This same script is used on the title menu and the start of the game. this will distinguish between the versions
 
+    private void OnEnable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     private void Start()
     {
         if (!isOntitle)
