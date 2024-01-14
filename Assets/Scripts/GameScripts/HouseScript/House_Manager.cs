@@ -11,6 +11,8 @@ public abstract class House_Manager : MonoBehaviour
     private Vector3 exitPlayerPosition;
     private bool isTransitioning;
 
+    protected TitleMenuController titleMenuController;
+
 
     private void Start()
     {
@@ -19,6 +21,7 @@ public abstract class House_Manager : MonoBehaviour
             exitPlayerPosition = playerExitPosition.transform.position;
         else
             exitPlayerPosition = Vector3.zero;
+        this.titleMenuController = FindAnyObjectByType<TitleMenuController>();
     }
 
     /// <summary>
@@ -48,13 +51,17 @@ public abstract class House_Manager : MonoBehaviour
         player.disableMovement();
         player.GetComponent<PlayerInteractionsController>().UnequipItem();
         StartCoroutine(EnterHouse(endPosition));
+        titleMenuController.gameObject.SetActive(false);
+        titleMenuController.gameObject.SetActive(true);
     }
 
     public void PlayExitHouseAnimation()
     {
+        
         isTransitioning = true;
         player.disableMovement();
         StartCoroutine(ExitHouse(new Vector3(this.exitPlayerPosition.x, player.transform.position.y, this.exitPlayerPosition.z)));
+        titleMenuController.PlayFadeOut();
     }
 
 
@@ -102,6 +109,7 @@ public abstract class House_Manager : MonoBehaviour
         player.transform.position = finalPos;
         player.enableMovement();
         isTransitioning = false;
+
     }
 
     public abstract void WhenHouseEnter();

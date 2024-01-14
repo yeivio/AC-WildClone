@@ -7,10 +7,13 @@ public class Tent_Exit : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
     [SerializeField] private PlayerHouseManager houseManager;
-
+    private TitleMenuController titleMenuControlle;
+    private bool exitHouseref;
     private void OnEnable()
     {
+        exitHouseref = false;
         houseManager = FindAnyObjectByType<PlayerHouseManager>();
+        titleMenuControlle= FindAnyObjectByType<TitleMenuController>();
         player = FindAnyObjectByType<PlayerController>();
         this.PlayEnterHouseAnimation(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 5f));
     }
@@ -21,7 +24,8 @@ public class Tent_Exit : MonoBehaviour
         {
             this.player = other.gameObject.GetComponent<PlayerController>();
             player.disableMovement();
-            StartCoroutine(ExitHouse(new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z - 3f)));
+            if(!exitHouseref)
+                StartCoroutine(ExitHouse(new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z - 3f)));
             
         }
     }
@@ -42,6 +46,9 @@ public class Tent_Exit : MonoBehaviour
 
     IEnumerator ExitHouse(Vector3 endPosition)
     {
+        exitHouseref = true;
+        titleMenuControlle.gameObject.SetActive(false);
+        titleMenuControlle.gameObject.SetActive(true);
         float duration = 1f;
         float timer = 0;
         Vector3 initialPos = player.transform.position;
@@ -60,6 +67,7 @@ public class Tent_Exit : MonoBehaviour
         
         this.transform.parent.gameObject.SetActive(false);
         this.player.gameObject.GetComponent<PlayerInteractionsController>().EnableDig();
+        exitHouseref = false;
         yield return null;
     }
    

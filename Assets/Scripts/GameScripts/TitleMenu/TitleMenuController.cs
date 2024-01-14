@@ -21,6 +21,11 @@ public class TitleMenuController : MonoBehaviour
             this.gameObject.GetComponent<Animator>().Play("FadeOut");
         }
     }
+    public void PlayFadeOut()
+    {
+        this.gameObject.GetComponent<Animator>().Play("FadeOut");
+    }
+
 
     void Update()
     {
@@ -34,7 +39,9 @@ public class TitleMenuController : MonoBehaviour
 
     public void eventoFinalAnimation()
     {
-        SceneManager.LoadScene(1);
+        if(this.isOntitle)
+            SceneManager.LoadScene(1);
+
     }
 
     public void stopFinalAnimation()
