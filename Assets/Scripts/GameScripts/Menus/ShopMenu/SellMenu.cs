@@ -61,8 +61,21 @@ public class SellMenu : MonoBehaviour
             selected = but;
 
     }
+    private void InitializeButtons()
+    {
+        for (int i = 0; i< shellingElements.Length; i++)
+        {
+            modifyShellButtonInfo(
+                   i,
+                   initialImage,
+                   "",
+                   null,
+                   false);
+        }
+    }
     private void OnEnable()
     {
+        
         List<Button> buttonsAux = new();
         foreach (GameObject b in GameObject.FindGameObjectsWithTag("SellSlot"))
         {
@@ -73,6 +86,7 @@ public class SellMenu : MonoBehaviour
         }
         shellingElements = buttonsAux.ToArray();
 
+        InitializeButtons();
         List<InventoryItem_ScriptableObject> items = new();
 
         foreach (InventoryItem_ScriptableObject item in inventory.getList())
@@ -212,9 +226,8 @@ public class SellMenu : MonoBehaviour
         if (!context.performed)
             return;
 
-        if (this.selected != null)
+        if (this.selected != null && this.selected.TryGetComponent<SellButton>(out SellButton var))
         {
-            SellButton var = this.selected.gameObject.GetComponent<SellButton>();
             if (var.hasItem)
             {
                 var.SelectItem();

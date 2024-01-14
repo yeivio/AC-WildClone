@@ -42,7 +42,7 @@ public class SelectionOptionMenuDialog : MonoBehaviour, ISelectHandler, IDeselec
 
     public void Submit()
     {        
-        if (selected && canRecieveinput)
+        if (gameObject.activeSelf && selected && canRecieveinput)
         {
             dialogue.ManageResultChoiceDialog(this.gameObject.GetComponent<TextMeshProUGUI>().text);
             dialogMenu.SetActive(false);
