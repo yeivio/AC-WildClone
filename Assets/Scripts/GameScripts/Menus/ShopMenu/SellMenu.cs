@@ -75,7 +75,7 @@ public class SellMenu : MonoBehaviour
     }
     private void OnEnable()
     {
-        
+        shelling = new();
         List<Button> buttonsAux = new();
         foreach (GameObject b in GameObject.FindGameObjectsWithTag("SellSlot"))
         {
