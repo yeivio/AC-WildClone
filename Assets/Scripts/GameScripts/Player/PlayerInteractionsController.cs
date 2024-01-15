@@ -13,7 +13,7 @@ public class PlayerInteractionsController : MonoBehaviour
     [SerializeField] private AudioSource diggingSound;
     public GameObject cam;  //Player camera
 
-    private GameObject interactingObject; //Object which they player is interacting
+    public GameObject interactingObject; //Object which they player is interacting
 
     private MovableObject movingObject; // Object the player is moving
     private float moveObjectCooldown = 0.5f; //Cooldown of moving an object

@@ -8258,6 +8258,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 345158025}
     m_Modifications:
     - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Size.x
+      value: 1.125363
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Size.z
+      value: 0.87238383
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Center.x
+      value: 0.015125798
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Center.z
+      value: -0.06380804
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -15801,7 +15817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: texto
-      value: GUARDAR ITEM
+      value: DESEQUIPAR ITEM
       objectReference: {fileID: 0}
     - target: {fileID: 2341114745315605600, guid: 0971d22469f7932449fddae7de8bfb05, type: 3}
       propertyPath: keyBoard_Icon
@@ -26937,6 +26953,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 345158025}
     m_Modifications:
     - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Size.z
+      value: 0.8791934
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Center.x
+      value: -1.0994344e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Center.z
+      value: 0.060403258
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -29729,6 +29761,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 345158025}
     m_Modifications:
     - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0220133
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Size.z
+      value: 0.80981654
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0110102575
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Center.z
+      value: 0.095091686
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -30151,6 +30199,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 345158025}
     m_Modifications:
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0358396
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Size.z
+      value: 0.9342318
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Center.x
+      value: -0.017920364
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
+      propertyPath: m_Center.z
+      value: -0.032884065
+      objectReference: {fileID: 0}
     - target: {fileID: 2160781279660544057, guid: 8a618b0709f1ad642b61f2ae265f7ba4, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -32379,6 +32443,7 @@ MonoBehaviour:
   pickupSound: {fileID: 9046652332658660547}
   diggingSound: {fileID: 9046652332658660548}
   cam: {fileID: 5389809805691765878}
+  interactingObject: {fileID: 0}
   handBone:
   - {fileID: 982632808}
   - {fileID: 1664758428}

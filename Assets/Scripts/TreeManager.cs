@@ -98,7 +98,6 @@ public class TreeManager : MonoBehaviour
         float duration = 0.30f;
 
         Vector3 appleInitial = fruitPositions[fruitPosition].gameObject.transform.localScale;
-
         Vector3 initialPos = fruitPositions[fruitPosition].gameObject.transform.position;
 
         Vector3 finalPos = BuildingSystem.current.SnapCoordinateToGrid(

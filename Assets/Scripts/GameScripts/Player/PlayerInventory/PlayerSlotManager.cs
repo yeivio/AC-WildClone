@@ -45,6 +45,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         //this.SetItemSO(null); // resets items
         this.currentStatus = SlotState.UNSELECTED;
+        selectedIcon.SetActive(false);
     }
 
     private void Update()
