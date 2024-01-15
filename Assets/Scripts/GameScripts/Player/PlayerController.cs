@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private TimerMenuManager timerMenuManager;
     private float notMovedTimer; // Timer that counts the time of the player when it's static
 
+    private float originalValue_Y;
+
+
     private void Start()
     {
         this.timerMenuManager = GameObject.FindAnyObjectByType<TimerMenuManager>();
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour
         joystick_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_MOVE);
         sprint_input = this.inputAction.FindActionMap(Utils.FREEMOVE_INPUTMAP).FindAction(Utils.FREEMOVE_SPRINT);
         canMove = true;
+        originalValue_Y = this.gameObject.transform.position.y;
     }
 
     // Update is called once per frame
@@ -98,6 +102,10 @@ public class PlayerController : MonoBehaviour
 
 
         }
+
+        // This is in case the player starts levitating for whatever reason 
+        if (this.gameObject.transform.position.y >= originalValue_Y + 1)
+            this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, originalValue_Y, this.gameObject.transform.position.z);
     }
 
 
