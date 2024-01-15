@@ -103,8 +103,10 @@ public class Npc_Dialogue : MonoBehaviour
                 if (talkObj.isBuyShop)
                 {
                     InventoryItem_ScriptableObject item = tiendaController.GetComponent<BuyMenu>().buying.item;
+                    int nItems = sellTiendaController.GetComponent<SellMenu>().inventory.getList().Count;
+                    int maxSize = sellTiendaController.GetComponent<SellMenu>().inventory.Size;
                     // COMPROBAR DINERO DE LA PERSONA
-                    if(wallet.CanBuy(item.BuyPrice))
+                    if (wallet.CanBuy(item.BuyPrice) && nItems < maxSize)
                     {
                         wallet.Buy(item.BuyPrice);
                         sellTiendaController.GetComponent<SellMenu>().inventory.AddItem(item);
