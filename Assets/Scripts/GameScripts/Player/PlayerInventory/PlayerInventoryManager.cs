@@ -43,8 +43,9 @@ public class PlayerInventoryManager : MonoBehaviour
     /// </summary>
     public void OpenDialogWindow(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || this.dialogWindow.gameObject.activeSelf)
             return;
+        
         if (EventSystem.current.currentSelectedGameObject.GetComponent<PlayerSlotManager>().GetItemSO()) { 
             this.dialogWindow.gameObject.SetActive(true);
         }

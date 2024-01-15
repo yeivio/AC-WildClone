@@ -9,7 +9,7 @@ public class InventorySlotsManager : MonoBehaviour
     [SerializeField] private PlayerSlotManager[] inventorySlots; // Inventory slots
     [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory container
     private List<InventoryItem_ScriptableObject> inventoryDataCopy;
-    private PlayerSlotManager currentSelectedObject;
+    public PlayerSlotManager currentSelectedObject;
 
     private void OnDisable()
     {
@@ -19,6 +19,7 @@ public class InventorySlotsManager : MonoBehaviour
     private void OnEnable()
     {
         inventoryDataCopy = new List<InventoryItem_ScriptableObject>(inventoryData.getList());
+
         // Loads the player inventory contained in the SO
         foreach (PlayerSlotManager slot in inventorySlots)
             if (slot.GetItemSO() != null)
@@ -33,7 +34,7 @@ public class InventorySlotsManager : MonoBehaviour
                 }
                 
             }
-          
+
         int index = 0;
         while(inventoryDataCopy.Count != 0)
         {
@@ -41,7 +42,7 @@ public class InventorySlotsManager : MonoBehaviour
             {
                 throw new System.Exception("Error al importar los datos");
             }
-            if (this.inventorySlots[index].GetItemSO() == null) { 
+            if (this.inventorySlots[index].GetItemSO() == null) {
                 this.inventorySlots[index].SetItemSO(this.inventoryDataCopy[0]);
                 this.inventoryDataCopy.RemoveAt(0);
                 

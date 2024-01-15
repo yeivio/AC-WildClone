@@ -14,6 +14,8 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] private AudioClip focused_Audio; // Audio for slot focused
     [SerializeField] private AudioClip selected_Audio; // Audio for slot selected
     [SerializeField] private TextMeshProUGUI displayItemName; // Item name displayer
+    [SerializeField] private GameObject selectedIconRefPosition; // Selected icon position
+    [SerializeField] private GameObject selectedIcon; // Selected icon image
 
     [SerializeField] private AudioSource audioSource;   
 
@@ -52,6 +54,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
                 this.GetComponent<Image>().sprite = selected_slotImage;
                 this.GetComponent<Button>().GetComponent<RectTransform>().localScale =
                     new Vector3(originalSize.x + SELECTED_BUTTON_RESIZE, originalSize.y + SELECTED_BUTTON_RESIZE, originalSize.z); // Rescale button
+                selectedIcon.SetActive(false);
                 break;
 
             case SlotState.UNSELECTED:
@@ -62,6 +65,10 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
                 this.GetComponent<Image>().sprite = focused_slotImage;
                 this.GetComponent<Button>().GetComponent<RectTransform>().localScale =
                     new Vector3(originalSize.x + FOCUSED_BUTTON_RESIZE, originalSize.y + FOCUSED_BUTTON_RESIZE, originalSize.z); // Rescale button
+                if(slotManager.currentSelectedObject == null) { 
+                    selectedIcon.transform.position = selectedIconRefPosition.transform.position;
+                    selectedIcon.SetActive(true);
+                }
                 break;
 
             default:
@@ -74,6 +81,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         if(this.currentStatus != SlotState.SELECTED)
         {
             this.currentStatus = SlotState.UNSELECTED;
+            
         }
             
     }
@@ -84,6 +92,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             audioSource.PlayOneShot(this.focused_Audio);
             this.currentStatus = SlotState.FOCUSED;
+            
         }
             
     }

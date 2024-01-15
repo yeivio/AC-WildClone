@@ -54,8 +54,9 @@ public class DialogManager : MonoBehaviour
 
 
         listActiveButtons.Add(this.closeMenu_Text.GetComponent<Button>());
-        this.closeMenu_Text.gameObject.GetComponent<Button>().Select();
         this.buildNavigation();
+        this.closeMenu_Text.gameObject.GetComponent<Button>().Select();
+        this.closeMenu_Text.gameObject.GetComponent<DialogCursorManager>().OnSelect(null);
     }
 
     public void DropItem()

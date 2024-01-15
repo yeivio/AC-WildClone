@@ -53,13 +53,17 @@ public class TreeManager : MonoBehaviour
     /// </summary>
     public void shakeTree()
     {
+
         if (currentActiveObject.TryGetComponent(out Animator animator)) {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("AppleTree_Shake"))
+            {
+                return;
+            }
             animator.GetComponent<Animator>().Play("AppleTree_Shake");
             treeShakeAudio.Play();
         }
         if (!hasApples)
             return;
-
         
         if (fruitPositions[0].enabled && 
             BuildingSystem.current.CanPlaceObject(this.fruit, this.gameObject, new(1, 0, 1), this.gameObject.transform.forward * -1))
@@ -90,7 +94,6 @@ public class TreeManager : MonoBehaviour
     }
     private IEnumerator AppleFallingAnimation(int fruitPosition, Vector3 position ,Vector3 direction)
     {
-
         float timer = 0f;
         float duration = 0.30f;
 

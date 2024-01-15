@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 7557452491229982085}
   - component: {fileID: 6002202635645559921}
   - component: {fileID: 2027996364188577462}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,10 +241,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3651654733835835273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 64.1, y: -59.00002}
-  m_SizeDelta: {x: 2, y: -18}
+  m_AnchorMin: {x: 0.86949426, y: -0.845}
+  m_AnchorMax: {x: 1.840506, y: 0.13946849}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6002202635645559921
 CanvasRenderer:
@@ -427,6 +427,8 @@ MonoBehaviour:
   focused_Audio: {fileID: 8300000, guid: 3ce921cfe629d4c40ab89afa436cecdd, type: 3}
   selected_Audio: {fileID: 8300000, guid: 62e8ed1c7bae54d42a73567795daac50, type: 3}
   displayItemName: {fileID: 1122419296091936978}
+  selectedIconRefPosition: {fileID: 7609404512886080690}
+  selectedIcon: {fileID: 7609404512886080690}
   audioSource: {fileID: 6894711257884285248}
   itemImage: {fileID: 3232140919883717538}
 --- !u!82 &6894711257884285248
