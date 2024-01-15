@@ -41,7 +41,7 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     private void OnDisable()
     {
-        this.SetItemSO(null); // resets items
+        //this.SetItemSO(null); // resets items
         this.currentStatus = SlotState.UNSELECTED;
     }
 
@@ -122,6 +122,11 @@ public class PlayerSlotManager : MonoBehaviour, ISelectHandler, IDeselectHandler
             this.itemImage.sprite = item.ItemSprite;
             displayItemName.text = item.Name;
         }
+    }
+    public void resetItemSO()
+    {
+        this.itemSO = null;
+        this.itemImage.gameObject.SetActive(false);
     }
 
     public void removeItemSO()

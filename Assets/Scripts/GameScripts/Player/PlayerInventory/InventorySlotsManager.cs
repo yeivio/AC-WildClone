@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,14 +8,54 @@ public class InventorySlotsManager : MonoBehaviour
 {
     [SerializeField] private PlayerSlotManager[] inventorySlots; // Inventory slots
     [SerializeField] private PlayerInventory_ScriptableObject inventoryData; //Player inventory container
-
+    private List<InventoryItem_ScriptableObject> inventoryDataCopy;
     private PlayerSlotManager currentSelectedObject;
+
+    private void OnDisable()
+    {
+        currentSelectedObject = null;
+    }
 
     private void OnEnable()
     {
+        inventoryDataCopy = new List<InventoryItem_ScriptableObject>(inventoryData.getList());
         // Loads the player inventory contained in the SO
-        for (int i = 0; i < inventoryData.getList().Count &&  i < inventorySlots.Length; i++)
-            inventorySlots[i].SetItemSO(inventoryData.getList()[i]);
+        foreach (PlayerSlotManager slot in inventorySlots)
+            if (slot.GetItemSO() != null)
+            {
+                if (this.inventoryDataCopy.Contains(slot.GetItemSO()))
+                {
+                    this.inventoryDataCopy.Remove(slot.GetItemSO());
+                }
+                else
+                {
+                    slot.resetItemSO();
+                }
+                
+            }
+          
+        int index = 0;
+        while(inventoryDataCopy.Count != 0)
+        {
+            if(index >= 31)
+            {
+                throw new System.Exception("Error al importar los datos");
+            }
+            if (this.inventorySlots[index].GetItemSO() == null) { 
+                this.inventorySlots[index].SetItemSO(this.inventoryDataCopy[0]);
+                this.inventoryDataCopy.RemoveAt(0);
+                
+            }
+            index++;
+        }
+        
+
+            
+
+
+
+
+
         this.FocusItem(0);// Autoselect the first button for navigation
     }
 
