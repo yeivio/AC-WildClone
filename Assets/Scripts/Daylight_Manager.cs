@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Daylight_Manager : MonoBehaviour
@@ -13,11 +14,13 @@ public class Daylight_Manager : MonoBehaviour
     private float timer;
     [SerializeField] private int DURACION_DIA;
     [SerializeField] private int DURACION_NOCHE;
+    private bool isEnabled;
 
     public DateTime currentTime;
 
     private void Awake()
     {
+        isEnabled = true;
         lightComponent = GetComponent<Light>();
         lightComponent.intensity = 0;
         StartCoroutine(RotarSol(0));
@@ -38,16 +41,22 @@ public class Daylight_Manager : MonoBehaviour
         int calHoras;
         
         while (true) {
+            
             this.timer = hour;
             this.gameObject.transform.rotation = Quaternion.Euler(dayStartRotation);
             while (timer <= DURACION_DIA)
             {
-                this.lightComponent.intensity = Mathf.Sin((timer * 360 / DURACION_DIA) * Mathf.PI / 360);
-                this.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(dayStartRotation), Quaternion.Euler(dayEndRotation), timer / DURACION_DIA);
+                if (isEnabled)
+                {
+                    this.lightComponent.intensity = Mathf.Sin((timer * 360 / DURACION_DIA) * Mathf.PI / 360);
+                    this.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(dayStartRotation), Quaternion.Euler(dayEndRotation), timer / DURACION_DIA);
 
-                timer += Time.deltaTime;
-                calHoras = (int)Math.Floor(timer * 24 / (DURACION_DIA + DURACION_NOCHE));
-                currentTime = new DateTime(1, 1, 1, calHoras, 0,0);
+                    timer += Time.deltaTime;
+                    calHoras = (int)Math.Floor(timer * 24 / (DURACION_DIA + DURACION_NOCHE));
+                    currentTime = new DateTime(1, 1, 1, calHoras, 0, 0);
+                }
+
+                
                 yield return null;
             }
             this.gameObject.transform.rotation = Quaternion.Euler(dayEndRotation);
@@ -55,13 +64,28 @@ public class Daylight_Manager : MonoBehaviour
 
             while (timer <= DURACION_DIA + DURACION_NOCHE)
             {
-                timer += Time.deltaTime;
-                calHoras = (int)Math.Floor(timer * 24 / (DURACION_DIA + DURACION_NOCHE));
-                if (calHoras >= 24)
-                    calHoras = 0;
-                currentTime = new DateTime(1, 1, 1, calHoras, 0, 0);
+                if (isEnabled)
+                {
+                    timer += Time.deltaTime;
+                    calHoras = (int)Math.Floor(timer * 24 / (DURACION_DIA + DURACION_NOCHE));
+                    if (calHoras >= 24)
+                        calHoras = 0;
+                    currentTime = new DateTime(1, 1, 1, calHoras, 0, 0);
+                }
+                
                 yield return null;
             }
         }
+    }
+
+    public void DisableLight()
+    {
+        this.lightComponent.intensity = 0;
+        isEnabled = false;
+    }
+
+    public void EnableLight()
+    {
+        isEnabled = true;
     }
 }

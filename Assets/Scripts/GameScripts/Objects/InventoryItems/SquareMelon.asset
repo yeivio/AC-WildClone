@@ -18,7 +18,7 @@ MonoBehaviour:
   _IsStackable: 0
   _MaxStackSize: 0
   _BuyPrice: 60
-  _SellPrice: 8
+  _SellPrice: 30
   _Name: "Mel\xF3n C\xFAbico"
   _IsPlantable: 1
   _IsEatable: 1

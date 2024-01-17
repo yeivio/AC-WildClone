@@ -15,6 +15,7 @@ TagManager:
   - DialogWindow
   - NameInfo
   - Dust_Particles
+  - DayNight
   layers:
   - Default
   - TransparentFX

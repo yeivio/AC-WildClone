@@ -12,10 +12,12 @@ public abstract class House_Manager : MonoBehaviour
     private bool isTransitioning;
 
     protected TitleMenuController titleMenuController;
+    private Daylight_Manager dayLight;
 
 
     private void Start()
     {
+        dayLight = GameObject.FindGameObjectWithTag("DayNight").GetComponent<Daylight_Manager>();
         isTransitioning = false;
         if (exitPlayerPosition != null)
             exitPlayerPosition = playerExitPosition.transform.position;
@@ -88,13 +90,16 @@ public abstract class House_Manager : MonoBehaviour
         player.transform.position = finalPos;
         player.transform.eulerAngles = new Vector3(180, 180, 180);
         player.enableMovement();
+        dayLight.DisableLight();
         WhenHouseEnter();
+
         isTransitioning = false;
     }
 
 
     IEnumerator ExitHouse(Vector3 endPosition)
     {
+        dayLight.EnableLight();
         isTransitioning = true;
         float duration = 1f;
         float timer = 0;
