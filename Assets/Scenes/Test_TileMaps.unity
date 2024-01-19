@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4513921, g: 0.50090504, b: 0.57242465, a: 1}
+  m_IndirectSpecularColor: {r: 0.4513924, g: 0.5009053, b: 0.57242507, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10189,8 +10189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayStartRotation: {x: 30.163, y: -54.477, z: -32.129}
   dayEndRotation: {x: 29.844, y: 54.999, z: 35.4}
-  DURACION_DIA: 14
-  DURACION_NOCHE: 4
+  DURACION_DIA: 70
+  DURACION_NOCHE: 20
 --- !u!1 &709260128
 GameObject:
   m_ObjectHideFlags: 0
@@ -17298,7 +17298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 186.173}
   m_AnchorMin: {x: 0.039129317, y: 0.7774027}
   m_AnchorMax: {x: 0.29160836, y: 1}
-  m_AnchoredPosition: {x: -10.999756, y: 6.999878}
+  m_AnchoredPosition: {x: -10.999756, y: 6.9998856}
   m_SizeDelta: {x: 9.8051, y: -0.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201927415
